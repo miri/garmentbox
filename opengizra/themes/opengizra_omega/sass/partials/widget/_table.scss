@@ -27,6 +27,10 @@ table {
     &.emphasized {
       @include vertical-gradient(#F4F5DC, #F1F5A6);
     }
+
+    &.expandable {
+      cursor: pointer;
+    }
   }
 
   thead tr {
