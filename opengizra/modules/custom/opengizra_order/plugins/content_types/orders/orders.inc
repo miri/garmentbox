@@ -44,10 +44,13 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
   $query->innerJoin('field_data_field_quantity', 'fq', 'fq.entity_id = fqi.field_quantity_info_value');
   $query->innerJoin('field_data_field_size', 'fsz', 'fsz.entity_id = fqi.field_quantity_info_value');
   $query->leftJoin('field_data_field_delivery_date', 'fdd', 'fdd.entity_id = n.nid');
+  $query->innerJoin('field_data_field_order_status', 'fos', 'fos.entity_id = n_order.nid');
+  $query->innerJoin('taxonomy_term_data', 'tdfos', 'tdfos.tid = fos.field_order_status_target_id');
 
   $query->addField('n', 'nid');
   $query->addField('n_order', 'nid', 'order_nid');
   $query->addField('n_order', 'title', 'order_title');
+  $query->addField('tdfos', 'name', 'order_status');
   $query->addField('n_customer', 'nid', 'customer_nid');
   $query->addField('n_customer', 'title', 'customer');
   $query->addField('n_variant', 'nid', 'variant_nid');
@@ -70,6 +73,7 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
     ->condition('fit.entity_type', 'node')
     ->condition('fqi.entity_type', 'node')
     ->condition('fdd.entity_type', 'node')
+    ->condition('fos.entity_type', 'node')
     ->condition('fq.entity_type', 'field_collection_item')
     ->condition('fsz.entity_type', 'field_collection_item');
 
@@ -96,6 +100,7 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
         'total_items' => 0,
         'last_delivery_date' => 0,
         'next_delivery_date' => 0,
+        'order_status' => $row->order_status,
       );
     }
 
@@ -178,6 +183,7 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
     $order_row['data'][] = $order['total_items'];
     $order_row['data'][] = $order['last_delivery_date'] ? format_date($order['last_delivery_date']) : t('N/A');
     $order_row['data'][] = $order['next_delivery_date'] ? format_date($order['next_delivery_date']) : t('N/A');
+    $order_row['data'][] = $order['order_status'];
 
     $order_table[] = $order_row;
 

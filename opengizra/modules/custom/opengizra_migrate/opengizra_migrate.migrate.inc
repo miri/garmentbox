@@ -484,6 +484,7 @@ class openGizraOrders extends openGizraMigration {
     array('field_customer', 'Customer'),
     array('field_address', 'Address'),
     array('field_inventory_line_inline', 'Inventory line'),
+    array('field_order_status', 'Status'),
   );
 
   public $entityType = 'node';
@@ -494,6 +495,7 @@ class openGizraOrders extends openGizraMigration {
     'openGizraCustomers',
     'openGizraAddresses',
     'openGizraInventoryLines',
+    'openGizraOrderStatusTerms'
   );
 
   public function __construct() {
@@ -514,6 +516,10 @@ class openGizraOrders extends openGizraMigration {
     $this
       ->addFieldMapping('field_inventory_line_inline', 'field_inventory_line_inline')
       ->sourceMigration('openGizraInventoryLines');
+
+    $this
+      ->addFieldMapping('field_order_status', 'field_order_status')
+      ->sourceMigration('openGizraOrderStatusTerms');
   }
 
   function prepareRow($row) {
