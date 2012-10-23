@@ -26,7 +26,6 @@ features[field][] = node-pattern_task-og_group_ref
 features[field][] = node-season-og_group_ref
 features[field][] = node-task-og_group_ref
 features[field][] = node-vendor-og_group_ref
-features[field][] = user-user-og_user_node
 features[node][] = department
 features[variable][] = comment_anonymous_department
 features[variable][] = comment_default_mode_department
