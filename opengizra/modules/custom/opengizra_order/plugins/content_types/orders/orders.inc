@@ -34,7 +34,8 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
     $query->innerJoin('field_data_field_season', 'fs', 'fi.field_item_target_id = fs.entity_id');
   }
   $query->innerJoin('field_data_field_inventory_line_inline', 'fili', 'fili.field_inventory_line_inline_target_id = n.nid');
-  $query->innerJoin('field_data_field_customer', 'fc', 'fc.entity_id = fili.entity_id');
+  $query->innerJoin('node', 'n_order', 'fili.entity_id = n_order.nid');
+  $query->innerJoin('field_data_field_customer', 'fc', 'fc.entity_id = n_order.nid');
   $query->innerJoin('node', 'n_customer', 'n_customer.nid = fc.field_customer_target_id');
   $query->innerJoin('node', 'n_variant', 'n_variant.nid = fiv.field_item_variant_target_id');
   $query->innerJoin('field_data_field_inventory_type', 'fit', 'fit.entity_id = n.nid');
@@ -42,7 +43,11 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
   $query->leftJoin('field_data_field_quantity_info', 'fqi', 'fqi.entity_id = n.nid');
   $query->innerJoin('field_data_field_quantity', 'fq', 'fq.entity_id = fqi.field_quantity_info_value');
   $query->innerJoin('field_data_field_size', 'fsz', 'fsz.entity_id = fqi.field_quantity_info_value');
+  $query->leftJoin('field_data_field_delivery_date', 'fdd', 'fdd.entity_id = n.nid');
+
   $query->addField('n', 'nid');
+  $query->addField('n_order', 'nid', 'order_nid');
+  $query->addField('n_order', 'title', 'order_title');
   $query->addField('n_customer', 'nid', 'customer_nid');
   $query->addField('n_customer', 'title', 'customer');
   $query->addField('n_variant', 'nid', 'variant_nid');
@@ -50,88 +55,171 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
   $query->addField('td', 'name', 'type');
   $query->addField('fsz', 'field_size_target_id', 'size_tid');
   $query->addField('fq', 'field_quantity_value', 'quantity');
+  $query->addExpression('UNIX_TIMESTAMP(fdd.field_delivery_date_value)', 'delivery_date');
+
   $query
     ->condition('n.type', 'inventory_line')
     ->condition('n.status', NODE_PUBLISHED)
     ->condition('n_customer.status', NODE_PUBLISHED)
     ->condition('n_variant.status', NODE_PUBLISHED)
+    ->condition('n_order.status', NODE_PUBLISHED)
     ->condition('fiv.entity_type', 'node')
     ->condition('fi.entity_type', 'node')
     ->condition('fili.entity_type', 'node')
     ->condition('fc.entity_type', 'node')
     ->condition('fit.entity_type', 'node')
     ->condition('fqi.entity_type', 'node')
+    ->condition('fdd.entity_type', 'node')
     ->condition('fq.entity_type', 'field_collection_item')
     ->condition('fsz.entity_type', 'field_collection_item');
 
   if ($node->type == 'season') {
-    $query->condition('fs.deleted', FALSE);
     $query->condition('fs.field_season_target_id', $node->nid);
   }
+
+  $query->orderBy('n_order.nid');
 
   $result = $query->execute();
 
   $vocabulary = taxonomy_vocabulary_machine_name_load('size');
   $size_tree = taxonomy_get_tree($vocabulary->vid);
 
+  $now = time();
+
   $rows = array();
   $orders = array();
   // group the rows by inventory line node.
   foreach ($result as $row) {
-    if (empty($orders[$row->nid])) {
-      $orders[$row->nid] = array();
-      $orders[$row->nid]['customer'] = $row->customer;
-      $orders[$row->nid]['customer_nid'] = $row->customer_nid;
-      $orders[$row->nid]['variant'] = $row->variant;
-      $orders[$row->nid]['variant_nid'] = $row->variant_nid;
-      $orders[$row->nid]['type'] = $row->type;
+    if (empty($orders[$row->order_nid])) {
+      $orders[$row->order_nid] = array(
+        'title' => $row->order_title,
+        'total_items' => 0,
+        'last_delivery_date' => 0,
+        'next_delivery_date' => 0,
+      );
+    }
+
+    if (empty($orders[$row->order_nid]['lines'][$row->nid])) {
+      $orders[$row->order_nid]['lines'][$row->nid] = array(
+        'customer' => $row->customer,
+        'customer_nid' => $row->customer_nid,
+        'variant' => $row->variant,
+        'variant_nid' => $row->variant_nid,
+        'type' => $row->type,
+      );
 
       foreach($size_tree as $term) {
-        $orders[$row->nid][$term->tid] = 0;
+        $orders[$row->order_nid]['lines'][$row->nid][$term->tid] = 0;
+      }
+
+      // Update last and next delivery dates.
+      if ($row->delivery_date) {
+        // Delivery date in the future - Update next_delivery_date.
+        if ($row->delivery_date - $now >= 0) {
+          $next_delivery_delta = abs($orders[$row->order_nid]['next_delivery_date'] - $now);
+          // If this row's "next delivery date" is closer to now than the
+          // currently order's "next delivery date", update the order.
+          if (($row->delivery_date - $now) < $next_delivery_delta) {
+            $orders[$row->order_nid]['next_delivery_date'] = $row->delivery_date;
+          }
+        }
+        // Delivery date in the past - Update last_delivery_date.
+        else {
+          $last_delivery_delta = abs($orders[$row->order_nid]['last_delivery_date'] - $now);
+
+          if (abs($row->delivery_date - $now) < $next_delivery_delta) {
+            $orders[$row->order_nid]['last_delivery_date'] = $row->delivery_date;
+          }
+        }
       }
     }
-    $orders[$row->nid][$row->size_tid] += $row->quantity;
+    $orders[$row->order_nid]['lines'][$row->nid][$row->size_tid] += $row->quantity;
+    $orders[$row->order_nid]['total_items'] += $row->quantity;
   }
   if (!$orders) {
     return $block;
   }
 
-  $header = array();
-  $header['customer'] = t('Customer');
-  $header['item variant'] = t('Variation');
+  drupal_add_js(drupal_get_path('module', $module) . '/plugins/content_types/' . $subtype . '/' . $subtype . '.js');
 
+  $header = array(
+    t('Order'),
+    t('Total price'),
+    t('Total items'),
+    t('Last delivery date'),
+    t('Next delivery date'),
+    t('Status'),
+  );
+
+  $inventory_header = array();
+  $inventory_header[] = t('Customer');
+  $inventory_header[] = t('Variation');
   foreach ($size_tree as $term) {
-    $header[$term->tid] = $term->name;
+    $inventory_header[] = $term->name;
   }
-  $header['total'] = t('Total');
-  $header['status'] = t('Status');
+  $inventory_header[] = t('Total');
+  $inventory_header[] = t('Status');
 
-  $table = array();
-  foreach ($orders as $order) {
-    $row = array();
-    $row[] = l($order['customer'], 'node/' . $order['customer_nid']);
-    $row[] = l($order['variant'], 'node/' . $order['variant_nid']);
+  $order_table = array();
+  foreach ($orders as $order_nid => $order) {
+    $order_row = array(
+      'data' => array(),
+      'class' => array('expandable'),
+      'ref' => 'order-inventory-' . $order_nid,
+    );
+    $params = array(
+      'attributes' => array(
+        'class' => array('expander', 'colapsed'),
+      )
+    );
+    $expand_link = l('', url(''), $params);
+    $order_row['data'][] = $expand_link . l($order['title'], 'node/' . $order_nid);
+    $order_row['data'][] = t('N/A');
+    $order_row['data'][] = $order['total_items'];
+    $order_row['data'][] = $order['last_delivery_date'] ? format_date($order['last_delivery_date']) : t('N/A');
+    $order_row['data'][] = $order['next_delivery_date'] ? format_date($order['next_delivery_date']) : t('N/A');
 
-    $total = 0;
-    foreach($size_tree as $term) {
-      $total += $order[$term->tid];
-      $row[] = $order[$term->tid];
+    $order_table[] = $order_row;
+
+    $inventory_table = array();
+    foreach ($order['lines'] as $inventory_line) {
+      $row = array();
+      $row[] = l($inventory_line['customer'], 'node/' . $inventory_line['customer_nid']);
+      $row[] = l($inventory_line['variant'], 'node/' . $inventory_line['variant_nid']);
+
+      $total = 0;
+      foreach($size_tree as $term) {
+        $total += $inventory_line[$term->tid];
+        $row[] = $inventory_line[$term->tid];
+      }
+
+      $row[] = array('data' => $total, 'class' => array('emphasized'));
+      $row[] = $inventory_line['type'];
+
+      $inventory_table[] = $row;
     }
+    $variables = array(
+      'header' => $inventory_header,
+      'rows' => $inventory_table,
+    );
 
-    $row[] = array('data' => $total, 'class' => array('emphasized'));
-
-    $row[] = $order['type'];
-
-    // Total row description.
-    $table[] = $row;
+    $order_table[] = array(
+      'data' => array(
+        array(
+          'data' => theme('table', $variables),
+          'colspan' => 6,
+        ),
+      ),
+      'class' => array('hidden'),
+      'id' => 'order-inventory-' . $order_nid,
+    );
   }
 
   $block->content = array(
     '#theme' => 'table',
     '#header' => $header,
-    '#rows' => $table,
+    '#rows' => $order_table,
   );
-
   return $block;
 }
 

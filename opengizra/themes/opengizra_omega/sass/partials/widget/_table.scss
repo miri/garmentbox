@@ -5,7 +5,7 @@ table {
     height: 20px;
   }
 
-  tbody tr {
+  tbody > tr {
     @include vertical-gradient(#fcfcfc, #f0f0f0);
 
     &.even {

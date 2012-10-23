@@ -132,6 +132,20 @@ class openGizraBolTerms extends openGizraMigration {
   public $bundle = 'bol';
 }
 
+/**
+ * Migrate order status terms.
+ */
+class openGizraOrderStatusTerms extends openGizraMigration {
+
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('name', 'Name'),
+  );
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'order_status';
+}
+
 ///////////////////////////////
 // Nodes
 
@@ -500,6 +514,11 @@ class openGizraOrders extends openGizraMigration {
     $this
       ->addFieldMapping('field_inventory_line_inline', 'field_inventory_line_inline')
       ->sourceMigration('openGizraInventoryLines');
+  }
+
+  function prepareRow($row) {
+    parent::prepareRow($row);
+    $row->field_inventory_line_inline = explode('; ', $row->field_inventory_line_inline);
   }
 }
 

@@ -7,43 +7,43 @@ table tr {
   height: 20px;
 }
 /* line 8, ../sass/partials/widget/_table.scss */
-table tbody tr {
+table tbody > tr {
   background-color: #fcfcfc;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#fcfcfc, endColorstr=#f0f0f0);
   background-image: -moz-linear-gradient(center top, #fcfcfc, #f0f0f0);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcfcfc), to(#f0f0f0));
 }
 /* line 11, ../sass/partials/widget/_table.scss */
-table tbody tr.even {
+table tbody > tr.even {
   background-color: #fbfffe;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#fbfffe, endColorstr=#f1f5f4);
   background-image: -moz-linear-gradient(center top, #fbfffe, #f1f5f4);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fbfffe), to(#f1f5f4));
 }
 /* line 15, ../sass/partials/widget/_table.scss */
-table tbody tr:hover {
+table tbody > tr:hover {
   background-color: #f2fbff;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f2fbff, endColorstr=#e1ebf4);
   background-image: -moz-linear-gradient(center top, #f2fbff, #e1ebf4);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f2fbff), to(#e1ebf4));
 }
 /* line 19, ../sass/partials/widget/_table.scss */
-table tbody tr.hidden {
+table tbody > tr.hidden {
   display: none;
 }
 /* line 23, ../sass/partials/widget/_table.scss */
-table tbody tr.type td:first-child {
+table tbody > tr.type td:first-child {
   padding-left: 50px;
 }
 /* line 27, ../sass/partials/widget/_table.scss */
-table tbody tr.emphasized {
+table tbody > tr.emphasized {
   background-color: #f4f5dc;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f4f5dc, endColorstr=#f1f5a6);
   background-image: -moz-linear-gradient(center top, #f4f5dc, #f1f5a6);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4f5dc), to(#f1f5a6));
 }
 /* line 31, ../sass/partials/widget/_table.scss */
-table tbody tr.expandable {
+table tbody > tr.expandable {
   cursor: pointer;
 }
 /* line 36, ../sass/partials/widget/_table.scss */
