@@ -177,7 +177,10 @@ function opengizra_season_default_page_manager_pages() {
   $page->admin_title = 'Season inventory';
   $page->admin_description = '';
   $page->path = 'season/%node/inventory';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'node' => array(
@@ -357,14 +360,14 @@ function opengizra_season_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-4';
     $pane->panel = 'content';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'orders-panel_pane_orders';
+    $pane->type = 'orders';
+    $pane->subtype = 'orders';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => array(
-        0 => 'argument_entity_id:node_1',
-      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(

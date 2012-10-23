@@ -60,8 +60,15 @@ table {
     font-weight: normal;
   }
 
-  td.active {
-    background-color: rgba(50, 50, 50, 0.05);
+  td {
+
+    &.active {
+      background-color: rgba(50, 50, 50, 0.05);
+    }
+
+    &.emphasized {
+      font-weight: bold;
+    }
   }
 
   .views-field-edit-node a, li.edit a {

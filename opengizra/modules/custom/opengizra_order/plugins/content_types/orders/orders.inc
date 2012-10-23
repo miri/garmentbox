@@ -42,16 +42,19 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
   $query->leftJoin('field_data_field_quantity_info', 'fqi', 'fqi.entity_id = n.nid');
   $query->innerJoin('field_data_field_quantity', 'fq', 'fq.entity_id = fqi.field_quantity_info_value');
   $query->innerJoin('field_data_field_size', 'fsz', 'fsz.entity_id = fqi.field_quantity_info_value');
-
-
   $query->addField('n', 'nid');
+  $query->addField('n_customer', 'nid', 'customer_nid');
   $query->addField('n_customer', 'title', 'customer');
+  $query->addField('n_variant', 'nid', 'variant_nid');
   $query->addField('n_variant', 'title', 'variant');
   $query->addField('td', 'name', 'type');
   $query->addField('fsz', 'field_size_target_id', 'size_tid');
   $query->addField('fq', 'field_quantity_value', 'quantity');
   $query
     ->condition('n.type', 'inventory_line')
+    ->condition('n.status', NODE_PUBLISHED)
+    ->condition('n_customer.status', NODE_PUBLISHED)
+    ->condition('n_variant.status', NODE_PUBLISHED)
     ->condition('fiv.entity_type', 'node')
     ->condition('fi.entity_type', 'node')
     ->condition('fili.entity_type', 'node')
@@ -59,8 +62,7 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
     ->condition('fit.entity_type', 'node')
     ->condition('fqi.entity_type', 'node')
     ->condition('fq.entity_type', 'field_collection_item')
-    ->condition('fsz.entity_type', 'field_collection_item')
-    ;
+    ->condition('fsz.entity_type', 'field_collection_item');
 
   if ($node->type == 'season') {
     $query->condition('fs.deleted', FALSE);
@@ -79,14 +81,16 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
     if (empty($orders[$row->nid])) {
       $orders[$row->nid] = array();
       $orders[$row->nid]['customer'] = $row->customer;
+      $orders[$row->nid]['customer_nid'] = $row->customer_nid;
       $orders[$row->nid]['variant'] = $row->variant;
+      $orders[$row->nid]['variant_nid'] = $row->variant_nid;
       $orders[$row->nid]['type'] = $row->type;
 
       foreach($size_tree as $term) {
         $orders[$row->nid][$term->tid] = 0;
       }
     }
-    $orders[$row->nid][$row->size_tid] = $row->quantity;
+    $orders[$row->nid][$row->size_tid] += $row->quantity;
   }
   if (!$orders) {
     return $block;
@@ -103,23 +107,23 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
   $header['status'] = t('Status');
 
   $table = array();
-  foreach ($orders as $row) {
-    $tr = array();
-    $tr[] = $row['customer'];
-    $tr[] = $row['variant'];
+  foreach ($orders as $order) {
+    $row = array();
+    $row[] = l($order['customer'], 'node/' . $order['customer_nid']);
+    $row[] = l($order['variant'], 'node/' . $order['variant_nid']);
 
     $total = 0;
     foreach($size_tree as $term) {
-      $total += $row[$term->tid];
-      $tr[] = $row[$term->tid];
+      $total += $order[$term->tid];
+      $row[] = $order[$term->tid];
     }
 
-    $tr[] = $total;
+    $row[] = array('data' => $total, 'class' => array('emphasized'));
 
-    $tr[] = $row['type'];
+    $row[] = $order['type'];
 
     // Total row description.
-    $table[] = $tr;
+    $table[] = $row;
   }
 
   $block->content = array(
