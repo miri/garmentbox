@@ -136,6 +136,26 @@ class openGizraBolTerms extends openGizraMigration {
 // Nodes
 
 /**
+ * Migrate Department nodes.
+ */
+class openGizraDepartments extends openGizraMigration {
+
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('title', 'Title'),
+  );
+
+  public $entityType = 'node';
+  public $bundle = 'department';
+
+  public function complete($node) {
+    if ($node->title == 'Main') {
+      variable_set('opengizra_og_main_department', $node->nid);
+    }
+  }
+}
+
+/**
  * Migrate Collection nodes.
  */
 class openGizraSeasons extends openGizraMigration {
@@ -151,6 +171,7 @@ class openGizraSeasons extends openGizraMigration {
   public $bundle = 'season';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraSeasonStatusTerms',
   );
 
@@ -179,6 +200,10 @@ class openGizraAddresses extends openGizraMigration {
 
   public $entityType = 'node';
   public $bundle = 'address';
+
+  public $dependencies = array(
+    'openGizraDepartments',
+  );
 
   public function __construct() {
     parent::__construct();
@@ -215,6 +240,7 @@ class openGizraVendors extends openGizraMigration {
   public $bundle = 'vendor';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraAddresses',
   );
 
@@ -243,6 +269,7 @@ class openGizraCustomers extends openGizraMigration {
   public $bundle = 'customer';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraAddresses',
   );
 
@@ -277,6 +304,7 @@ class openGizraMaterials extends openGizraMigration {
   public $bundle = 'material';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraVendors',
   );
 
@@ -314,6 +342,7 @@ class openGizraItems extends openGizraMigration {
   public $bundle = 'item';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraItemStatusTerms',
     'openGizraSeasons',
   );
@@ -356,6 +385,7 @@ class openGizraTasks extends openGizraMigration {
   public $bundle = 'task';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraTaskStatusTerms',
     'openGizraSeasons',
     'openGizraItems',
@@ -391,6 +421,7 @@ class openGizraItemVariants extends openGizraMigration {
   public $bundle = 'item_variant';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraItems',
   );
 
@@ -436,6 +467,7 @@ class openGizraInventoryLines extends openGizraMigration {
   public $bundle = 'inventory_line';
 
   public $dependencies = array(
+    'openGizraDepartments',
     'openGizraItemVariants',
     'openGizraInventoryTypeTerms',
   );
@@ -476,26 +508,27 @@ class openGizraOrders extends openGizraMigration {
   public $bundle = 'order';
 
   public $dependencies = array(
-    // 'openGizraSeasons',
-    // 'openGizraCustomer',
-    // 'openGizraAddresses',
+    'openGizraDepartments',
+    'openGizraSeasons',
+    'openGizraCustomers',
+    'openGizraAddresses',
     'openGizraInventoryLines',
   );
 
   public function __construct() {
     parent::__construct();
 
-    // $this
-      // ->addFieldMapping('field_season', 'field_season')
-      // ->sourceMigration('openGizraSeasons');
-//
-    // $this
-      // ->addFieldMapping('field_customer', 'field_customer')
-      // ->sourceMigration('openGizraCustomer');
-//
-    // $this
-      // ->addFieldMapping('field_address', 'field_address')
-      // ->sourceMigration('openGizraAddresses');
+    $this
+      ->addFieldMapping('field_season', 'field_season')
+      ->sourceMigration('openGizraSeasons');
+
+    $this
+      ->addFieldMapping('field_customer', 'field_customer')
+      ->sourceMigration('openGizraCustomers');
+
+    $this
+      ->addFieldMapping('field_address', 'field_address')
+      ->sourceMigration('openGizraAddresses');
 
     $this
       ->addFieldMapping('field_inventory_line_inline', 'field_inventory_line_inline')
