@@ -110,12 +110,6 @@ function opengizra_season_views_default_views() {
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
   $handler->display->display_options['style_options']['empty_table'] = 0;
-  /* Relationship: Content: Bill of materials (field_bom_info) */
-  $handler->display->display_options['relationships']['field_bom_info_value']['id'] = 'field_bom_info_value';
-  $handler->display->display_options['relationships']['field_bom_info_value']['table'] = 'field_data_field_bom_info';
-  $handler->display->display_options['relationships']['field_bom_info_value']['field'] = 'field_bom_info_value';
-  $handler->display->display_options['relationships']['field_bom_info_value']['required'] = 0;
-  $handler->display->display_options['relationships']['field_bom_info_value']['delta'] = '0';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_item_target_id']['id'] = 'field_item_target_id';
   $handler->display->display_options['relationships']['field_item_target_id']['table'] = 'field_data_field_item';
@@ -215,34 +209,42 @@ function opengizra_season_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Field collection item: Material item */
-  $handler->display->display_options['fields']['field_material_item']['id'] = 'field_material_item';
-  $handler->display->display_options['fields']['field_material_item']['table'] = 'field_data_field_material_item';
-  $handler->display->display_options['fields']['field_material_item']['field'] = 'field_material_item';
-  $handler->display->display_options['fields']['field_material_item']['relationship'] = 'field_bom_info_value';
-  $handler->display->display_options['fields']['field_material_item']['label'] = 'Main material';
-  $handler->display->display_options['fields']['field_material_item']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_material_item']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_material_item']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_material_item']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_material_item']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_material_item']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_material_item']['settings'] = array(
-    'link' => 1,
+  /* Field: Content: Bill of materials */
+  $handler->display->display_options['fields']['field_bom_info']['id'] = 'field_bom_info';
+  $handler->display->display_options['fields']['field_bom_info']['table'] = 'field_data_field_bom_info';
+  $handler->display->display_options['fields']['field_bom_info']['field'] = 'field_bom_info';
+  $handler->display->display_options['fields']['field_bom_info']['label'] = 'Main material';
+  $handler->display->display_options['fields']['field_bom_info']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['type'] = 'opengizra_bom_main_material_icon';
+  $handler->display->display_options['fields']['field_bom_info']['settings'] = array(
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'add' => 'Add',
+    'description' => 1,
+    'view_mode' => 'full',
   );
-  $handler->display->display_options['fields']['field_material_item']['field_api_classes'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_bom_info']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_bom_info']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_bom_info']['field_api_classes'] = 0;
   /* Field: Content: Status */
   $handler->display->display_options['fields']['field_item_status']['id'] = 'field_item_status';
   $handler->display->display_options['fields']['field_item_status']['table'] = 'field_data_field_item_status';
