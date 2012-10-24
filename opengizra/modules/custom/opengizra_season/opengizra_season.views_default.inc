@@ -48,6 +48,7 @@ function opengizra_season_views_default_views() {
     'field_item_status' => 'field_item_status',
     'field_retail_price' => 'field_retail_price',
     'field_wholesale_price' => 'field_wholesale_price',
+    'nid' => 'nid',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -93,6 +94,13 @@ function opengizra_season_views_default_views() {
     ),
     'field_wholesale_price' => array(
       'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -175,7 +183,7 @@ function opengizra_season_views_default_views() {
   $handler->display->display_options['fields']['field_images']['settings'] = array(
     'deltas' => '0',
     'deltas_reversed' => 0,
-    'image_style' => 'variant_preview',
+    'image_style' => 'variant_thumbnail',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_images']['group_rows'] = 1;
