@@ -131,7 +131,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     foreach ($size_tree as $term) {
       $inventory[$nid]['total'][$term->tid]['available'] = !empty($inventory[$nid]['total'][$term->tid]['available']) ? $inventory[$nid]['total'][$term->tid]['available'] : 0;
       $inventory[$nid]['total'][$term->tid]['ordered'] = !empty($inventory[$nid]['total'][$term->tid]['ordered']) ? $inventory[$nid]['total'][$term->tid]['ordered'] : 0;
-      $inventory[$nid]['total'][$term->tid]['backordered'] = !empty($inventory[$nid]['total'][$term->tid]['backordered']) ? $inventory[$nid]['total'][$term->tid]['backordered'] : 0;
+      $inventory[$nid]['total'][$term->tid]['future_stock'] = !empty($inventory[$nid]['total'][$term->tid]['future_stock']) ? $inventory[$nid]['total'][$term->tid]['future_stock'] : 0;
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
     }
 
@@ -151,12 +151,15 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
       }
       $inventory[$nid]['types'][$tid]['data'][$size_tid] = $info;
 
-      // Calculate totals:
       // Quantity - Inventory line with stock type marked as “in warehouse” and
-      // both ordered and not orderd.
-      // Available - This is stock NOT ordered marked as in wearhouse.
-      // Ordered - This is ordered stock in status marked as in wearhouse.
-      // Backorder - This is ordered stock in status marked as NOT in wearhouse.
+      // both ordered and not ordered (also could be Available + ordered).
+      // Available (green) - This is stock NOT ordered marked as in warehouse.
+      // Ordered (blue)(used to available) - This is ordered stock in status
+      // marked as in warehouse. + Ordered-future.
+      // Ordered-future (red)- This is a sum of ordered inventory lines in
+      // status marked as NOT in warehouse deducted from sum of all inventory
+      // line with not in warehouse and no order.
+      // Future stock - Sum not in warehouse and No order.
       if ($in_warehouse) {
         $inventory[$nid]['total'][$size_tid]['quantity'] += $include_in_total ? $quantity : 0;
 
@@ -167,8 +170,13 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
           $inventory[$nid]['total'][$size_tid]['available'] += $include_in_total ? $quantity : 0;
         }
       }
-      elseif ($is_ordered) {
-        $inventory[$nid]['total'][$size_tid]['backordered'] += $include_in_total ? $quantity : 0;
+      else {
+        if ($is_ordered) {
+          $inventory[$nid]['total'][$size_tid]['ordered'] += $include_in_total ? $quantity : 0;
+        }
+        else {
+          $inventory[$nid]['total'][$size_tid]['future_stock'] += $include_in_total ? $quantity : 0;
+        }
       }
     }
   }
@@ -193,7 +201,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     $expand_link = l('', url(''), $params);
     $row['data'][] = $expand_link . t('@variant - Total', array('@variant' => $variant_label));
     foreach($size_tree as $term) {
-      $row['data'][] = theme('opengizra_inventory_cell', $variant_data['total'][$term->tid]);
+      $row['data'][] = theme('opengizra_inventory_cell', $variant_data['total'][$term->tid] + array('quantity_title' => t('Stock')));
     }
 
     // Total row description.
@@ -221,7 +229,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
 
       foreach($size_tree as $term) {
         if (empty($variant_inventory_data['data'][$term->tid])) {
-          $row['data'][] = 0;
+          $row['data'][] = theme('opengizra_inventory_cell', array('quantity' => 0));
           continue;
         }
 
@@ -256,13 +264,14 @@ function opengizra_inventory_summary_content_type_theme(&$theme, $plugin) {
       'quantity' => NULL,
       'available' => NULL,
       'ordered' => NULL,
-      'backordered' => NULL,
+      'future_stock' => NULL,
       'label' => NULL,
       'class' => NULL,
+      'quantity_title' => NULL,
       'subfigure_types' => array(
         'available' => t('Available'),
         'ordered' => t('Ordered'),
-        'backordered' => t('Backordered'),
+        'future_stock' => t('Future stock'),
       ),
     ),
     'path' => $plugin['path'],
