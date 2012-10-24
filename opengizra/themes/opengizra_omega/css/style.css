@@ -204,6 +204,17 @@ table .expander.colapsed {
   background-image: url("../images/expand.gif");
 }
 
+/* line 161, ../sass/partials/widget/_table.scss */
+html.js fieldset.collapsible .fieldset-legend {
+  background: url("../images/contract.gif") no-repeat;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+/* line 167, ../sass/partials/widget/_table.scss */
+html.js fieldset.collapsible.collapsed .fieldset-legend {
+  background-image: url("../images/expand.gif");
+}
+
 /* line 1, ../sass/partials/widget/_tabs.scss */
 .panel-pane.tabs ul {
   margin: 20px 0 0;
