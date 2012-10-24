@@ -149,48 +149,64 @@ table .quantity {
   margin-right: 5px;
 }
 /* line 101, ../sass/partials/widget/_table.scss */
-table .availability {
-  font-size: 12px;
+table .subfigure {
+  margin-right: 5px;
+  font-size: 11px;
   float: left;
   border-radius: 4px;
   color: white;
   padding: 1px 0;
 }
-/* line 108, ../sass/partials/widget/_table.scss */
-table .availability span {
+/* line 109, ../sass/partials/widget/_table.scss */
+table .subfigure span {
   padding: 1px 6px;
 }
-/* line 112, ../sass/partials/widget/_table.scss */
-table .availability.backorder {
+/* line 113, ../sass/partials/widget/_table.scss */
+table .subfigure.backordered {
   background-color: #fe1511;
   -moz-box-shadow: 0 -1px 1px 0 #ff8587;
   -webkit-box-shadow: 0 -1px 1px 0 #ff8587;
   box-shadow: 0 -1px 1px 0 #ff8587;
 }
-/* line 118, ../sass/partials/widget/_table.scss */
-table .availability.backorder span.amount {
+/* line 119, ../sass/partials/widget/_table.scss */
+table .subfigure.backordered span.amount {
   border-right: 1px solid #d80202;
 }
-/* line 122, ../sass/partials/widget/_table.scss */
-table .availability.backorder span.label {
+/* line 123, ../sass/partials/widget/_table.scss */
+table .subfigure.backordered span.label {
   border-left: 1px solid #ff8587;
 }
-/* line 128, ../sass/partials/widget/_table.scss */
-table .availability.available {
+/* line 129, ../sass/partials/widget/_table.scss */
+table .subfigure.ordered {
+  background-color: #5555FA;
+  -moz-box-shadow: 0 -1px 1px 0 #bbbbf2;
+  -webkit-box-shadow: 0 -1px 1px 0 #bbbbf2;
+  box-shadow: 0 -1px 1px 0 #bbbbf2;
+}
+/* line 135, ../sass/partials/widget/_table.scss */
+table .subfigure.ordered span.amount {
+  border-right: 1px solid #16167A;
+}
+/* line 139, ../sass/partials/widget/_table.scss */
+table .subfigure.ordered span.label {
+  border-left: 1px solid #9898D6;
+}
+/* line 145, ../sass/partials/widget/_table.scss */
+table .subfigure.available {
   background-color: #099609;
   -moz-box-shadow: 0 -1px 1px 0 #ccebcc;
   -webkit-box-shadow: 0 -1px 1px 0 #ccebcc;
   box-shadow: 0 -1px 1px 0 #ccebcc;
 }
-/* line 134, ../sass/partials/widget/_table.scss */
-table .availability.available span.amount {
+/* line 151, ../sass/partials/widget/_table.scss */
+table .subfigure.available span.amount {
   border-right: 1px solid #018305;
 }
-/* line 138, ../sass/partials/widget/_table.scss */
-table .availability.available span.label {
+/* line 155, ../sass/partials/widget/_table.scss */
+table .subfigure.available span.label {
   border-left: 1px solid #86ce84;
 }
-/* line 145, ../sass/partials/widget/_table.scss */
+/* line 162, ../sass/partials/widget/_table.scss */
 table .expander {
   display: block;
   width: 11px;
@@ -199,7 +215,7 @@ table .expander {
   margin-right: 10px;
   background: url("../images/contract.gif") no-repeat;
 }
-/* line 153, ../sass/partials/widget/_table.scss */
+/* line 170, ../sass/partials/widget/_table.scss */
 table .expander.colapsed {
   background-image: url("../images/expand.gif");
 }

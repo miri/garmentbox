@@ -98,8 +98,9 @@ table {
     margin-right: 5px; //LTR
   }
 
-  .availability {
-    font-size: 12px;
+  .subfigure {
+    margin-right: 5px; //LTR
+    font-size: 11px;
     float: left; //LTR
     border-radius: 4px;
     color: white;
@@ -109,7 +110,7 @@ table {
       padding: 1px 6px;
     }
 
-    &.backorder {
+    &.backordered {
       background-color: #fe1511;
       @include box-shadow(0, -1px, 1px, 0, #ff8587);
 
@@ -121,6 +122,22 @@ table {
 
         &.label {
           border-left: 1px solid #ff8587; //LTR
+        }
+      }
+    }
+
+    &.ordered {
+      background-color: #5555FA;
+      @include box-shadow(0, -1px, 1px, 0, #BBBBF2);
+
+      span {
+
+        &.amount {
+          border-right: 1px solid #16167A; //LTR
+        }
+
+        &.label {
+          border-left: 1px solid #9898D6; //LTR
         }
       }
     }

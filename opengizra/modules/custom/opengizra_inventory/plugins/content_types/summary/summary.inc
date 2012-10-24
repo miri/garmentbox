@@ -129,7 +129,9 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     $inventory[$nid]['types'][$tid]['in_total'] = $include_in_total;
 
     foreach ($size_tree as $term) {
-      $inventory[$nid]['total'][$term->tid]['availablity'] = !empty($inventory[$nid]['total'][$term->tid]['availablity']) ? $inventory[$nid]['total'][$term->tid]['availablity'] : 0;
+      $inventory[$nid]['total'][$term->tid]['available'] = !empty($inventory[$nid]['total'][$term->tid]['available']) ? $inventory[$nid]['total'][$term->tid]['available'] : 0;
+      $inventory[$nid]['total'][$term->tid]['ordered'] = !empty($inventory[$nid]['total'][$term->tid]['ordered']) ? $inventory[$nid]['total'][$term->tid]['ordered'] : 0;
+      $inventory[$nid]['total'][$term->tid]['backordered'] = !empty($inventory[$nid]['total'][$term->tid]['backordered']) ? $inventory[$nid]['total'][$term->tid]['backordered'] : 0;
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
     }
 
@@ -138,31 +140,36 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     foreach ($wrapper->field_quantity_info as $quantity_wrapper) {
       $size_tid = $quantity_wrapper->field_size->getIdentifier();
       $info = !empty($inventory[$nid]['types'][$tid]['data'][$size_tid]) ? $inventory[$nid]['types'][$tid]['data'][$size_tid] : array();
-      $info['availability'] = !empty($info['availability']) ? $info['availability'] : 0;
       $info['quantity'] = !empty($info['quantity']) ? $info['quantity'] : 0;
+      $info['ordered'] = !empty($info['ordered']) ? $info['ordered'] : 0;
 
       $quantity = $quantity_wrapper->field_quantity->value();
 
-      // Inventory line with Order ref are always sold (or ordered) stock and
-      // need to be deducted from total and availability if marked as OUT, and
-      // from availability only if marked as IN. IN = 0, OUT = 1.
+      $info['quantity'] += $quantity;
       if ($is_ordered) {
-        if (!$in_warehouse) {
-          $info['availability'] -= $quantity;
-          $inventory[$nid]['total'][$size_tid]['availablity'] -= $include_in_total ? $quantity : 0;
-        }
+        $info['ordered'] += $quantity;
       }
-      else {
-        $operation = $in_warehouse ? -1 : 1;
-        $info['availability'] += $quantity * $operation;
-        $inventory[$nid]['total'][$size_tid]['availablity'] += $include_in_total ? ($quantity * $operation) : 0;
-        if ($in_warehouse) {
-          $info['quantity'] += $quantity;
-          $inventory[$nid]['total'][$size_tid]['quantity'] += $include_in_total ? $quantity : 0;
-        }
-      }
-
       $inventory[$nid]['types'][$tid]['data'][$size_tid] = $info;
+
+      // Calculate totals:
+      // Quantity - Inventory line with stock type marked as “in warehouse” and
+      // both ordered and not orderd.
+      // Available - This is stock NOT ordered marked as in wearhouse.
+      // Ordered - This is ordered stock in status marked as in wearhouse.
+      // Backorder - This is ordered stock in status marked as NOT in wearhouse.
+      if ($in_warehouse) {
+        $inventory[$nid]['total'][$size_tid]['quantity'] += $include_in_total ? $quantity : 0;
+
+        if ($is_ordered) {
+          $inventory[$nid]['total'][$size_tid]['ordered'] += $include_in_total ? $quantity : 0;
+        }
+        else {
+          $inventory[$nid]['total'][$size_tid]['available'] += $include_in_total ? $quantity : 0;
+        }
+      }
+      elseif ($is_ordered) {
+        $inventory[$nid]['total'][$size_tid]['backordered'] += $include_in_total ? $quantity : 0;
+      }
     }
   }
 
@@ -186,7 +193,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     $expand_link = l('', url(''), $params);
     $row['data'][] = $expand_link . t('@variant - Total', array('@variant' => $variant_label));
     foreach($size_tree as $term) {
-      $row['data'][] = opengizra_inventory_summary_quantity_cell($variant_data['total'][$term->tid]['quantity'], $variant_data['total'][$term->tid]['availablity']);
+      $row['data'][] = theme('opengizra_inventory_cell', $variant_data['total'][$term->tid]);
     }
 
     // Total row description.
@@ -218,8 +225,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
           continue;
         }
 
-        $quantity = $variant_inventory_data['data'][$term->tid]['quantity'] + abs($variant_inventory_data['data'][$term->tid]['availability']);
-        $row['data'][] = $quantity;
+        $row['data'][] = theme('opengizra_inventory_cell', $variant_inventory_data['data'][$term->tid]);
       }
       $row['data'][] = $variant_inventory_data['type_label'];
       $rows[] = $row;
@@ -242,50 +248,22 @@ function opengizra_inventory_summary_content_type_edit_form($form, &$form_state)
 }
 
 /**
- * Render a quantity / availablity cell.
- *
- * @param $quantity
- *   The quantity.
- * @param $availablity
- *   How much is actualy available out of the quantity.
- *
- * @return
- *   Rendered "inventory cell".
- */
-function opengizra_inventory_summary_quantity_cell($quantity, $availability) {
-  $params = array(
-    'quantity' => $quantity,
-    'availability' => $availability,
-    'label' => NULL,
-    'class' => NULL,
-  );
-
-  if ($availability) {
-    if ($availability > 0) {
-      $params['class'] = 'available';
-      $params['label'] = t('Available');
-    }
-    else {
-      $params['class'] = 'backorder';
-      $params['label'] = t('Backorder');
-      // Display the absolute value.
-      $params['availability'] *= -1;
-    }
-  }
-
-  return theme('opengizra_inventory_cell', $params);
-}
-
-/**
  * Delegated hook_theme().
  */
 function opengizra_inventory_summary_content_type_theme(&$theme, $plugin) {
   $theme['opengizra_inventory_cell'] = array(
     'variables' => array(
       'quantity' => NULL,
-      'availability' => NULL,
+      'available' => NULL,
+      'ordered' => NULL,
+      'backordered' => NULL,
       'label' => NULL,
       'class' => NULL,
+      'subfigure_types' => array(
+        'available' => t('Available'),
+        'ordered' => t('Ordered'),
+        'backordered' => t('Backordered'),
+      ),
     ),
     'path' => $plugin['path'],
     'template' => 'inventory-cell',
