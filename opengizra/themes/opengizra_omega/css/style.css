@@ -200,7 +200,7 @@ table .expander {
   background: url("../images/contract.gif") no-repeat;
 }
 /* line 153, ../sass/partials/widget/_table.scss */
-table .expander.colapsed {
+table .expander.collapsed {
   background-image: url("../images/expand.gif");
 }
 
