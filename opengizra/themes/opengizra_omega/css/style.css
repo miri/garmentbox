@@ -149,48 +149,108 @@ table .quantity {
   margin-right: 5px;
 }
 /* line 101, ../sass/partials/widget/_table.scss */
-table .availability {
-  font-size: 12px;
+table .inventory-cell {
+  position: relative;
+  width: 200px;
+}
+/* line 105, ../sass/partials/widget/_table.scss */
+table .inventory-cell .main-figure {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -10px;
   float: left;
-  border-radius: 4px;
+  border-radius: 6px;
+  background-color: #454444;
+  -moz-box-shadow: 0 -1px 1px 0 #8c8989;
+  -webkit-box-shadow: 0 -1px 1px 0 #8c8989;
+  box-shadow: 0 -1px 1px 0 #8c8989;
   color: white;
   padding: 1px 0;
 }
-/* line 108, ../sass/partials/widget/_table.scss */
-table .availability span {
+/* line 117, ../sass/partials/widget/_table.scss */
+table .inventory-cell .main-figure span {
+  padding: 1px 8px;
+}
+/* line 120, ../sass/partials/widget/_table.scss */
+table .inventory-cell .main-figure span.amount.with-title {
+  border-right: 1px solid #2E2E2E;
+}
+/* line 124, ../sass/partials/widget/_table.scss */
+table .inventory-cell .main-figure span.label {
+  border-left: 1px solid #949494;
+}
+/* line 130, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures {
+  float: right;
+}
+/* line 133, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure {
+  margin-right: 5px;
+  margin-top: 2px;
+  font-size: 11px;
+  float: left;
+  clear: left;
+  border-radius: 4px;
+  color: white;
+  padding: 1px 0;
+  width: 100%;
+}
+/* line 144, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure:first-child {
+  margin-top: 0;
+}
+/* line 148, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure span {
   padding: 1px 6px;
+  min-width: 20px;
 }
-/* line 112, ../sass/partials/widget/_table.scss */
-table .availability.backorder {
-  background-color: #fe1511;
-  -moz-box-shadow: 0 -1px 1px 0 #ff8587;
-  -webkit-box-shadow: 0 -1px 1px 0 #ff8587;
-  box-shadow: 0 -1px 1px 0 #ff8587;
+/* line 153, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.future_stock {
+  background-color: #E0B21B;
+  -moz-box-shadow: 0 -1px 1px 0 #e6cd7e;
+  -webkit-box-shadow: 0 -1px 1px 0 #e6cd7e;
+  box-shadow: 0 -1px 1px 0 #e6cd7e;
 }
-/* line 118, ../sass/partials/widget/_table.scss */
-table .availability.backorder span.amount {
-  border-right: 1px solid #d80202;
+/* line 159, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.future_stock span.amount {
+  border-right: 1px solid #856A13;
 }
-/* line 122, ../sass/partials/widget/_table.scss */
-table .availability.backorder span.label {
-  border-left: 1px solid #ff8587;
+/* line 163, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.future_stock span.label {
+  border-left: 1px solid #D6CBA5;
 }
-/* line 128, ../sass/partials/widget/_table.scss */
-table .availability.available {
+/* line 169, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.ordered {
+  background-color: #5555FA;
+  -moz-box-shadow: 0 -1px 1px 0 #bbbbf2;
+  -webkit-box-shadow: 0 -1px 1px 0 #bbbbf2;
+  box-shadow: 0 -1px 1px 0 #bbbbf2;
+}
+/* line 175, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.ordered span.amount {
+  border-right: 1px solid #16167A;
+}
+/* line 179, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.ordered span.label {
+  border-left: 1px solid #9898D6;
+}
+/* line 185, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.available {
   background-color: #099609;
   -moz-box-shadow: 0 -1px 1px 0 #ccebcc;
   -webkit-box-shadow: 0 -1px 1px 0 #ccebcc;
   box-shadow: 0 -1px 1px 0 #ccebcc;
 }
-/* line 134, ../sass/partials/widget/_table.scss */
-table .availability.available span.amount {
+/* line 191, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.available span.amount {
   border-right: 1px solid #018305;
 }
-/* line 138, ../sass/partials/widget/_table.scss */
-table .availability.available span.label {
+/* line 195, ../sass/partials/widget/_table.scss */
+table .inventory-cell .sub-figures .sub-figure.available span.label {
   border-left: 1px solid #86ce84;
 }
-/* line 145, ../sass/partials/widget/_table.scss */
+/* line 204, ../sass/partials/widget/_table.scss */
 table .expander {
   display: block;
   width: 11px;
@@ -199,8 +259,19 @@ table .expander {
   margin-right: 10px;
   background: url("../images/contract.gif") no-repeat;
 }
-/* line 153, ../sass/partials/widget/_table.scss */
-table .expander.colapsed {
+/* line 212, ../sass/partials/widget/_table.scss */
+table .expander.collapsed {
+  background-image: url("../images/expand.gif");
+}
+
+/* line 220, ../sass/partials/widget/_table.scss */
+html.js fieldset.collapsible .fieldset-legend {
+  background: url("../images/contract.gif") no-repeat;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+/* line 226, ../sass/partials/widget/_table.scss */
+html.js fieldset.collapsible.collapsed .fieldset-legend {
   background-image: url("../images/expand.gif");
 }
 
@@ -324,17 +395,38 @@ table .expander.colapsed {
   height: 38px;
   padding-top: 14px;
 }
+/* line 6, ../sass/partials/layout/_header.scss */
+#header #block-search-form {
+  display: none;
+}
+/* line 10, ../sass/partials/layout/_header.scss */
+#header .region-header {
+  float: right;
+}
+/* line 13, ../sass/partials/layout/_header.scss */
+#header .region-header #block-system-user-menu ul {
+  padding: 0;
+  margin: 0;
+}
+/* line 17, ../sass/partials/layout/_header.scss */
+#header .region-header #block-system-user-menu ul li {
+  list-style-type: none;
+  list-style-image: none;
+  display: block;
+  float: left;
+  font-size: 11px;
+}
 
-/* line 7, ../sass/partials/layout/_header.scss */
+/* line 28, ../sass/partials/layout/_header.scss */
 #title {
   background: url("../images/title-bg.png") repeat-x;
   height: 68px;
 }
-/* line 11, ../sass/partials/layout/_header.scss */
+/* line 32, ../sass/partials/layout/_header.scss */
 #title * {
   font-family: Dosis, Arial, Helvetica, sans-serif;
 }
-/* line 15, ../sass/partials/layout/_header.scss */
+/* line 36, ../sass/partials/layout/_header.scss */
 #title .field-name-title-field {
   float: left;
   margin: 0;
@@ -343,7 +435,7 @@ table .expander.colapsed {
   text-shadow: 0 1px #cadcdc;
   font-size: 40px;
 }
-/* line 24, ../sass/partials/layout/_header.scss */
+/* line 45, ../sass/partials/layout/_header.scss */
 #title .tabs {
   border: none;
   padding: 0;
@@ -352,7 +444,7 @@ table .expander.colapsed {
   margin-top: 32px;
   margin-left: 5px;
 }
-/* line 32, ../sass/partials/layout/_header.scss */
+/* line 53, ../sass/partials/layout/_header.scss */
 #title .tabs a {
   background-color: transparent;
   border: none;
@@ -362,33 +454,33 @@ table .expander.colapsed {
   padding: 0;
   font-size: 13px;
 }
-/* line 43, ../sass/partials/layout/_header.scss */
+/* line 64, ../sass/partials/layout/_header.scss */
 #title .field-name-field-item-status, #title .field-name-field-season-status {
   float: right;
   margin-top: 10px;
 }
-/* line 47, ../sass/partials/layout/_header.scss */
+/* line 68, ../sass/partials/layout/_header.scss */
 #title .field-name-field-item-status .field-label, #title .field-name-field-season-status .field-label {
   color: #c4eeed;
   text-transform: lowercase;
 }
-/* line 52, ../sass/partials/layout/_header.scss */
+/* line 73, ../sass/partials/layout/_header.scss */
 #title .field-name-field-item-status .field-item, #title .field-name-field-season-status .field-item {
   color: #f6fafb;
   text-transform: uppercase;
   font-size: 20px;
 }
 
-/* line 61, ../sass/partials/layout/_header.scss */
+/* line 82, ../sass/partials/layout/_header.scss */
 .node-type-item #title, .node-type-item-variant #title {
   background: url("../images/title-large-bg.png") repeat-x;
   height: 86px;
 }
-/* line 65, ../sass/partials/layout/_header.scss */
+/* line 86, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-item-status, .node-type-item-variant #title .field-name-field-item-status {
   margin-top: 22px;
 }
-/* line 69, ../sass/partials/layout/_header.scss */
+/* line 90, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image, .node-type-item #title .field-name-field-images, .node-type-item-variant #title .field-name-field-image, .node-type-item-variant #title .field-name-field-images {
   margin-top: 7px;
   margin-right: 10px;
@@ -397,7 +489,7 @@ table .expander.colapsed {
   width: 57px;
   height: 77px;
 }
-/* line 77, ../sass/partials/layout/_header.scss */
+/* line 98, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image img, .node-type-item #title .field-name-field-images img, .node-type-item-variant #title .field-name-field-image img, .node-type-item-variant #title .field-name-field-images img {
   margin: 3px auto;
   display: block;
