@@ -54,3 +54,4 @@ install.sh
 
 # Behat
 opengizra/behat/vendor/
+behat.local.yml
