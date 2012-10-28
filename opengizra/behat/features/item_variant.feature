@@ -20,7 +20,7 @@ Feature: Test item variant page
     | Salmon Vest dress |
     | Peach Vest dress  |
 
-  @api @wip
+  @api
   Scenario: Test the prices on the BOM table.
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"

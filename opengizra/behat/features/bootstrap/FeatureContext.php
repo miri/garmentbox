@@ -29,7 +29,7 @@ class FeatureContext extends DrupalContext {
       $link = $table[$key]['links'];
       $result = $page->findLink($link);
       if(empty($result)) {
-        throw new Exception("The link '" . $link . "' was not found");
+        throw new \Exception("The link '" . $link . "' was not found");
       }
     }
   }
@@ -42,11 +42,11 @@ class FeatureContext extends DrupalContext {
     // Find the container of the table with the correct pane title
     $element = $page->find('xpath', '//h2[.="' . $title .'"]/parent::div');
     if (!$element) {
-      throw new Exception("No pane titled '$title' was found.");
+      throw new \Exception("No pane titled '$title' was found.");
     }
     $element = $element->find('css', 'table');
     if (!$element) {
-      throw new Exception("No table was found inside the pane titled '$title'.");
+      throw new \Exception("No table was found inside the pane titled '$title'.");
     }
 
     // Compare the table header.
@@ -62,9 +62,8 @@ class FeatureContext extends DrupalContext {
    * @Given /^the BOM total should be "([^"]*)"$/
    */
   public function theBomTotalShouldBe($total) {
-    $page = $this->getSession()->getPage();
-    if ($page->find('css', '.bom-total .amount')->getText() != $total) {
-      throw new Exception("The BOM has a different total price than '$total'.");
+    if ($this->getSession()->getPage()->find('css', '.bom-total .amount')->getText() != $total) {
+      throw new \Exception("The BOM has a different total price than '$total'.");
     }
   }
 
@@ -73,7 +72,16 @@ class FeatureContext extends DrupalContext {
    */
   public function iTheProductionPriceShouldBe($price) {
     if ($this->getSession()->getPage()->find('css', '.pane-production-price .field-item')->getText() != $price) {
-      throw new Exception("The production price is not '$price'.");
+      throw new \Exception("The production price is not '$price'.");
+    }
+  }
+
+  /**
+   * @Given /^the page status is shown as "([^"]*)"$/
+   */
+  public function thePageStatusIsShownAs($status) {
+    if (!$this->getSession()->getPage()->find('xpath', '//div[contains(@class, "field-item") and .="' . $status . '"]')) {
+      throw new Exception("Missing indication for status '$status'.");
     }
   }
 
@@ -88,17 +96,21 @@ class FeatureContext extends DrupalContext {
   private function compareTableRow($cells, $expected_row) {
     foreach ($cells as $i => $cell) {
       if (empty($expected_row[$i])) {
-        throw new Exception("Unexpected cell with text '{$th->getText()}'.");
+        throw new \Exception("Unexpected cell with text '{$cell->getText()}'.");
+        continue;
+      }
+
+      if ($expected_row[$i] == '<ignore>') {
         continue;
       }
 
       if ($cell->getText() != $expected_row[$i]) {
-        throw new Exception("Found '{$cell->getText()}' instead of '{$expected_row[$i]}'.");
+        throw new \Exception("Found '{$cell->getText()}' instead of '{$expected_row[$i]}'.");
       }
     }
 
     if (count($expected_row) > $i + 1) {
-      throw new Exception('Missing column.');
+      throw new \Exception('Missing column.');
     }
   }
 }
