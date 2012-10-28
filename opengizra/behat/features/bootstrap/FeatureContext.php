@@ -62,9 +62,18 @@ class FeatureContext extends DrupalContext {
    * @Given /^the BOM total should be "([^"]*)"$/
    */
   public function theBomTotalShouldBe($total) {
-    $element = $this->getSession()->getPage();
-    if ($element->find('css', '.bom-total .amount')->getText() != $total) {
-      throw new Exception("The BOM has a different total price than '$total'");
+    $page = $this->getSession()->getPage();
+    if ($page->find('css', '.bom-total .amount')->getText() != $total) {
+      throw new Exception("The BOM has a different total price than '$total'.");
+    }
+  }
+
+  /**
+   * @Given /^I the production price should be "([^"]*)"$/
+   */
+  public function iTheProductionPriceShouldBe($price) {
+    if ($this->getSession()->getPage()->find('css', '.pane-production-price .field-item')->getText() != $price) {
+      throw new Exception("The production price is not '$price'.");
     }
   }
 
@@ -88,9 +97,8 @@ class FeatureContext extends DrupalContext {
       }
     }
 
-    if (count($expected_row) > $i) {
+    if (count($expected_row) > $i + 1) {
       throw new Exception('Missing column.');
     }
-
   }
 }

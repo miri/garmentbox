@@ -7,6 +7,7 @@ Feature: Test item variant page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
     Then I should see the heading "Pink Vest dress"
+    And I the production price should be "$25.00"
 
   @api
   Scenario: Test the tabs of an item variant.
@@ -32,16 +33,7 @@ Feature: Test item variant page
   Scenario: Test the prices on the BOL table.
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
-    Then I should see a table titled "Bill of labour":
-    | Price   | Labour  |
-    | $10.00  | Cutting |
-    | $10.00  | Sewing  |
-
-  @api
-  Scenario: Test the total production price.
-    Given I am logged in as a user with the "authenticated user" role
-    And I am on a "item-variant" page with id "37"
-    Then I should see the text "production price: $25.00"
-
-  @api
-  Scenario:
+    Then I should see a table titled "Bill of labour" with the following <contents>:
+    | Price   | Labour term |
+    | $10.00  | Cutting     |
+    | $10.00  | Sewing      |
