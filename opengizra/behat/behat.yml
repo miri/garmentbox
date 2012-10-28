@@ -10,3 +10,5 @@ default:
       blackbox: ~
       drush:
         alias: d7_dev
+imports:
+  - behat.local.yml
