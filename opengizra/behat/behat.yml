@@ -5,10 +5,7 @@ default:
     Behat\MinkExtension\Extension:
       goutte: ~
       selenium2: ~
-      base_url: http://local:8888/d7_dev
     Drupal\DrupalExtension\Extension:
       blackbox: ~
-      drush:
-        alias: d7_dev
 imports:
   - behat.local.yml
