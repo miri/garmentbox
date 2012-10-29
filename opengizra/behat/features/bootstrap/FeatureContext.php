@@ -62,11 +62,17 @@ class FeatureContext extends DrupalContext {
    * @Given /^the order "([^"]*)" should have these <inventory lines>$/
    */
   public function theOrderShouldHaveTheseInventoryLines($order_title, TableNode $expected_table) {
-    $element = $this->getSession()->getPage()->find('xpath', '//a[.="' . $order_title .'"]/../..');
+    $page = $this->getSession()->getPage();
+    $element = $page->find('xpath', '//a[.="' . $order_title .'"]/../..');
     if (!$element) {
-      throw new \Exception("The row holding order '$order_title' was found.");
+      throw new \Exception("The row holding order '$order_title' was not found.");
     }
     $inventory_wrapper_id = $element->getAttribute('ref');
+    $table_element = $page->find('css', "#$inventory_wrapper_id");
+    if (!$table_element) {
+      throw new \Exception("The inventory lines table of order '$order_title' was not found.");
+    }
+    self::compareTable($table_element, $expected_table);
   }
 
   /**
@@ -108,10 +114,15 @@ class FeatureContext extends DrupalContext {
   }
 
   /**
+   * Compare a present table with an expected table.
    *
+   * @param $table_element
+   *   A NodeElement containing a table.
+   * @param $expected_table
+   *   TableNode containing the expected table.
    */
   private static function compareTable($table_element, TableNode $expected_table) {
-    $element_head = $table_element->find('xpath', 'thead');
+    $element_head = $table_element->find('css', 'thead');
     $expected_rows = $expected_table->getRows();
     $expected_head_row = array_shift($expected_rows);
     // Compare the table header.
