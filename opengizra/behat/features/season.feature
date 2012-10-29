@@ -20,11 +20,11 @@ Feature: Test Season page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "season" page with id "18"
     Then I should see a table titled "Task list / Item 18" with the following <contents>:
-    | Summary     | Status      | Assignee |  Replies | Last updated | Created  | Actions   |
-    | Fix marker  | Needs work  | <ignore> |  0       | <ignore>     | <ignore> | <ignore>  |
+    | Summary             | Status      | Assignee | Replies | Last updated | Created  | Actions |
+    | Send to Marketing   | Needs work  | <ignore> | 0       | <ignore>     | <ignore> | Edit    |
     And I should see "Total open tasks: 3"
 
-  @api @wip
+  @api
   Scenario: Correct content is shown on the season items list.
     Given I am logged in as a user with the "authenticated user" role
     And I am on "/season/18/items"
@@ -32,3 +32,28 @@ Feature: Test Season page
     |         | Variant            | Main material | Status | Retail price | Wholesale price |
     | <image> | Lines v-neck shirt | <image>       | Draft  | $80.00       | $55.00          |
 
+  @api
+  Scenario: Correct content is shown on the season inventory list.
+    Given I am logged in as a user with the "authenticated user" role
+    And I am on "/season/18/inventory"
+    Then I should see a table titled "Inventory summary" with the following <contents>:
+    | Variation                   | Small                           | Medium                                        | Large                                 | Type                                                      |
+    | Lines v-neck shirt - Total  | 19 Stock 9 Available 13 Ordered | 7 Stock 0 Available 10 Ordered 7 Future stock | 8 Stock 8 Available 11 Future stock   | All types Except of Consignment, Defective, Sent / Sold.  |
+    | Lines v-neck shirt          | 15 10 Ordered                   | 9 9 Ordered                                   | 10 10 Ordered                         | Sent / Sold                                               |
+    | Lines v-neck shirt          | 19 10 Ordered                   | 7 7 Ordered                                   | 8                                     | Regular stock                                             |
+    | Lines v-neck shirt          | 1 1 Ordered                     | 7                                             | 7                                     | Future production                                         |
+    | Lines v-neck shirt          | 2 2 Ordered                     | 3 3 Ordered                                   | 4                                     | Current production                                        |
+
+  @api @wip
+  Scenario: Correct content is shown on the season orders list.
+    Given I am logged in as a user with the "authenticated user" role
+    And I am on "/season/18/orders"
+    # Then I should see a table titled "Orders" with the following <contents>:
+    # | Order   | Customer | Total price | Total items | Last delivery date  | Next delivery date    | Status  |
+    # | order1  | Gap      | N/A         | 49          | N/A                 | Wed, 2013-05-29 21:00 | New     |
+    And the order "order1" should have these <inventory lines>
+    | Variation           | Small | Medium  | Large | Total | Status              |
+    | Black v-neck shirt  | 0     | 6       | 5     | 11    | Current production  |
+    | Grey v-neck shirt   | 5     | 0       | 10    | 15    | Consignment         |
+    | Lines v-neck shirt  | 5     | 7       | 10    | 22    | Sent / Sold         |
+    | Lines v-neck shirt  | 1     | 0       | 0     | 1     | Future production   |

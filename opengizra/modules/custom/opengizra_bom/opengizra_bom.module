@@ -196,13 +196,11 @@ function opengizra_bom_field_collection_item_label($entity) {
     return $entity->item_id;
   }
 
-  $material = '';
-  // TODO Check why sometimes host_entity is null.
-  if ($host_entity = $entity->hostEntity()) {
-    $material = $host_entity->title;
-  }
+  $host_entity = $entity->hostEntity();
+  $material = $host_entity->title;
+
   $wrapper = entity_metadata_wrapper('field_collection_item', $entity);
   $vendor = $wrapper->field_vendor->label();
-
-  return check_plain("$material [$vendor]");
+  // Notice that the label is escaped later.
+  return "$material [$vendor]";
 }

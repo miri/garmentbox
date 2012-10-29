@@ -37,7 +37,7 @@ class FeatureContext extends DrupalContext {
   /**
    * @Then /^I should see a table titled "([^"]*)" with the following <contents>:$/
    */
-  public function iShouldSeeATableTitledWithTheFollowingContents($title, TableNode $table) {
+  public function iShouldSeeATableTitledWithTheFollowingContents($title, TableNode $expected_table) {
     $page = $this->getSession()->getPage();
     // Find the container of the table with the correct pane title
     $element = $page->find('xpath', '//h2[.="' . $title .'"]/parent::div');
@@ -50,22 +50,23 @@ class FeatureContext extends DrupalContext {
       throw new \Exception("No table titled '$title' was found.");
     }
 
-    $element = $element->find('css', 'table');
-    if (!$element) {
+    $table_element = $element->find('css', 'table');
+    if (!$table_element) {
       throw new \Exception("No table was found inside the pane titled '$title'.");
     }
-    $rows = $table->getRows();
-    $head_row = array_shift($rows);
-    // Compare the table header.
-    $this->compareTableRow($element->findAll('css', 'thead th'), $head_row);
 
-    // Compare the rows.
-    foreach ($element->findAll('css', 'tbody tr') as $i => $row) {
-      if (empty($rows[$i])) {
-        break;
-      }
-      $this->compareTableRow($row->findAll('css', 'td'), $rows[$i]);
+    self::compareTable($table_element, $expected_table);
+  }
+
+  /**
+   * @Given /^the order "([^"]*)" should have these <inventory lines>$/
+   */
+  public function theOrderShouldHaveTheseInventoryLines($order_title, TableNode $expected_table) {
+    $element = $this->getSession()->getPage()->find('xpath', '//a[.="' . $order_title .'"]/../..');
+    if (!$element) {
+      throw new \Exception("The row holding order '$order_title' was found.");
     }
+    $inventory_wrapper_id = $element->getAttribute('ref');
   }
 
   /**
@@ -107,16 +108,36 @@ class FeatureContext extends DrupalContext {
   }
 
   /**
+   *
+   */
+  private static function compareTable($table_element, TableNode $expected_table) {
+    $element_head = $table_element->find('xpath', 'thead');
+    $expected_rows = $expected_table->getRows();
+    $expected_head_row = array_shift($expected_rows);
+    // Compare the table header.
+    self::compareTableRow($element_head->findAll('css', 'th'), $expected_head_row);
+
+    // Compare the rows.
+    foreach ($table_element->findAll('css', 'tbody tr') as $i => $row) {
+      if (empty($expected_rows[$i])) {
+        break;
+      }
+      self::compareTableRow($row->findAll('css', 'td'), $expected_rows[$i]);
+    }
+  }
+
+  /**
    * Compare a present table row cells with the expected row.
    *
    * @param $cells
-   *   Array of table row cells retrieved with findAll().
+   *   Array of NodeElement: Table row cells retrieved with findAll().
    * @param $expected_row
    *   One row from the TableNode object.
    */
-  private function compareTableRow($cells, $expected_row) {
+  private static function compareTableRow($cells, $expected_row) {
     foreach ($cells as $i => $cell) {
       if (!array_key_exists($i, $expected_row)) {
+        print_r($expected_row);
         throw new \Exception("Unexpected cell with text '{$cell->getText()}'.");
       }
 
@@ -132,8 +153,9 @@ class FeatureContext extends DrupalContext {
           break;
 
         default:
-          if ($cell->getText() != $expected_row[$i]) {
-            throw new \Exception("Found '{$cell->getText()}' instead of '{$expected_row[$i]}'.");
+          $content = self::getText($cell->getHtml());
+          if ($content != $expected_row[$i]) {
+            throw new \Exception("Found '$content' instead of '{$expected_row[$i]}'.");
           }
       }
     }
@@ -141,5 +163,28 @@ class FeatureContext extends DrupalContext {
     if (count($expected_row) > $i + 1) {
       throw new \Exception('Missing column.');
     }
+  }
+
+  /**
+   * Strip HTML but insert spaces between elements. Taken from the comments on:
+   * http://php.net/manual/en/function.strip-tags.php
+   *
+   * @param $html
+   *   Plain HTML.
+   *
+   * @return
+   *   Stripped contents of the HTML.
+   */
+  private static function getText($html) {
+     // Remove HTML tags.
+    $html = preg_replace ('/<[^>]*>/', ' ', $html);
+
+    // Remove control characters.
+    $html = str_replace("\r", '', $html);
+    $html = str_replace("\n", ' ', $html);
+    $html = str_replace("\t", ' ', $html);
+
+    // Remove multiple spaces.
+    return trim(preg_replace('/ {2,}/', ' ', $html));
   }
 }

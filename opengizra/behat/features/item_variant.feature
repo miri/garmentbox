@@ -27,8 +27,8 @@ Feature: Test item variant page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
     Then I should see a table titled "Bill of materials" with the following <contents>:
-    | Quantity  | Material item                                | Unit  | Price |
-    | 2.50      | Tan/Brown 2-Hole Shell [Fashion 'n' Fabrics] | Meter | $8.75 |
+    | Quantity  | Material item                                | Unit  | Price | Operations   |
+    | 2.50      | Tan/Brown 2-Hole Shell [Fashion 'n' Fabrics] | Meter | $8.75 | Edit Delete  |
     And the BOM total should be "$8.75"
 
   @api
@@ -36,6 +36,6 @@ Feature: Test item variant page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
     Then I should see a table titled "Bill of labour" with the following <contents>:
-    | Price   | Labour term |
-    | $10.00  | Cutting     |
-    | $10.00  | Sewing      |
+    | Price   | Labour term | Operations   |
+    | $10.00  | Cutting     | Edit Delete  |
+    | $10.00  | Sewing      | Edit Delete  |
