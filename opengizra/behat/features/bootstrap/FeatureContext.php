@@ -48,13 +48,17 @@ class FeatureContext extends DrupalContext {
     if (!$element) {
       throw new \Exception("No table was found inside the pane titled '$title'.");
     }
-
+    $rows = $table->getRows();
+    $head_row = array_shift($rows);
     // Compare the table header.
-    $this->compareTableRow($element->findAll('css', 'thead th'), $table->getRow(0));
+    $this->compareTableRow($element->findAll('css', 'thead th'), $head_row);
 
     // Compare the rows.
     foreach ($element->findAll('css', 'tbody tr') as $i => $row) {
-       $this->compareTableRow($row->findAll('css', 'td'), $table->getRow($i + 1));
+      if (empty($rows[$i])) {
+        break;
+      }
+      $this->compareTableRow($row->findAll('css', 'td'), $rows[$i]);
     }
   }
 
@@ -95,9 +99,8 @@ class FeatureContext extends DrupalContext {
    */
   private function compareTableRow($cells, $expected_row) {
     foreach ($cells as $i => $cell) {
-      if (empty($expected_row[$i])) {
+      if (!array_key_exists($i, $expected_row)) {
         throw new \Exception("Unexpected cell with text '{$cell->getText()}'.");
-        continue;
       }
 
       if ($expected_row[$i] == '<ignore>') {
