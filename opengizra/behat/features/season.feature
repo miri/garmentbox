@@ -4,7 +4,7 @@ Feature: Test Season page
   @api
   Scenario: Basic content is shown on the season task list page.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on a "season" page with id "18"
+    And I am on a "season" page with id "19"
     Then I should see the heading "Autumn-Winter 2013 Women"
     And the page status is shown as "Design"
     And I should see the following <links>
@@ -18,8 +18,8 @@ Feature: Test Season page
   @api
   Scenario: Content is shown on the season task list itself.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on a "season" page with id "18"
-    Then I should see a table titled "Task list / Item 18" with the following <contents>:
+    And I am on a "season" page with id "19"
+    Then I should see a table titled "Task list / Item 19" with the following <contents>:
     | Summary             | Status      | Assignee | Replies | Last updated | Created  | Actions |
     | Send to Marketing   | Needs work  | <ignore> | 0       | <ignore>     | <ignore> | Edit    |
     And I should see "Total open tasks: 3"
@@ -27,7 +27,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season items list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on "/season/18/items"
+    And I am on "/season/19/items"
     Then I should see a table titled "V-neck shirt" with the following <contents>:
     |         | Variant            | Main material | Status | Retail price | Wholesale price |
     | <image> | Lines v-neck shirt | <image>       | Draft  | $80.00       | $55.00          |
@@ -35,7 +35,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season inventory list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on "/season/18/inventory"
+    And I am on "/season/19/inventory"
     Then I should see a table titled "Inventory summary" with the following <contents>:
     | Variation                   | Small                           | Medium                                        | Large                                 | Type                                                      |
     | Lines v-neck shirt - Total  | 19 Stock 9 Available 13 Ordered | 7 Stock 0 Available 10 Ordered 7 Future stock | 8 Stock 8 Available 11 Future stock   | All types Except of Consignment, Defective, Sent / Sold.  |
@@ -47,7 +47,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season orders list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on "/season/18/orders"
+    And I am on "/season/19/orders"
     # Then I should see a table titled "Orders" with the following <contents>:
     # | Order   | Customer | Total price | Total items | Last delivery date  | Next delivery date    | Status  |
     # | order1  | Gap      | N/A         | 49          | N/A                 | Wed, 2013-05-29 21:00 | New     |
