@@ -177,6 +177,8 @@ class FeatureContext extends DrupalContext {
   }
 
   /**
+   * TODO: This method should be in a class extending BrowserKitDriver.
+   *
    * Strip HTML but insert spaces between elements. Taken from the comments on:
    * http://php.net/manual/en/function.strip-tags.php
    *
