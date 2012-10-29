@@ -21,7 +21,7 @@ Feature: Test Season page
     And I am on a "season" page with id "19"
     Then I should see a table titled "Task list / Item 19" with the following <contents>:
     | Summary             | Status      | Assignee | Replies | Last updated | Created  | Actions |
-    | Send to Marketing   | Needs work  | <ignore> | 0       | <ignore>     | <ignore> | Edit    |
+    | Fix marker          | Needs work  | <ignore> | 0       | <ignore>     | <ignore> | edit    |
     And I should see "Total open tasks: 3"
 
   @api
@@ -53,7 +53,7 @@ Feature: Test Season page
     # | order1  | Gap      | N/A         | 49          | N/A                 | Wed, 2013-05-29 21:00 | New     |
     And the order "order1" should have these <inventory lines>
     | Variation           | Small | Medium  | Large | Total | Status              |
-    | Black v-neck shirt  | 0     | 6       | 5     | 11    | Current production  |
     | Grey v-neck shirt   | 5     | 0       | 10    | 15    | Consignment         |
     | Lines v-neck shirt  | 5     | 7       | 10    | 22    | Sent / Sold         |
     | Lines v-neck shirt  | 1     | 0       | 0     | 1     | Future production   |
+    | Black v-neck shirt  | 0     | 6       | 5     | 11    | Current production  |

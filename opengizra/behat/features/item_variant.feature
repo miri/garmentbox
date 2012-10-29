@@ -37,5 +37,5 @@ Feature: Test item variant page
     And I am on a "item-variant" page with id "38"
     Then I should see a table titled "Bill of labour" with the following <contents>:
     | Price   | Labour term | Operations  |
-    | $10.00  | Cutting     | Edit        |
-    | $10.00  | Sewing      | Edit        |
+    | $10.00  | Cutting     | Edit Delete |
+    | $10.00  | Sewing      | Edit Delete |
