@@ -27,8 +27,8 @@ Feature: Test Season page
   @api @wip
   Scenario: Correct content is shown on the season items list.
     Given I am logged in as a user with the "authenticated user" role
-    And  I am on "/season/18/items"
-    Then I should see a table titled "Pearls Epaulets shirt" with the following <contents>:
-    |         | Variant                     | Main material | Status | Retail price | Wholesale price |
-    | <image> | White Pearls Epaulets shirt | <image>       |        |              |                 |
+    And I am on "/season/18/items"
+    Then I should see a table titled "V-neck shirt" with the following <contents>:
+    |         | Variant            | Main material | Status | Retail price | Wholesale price |
+    | <image> | Lines v-neck shirt | <image>       | Draft  | $80.00       | $55.00          |
 

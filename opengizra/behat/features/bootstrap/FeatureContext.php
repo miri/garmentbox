@@ -29,7 +29,7 @@ class FeatureContext extends DrupalContext {
       $link = $table[$key]['links'];
       $result = $page->findLink($link);
       if(empty($result)) {
-        throw new \Exception("The link '" . $link . "' was not found");
+        throw new \Exception("The link '$link' was not found");
       }
     }
   }
@@ -42,8 +42,14 @@ class FeatureContext extends DrupalContext {
     // Find the container of the table with the correct pane title
     $element = $page->find('xpath', '//h2[.="' . $title .'"]/parent::div');
     if (!$element) {
-      throw new \Exception("No pane titled '$title' was found.");
+      // If not found, search for a table with $title as its caption. Select
+      // the parent of the table element.
+      $element = $page->find('xpath', '//caption[.="' . $title .'"]/../..');
     }
+    if (!$element) {
+      throw new \Exception("No table titled '$title' was found.");
+    }
+
     $element = $element->find('css', 'table');
     if (!$element) {
       throw new \Exception("No table was found inside the pane titled '$title'.");
@@ -72,13 +78,24 @@ class FeatureContext extends DrupalContext {
   }
 
   /**
-   * @Given /^I the production price should be "([^"]*)"$/
+   * @Given /^the "([^"]*)" price should be "([^"]*)"$/
    */
-  public function iTheProductionPriceShouldBe($price) {
-    if ($this->getSession()->getPage()->find('css', '.pane-production-price .field-item')->getText() != $price) {
+  public function thePriceShouldBe($price_type, $price) {
+    switch ($price_type) {
+      case 'production':
+        $selector = '.pane-production-price';
+        break;
+
+      case 'wholesale':
+      case 'retail':
+        $selector = ".field-name-field-{$price_type}-price";
+        break;
+    }
+    if ($this->getSession()->getPage()->find('css', "$selector .field-item")->getText() != $price) {
       throw new \Exception("The production price is not '$price'.");
     }
   }
+
 
   /**
    * @Given /^the page status is shown as "([^"]*)"$/
@@ -103,12 +120,21 @@ class FeatureContext extends DrupalContext {
         throw new \Exception("Unexpected cell with text '{$cell->getText()}'.");
       }
 
-      if ($expected_row[$i] == '<ignore>') {
-        continue;
-      }
+      switch ($expected_row[$i]) {
+        case '<ignore>':
+          continue 2;
 
-      if ($cell->getText() != $expected_row[$i]) {
-        throw new \Exception("Found '{$cell->getText()}' instead of '{$expected_row[$i]}'.");
+        case '<image>':
+          // Make sure the cell contains an image tag.
+          if (!$cell->find('css', 'img')) {
+            throw new \Exception('Missing image');
+          }
+          break;
+
+        default:
+          if ($cell->getText() != $expected_row[$i]) {
+            throw new \Exception("Found '{$cell->getText()}' instead of '{$expected_row[$i]}'.");
+          }
       }
     }
 

@@ -7,7 +7,9 @@ Feature: Test item variant page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
     Then I should see the heading "Pink Vest dress"
-    And I the production price should be "$25.00"
+    And the "production" price should be "$28.75"
+    And the "wholesale" price should be "$30.00"
+    And the "retail" price should be "$34.00"
 
   @api
   Scenario: Test the tabs of an item variant.
@@ -25,9 +27,9 @@ Feature: Test item variant page
     Given I am logged in as a user with the "authenticated user" role
     And I am on a "item-variant" page with id "37"
     Then I should see a table titled "Bill of materials" with the following <contents>:
-    | Quantity  | Material item                                             | Unit  | Price |
-    | 2.50      | Novelle Art Noveau Natural Shell Buttons [Vogue Fabrics]  | Meter | $5.00 |
-    And the BOM total should be "$5.00"
+    | Quantity  | Material item                                | Unit  | Price |
+    | 2.50      | Tan/Brown 2-Hole Shell [Fashion 'n' Fabrics] | Meter | $8.75 |
+    And the BOM total should be "$8.75"
 
   @api
   Scenario: Test the prices on the BOL table.
