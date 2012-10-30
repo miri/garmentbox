@@ -3,6 +3,7 @@
 use Drupal\DrupalExtension\Context\DrupalContext;
 use Behat\Behat\Context\Step\Given;
 use Behat\Gherkin\Node\TableNode;
+use Guzzle\Service\Client;
 
 require 'vendor/autoload.php';
 
@@ -184,9 +185,7 @@ class FeatureContext extends DrupalContext {
 
         case '<image>':
           // Make sure the cell contains an image tag.
-          if (!$cell->find('css', 'img')) {
-            throw new \Exception('Missing image');
-          }
+          self::verifyImageExists($cell);
           break;
 
         default:
@@ -225,5 +224,33 @@ class FeatureContext extends DrupalContext {
 
     // Remove multiple spaces.
     return trim(preg_replace('/ {2,}/', ' ', $html));
+  }
+
+  /**
+   * Make sure that a DOM element contains an image tag, and that the image
+   * itself is accessible to GET requests.
+   *
+   * @param $element
+   *   NodeElement that should contain an image tag.
+   */
+  private static function verifyImageExists($element) {
+    // Fetch the image tag.
+    if (!$image_element = $element->find('css', 'img')) {
+      throw new \Exception('Missing image tag.');
+    }
+
+    // Send a GET request to the image to make sure it's accessible.
+    $image_url = $image_element->getAttribute('src');
+    $client = new Client();
+    try {
+      $response = $client->get($image_url)->send();
+    }
+    catch (\Exception $e) {
+      throw new \Exception("Image not accessible. URL: $image_url");
+    }
+    $info = $response->getInfo();
+    if ($info['http_code'] != 200) {
+      throw new \Exception("Image not accessible. URL: $image_url");
+    }
   }
 }
