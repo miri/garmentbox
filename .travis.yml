@@ -27,6 +27,7 @@ before_script:
   - cd opengizra/behat
   - cp behat.local.yml.travis behat.local.yml
   - cp aliases.drushrc.php ~/.drush/
+  - composer install
 
 script:
    - ./bin/behat
