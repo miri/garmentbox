@@ -20,8 +20,13 @@ before_script:
   - cd www
   - drush si opengizra --db-url=mysql://root:@127.0.0.1/drupal --account-pass=admin --yes
   - drush cc all --yes
-  - touch ../opengizra/behat/behat.local.yml
   - cd ..
 
+  # Create a behat configuration file.
+  - cd opengizra
+  - cp behat/behat.local.yml.travis behat/behat.local.yml
+  - cp aliases.drushrc.php ~/.drush/
+
 # Dummy script to return "exit 0", until Behat is in place.
-script: ./scripts/ci/test.sh
+script:
+   - ./behat/bin/behat
