@@ -9,7 +9,7 @@ mysql:
   encoding: utf8
 
 before_script:
-  - sudo apt-get intall apache2
+  - sudo apt-get install apache2
   - sudo a2enmod actions
   - sudo a2enmod rewrite
   - "mysql -e 'create database drupal;'"
