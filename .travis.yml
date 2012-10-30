@@ -9,24 +9,24 @@ mysql:
   encoding: utf8
 
 before_script:
+  - sudo apt-get intall apache2
+  - sudo a2enmod actions
+  - sudo a2enmod rewrite
   - "mysql -e 'create database drupal;'"
   - pear channel-discover pear.drush.org
   - pear install drush/drush
   - phpenv rehash
   - bash scripts/ci/setup
   - bash scripts/build
-  # Prepare the dummy test.
-  - chmod +x ./scripts/ci/test.sh
   - cd www
   - drush si opengizra --db-url=mysql://root:@127.0.0.1/drupal --account-pass=admin --yes
   - drush cc all --yes
   - cd ..
 
   # Create a behat configuration file.
-  - cd opengizra
-  - cp behat/behat.local.yml.travis behat/behat.local.yml
+  - cd opengizra/behat
+  - cp behat.local.yml.travis behat.local.yml
   - cp aliases.drushrc.php ~/.drush/
 
-# Dummy script to return "exit 0", until Behat is in place.
 script:
-   - ./behat/bin/behat
+   - ./bin/behat
