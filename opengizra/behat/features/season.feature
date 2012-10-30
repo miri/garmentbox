@@ -27,7 +27,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season items list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the subpage "items"
+    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the tab "items"
     Then I should see a table titled "V-neck shirt" with the following <contents>:
     |         | Variant            | Main material | Status | Retail price | Wholesale price |
     | <image> | Lines v-neck shirt | <image>       | Draft  | $80.00       | $55.00          |
@@ -35,7 +35,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season inventory list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the subpage "inventory"
+    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the tab "inventory"
     Then I should see a table titled "Inventory summary" with the following <contents>:
     | Variation                   | Small                           | Medium                                        | Large                                 | Type                                                      |
     | Lines v-neck shirt - Total  | 19 Stock 9 Available 13 Ordered | 7 Stock 0 Available 10 Ordered 7 Future stock | 8 Stock 8 Available 11 Future stock   | All types Except of Consignment, Defective, Sent / Sold.  |
@@ -47,7 +47,7 @@ Feature: Test Season page
   @api
   Scenario: Correct content is shown on the season orders list.
     Given I am logged in as a user with the "authenticated user" role
-    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the subpage "orders"
+    And I am on a "season" page titled "Autumn-Winter 2013 Women", in the tab "orders"
     Then I should see a table titled "Orders" with the following <contents>:
     | Order   | Customer | Total price | Total items | Last delivery date  | Next delivery date    | Status  |
     | order1  | Gap      | N/A         | 49          | N/A                 | Wed, 2013-05-29 21:00 | New     |

@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 
 class FeatureContext extends DrupalContext {
   /**
-   * @Given /^I am on a "([^"]*)" page titled "([^"]*)"(?:, in the subpage "([^"]*)"|)$/
+   * @Given /^I am on a "([^"]*)" page titled "([^"]*)"(?:, in the tab "([^"]*)"|)$/
    */
   public function iAmOnAPageTitled($page_type, $title, $subpage = NULL) {
     switch ($page_type) {
@@ -198,7 +198,7 @@ class FeatureContext extends DrupalContext {
     }
 
     if (count($expected_row) > $i + 1) {
-      throw new \Exception('Missing column.');
+      throw new \Exception("Missing column '{$expected_row[$i]}'.");
     }
   }
 
