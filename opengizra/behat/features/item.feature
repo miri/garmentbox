@@ -22,7 +22,7 @@ Feature: Test Item page
     Then I should see a table titled "Task list / Item 30" with the following <contents>:
     | Summary             | Status      | Assignee | Replies | Last updated | Created  | Actions |
     | Fix marker          | Needs work  | <ignore> | 0       | <ignore>     | <ignore> | edit    |
-    And I should see "Total open tasks: 3"
+    And I should see "Total open tasks: 2"
 
   @api
   Scenario: Correct content is shown on the item inventory list.
