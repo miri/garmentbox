@@ -253,4 +253,13 @@ class FeatureContext extends DrupalContext {
       throw new \Exception("Image not accessible. URL: $image_url");
     }
   }
+
+  /**
+   * @Given /^I Print the homepage$/
+   */
+  public function iPrintTheHomepage() {
+    $this->getSession()->visit($this->locatePath('/user'));
+    $page = $this->getSession()->getPage();
+    print_r($page->getHtml());
+  }
 }

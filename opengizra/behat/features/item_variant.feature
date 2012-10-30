@@ -2,6 +2,10 @@ Feature: Test item variant page
   Verify the BOM and BOL tables are shown correctly and that the prices are
   presented correctly.
 
+  @api @debug
+  Scenario: Debug - Print homepage as it's available to the tests.
+    Given I Print the homepage
+
   @api
   Scenario: Verify that the basic information is shown correctly.
     Given I am logged in as a user with the "authenticated user" role
