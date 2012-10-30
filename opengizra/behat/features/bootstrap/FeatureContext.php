@@ -7,14 +7,40 @@ use Behat\Gherkin\Node\TableNode;
 require 'vendor/autoload.php';
 
 class FeatureContext extends DrupalContext {
-
   /**
-   * @Given /^I am on a "([^"]*)" page with id "([^"]*)"$/
+   * @Given /^I am on a "([^"]*)" page titled "([^"]*)"(?:, in the subpage "([^"]*)"|)$/
    */
-  public function iAmOnAPageWithId($arg1, $arg2) {
-    $path = 'node/' . $arg2;
+  public function iAmOnAPageTitled($page_type, $title, $subpage = NULL) {
+    switch ($page_type) {
+      case 'item-variant':
+      case 'season':
+        $table = 'node';
+        $id = 'nid';
+        $path = "$page_type/%";
+        $type = str_replace('-', '_', $page_type);
+        break;
 
-    // Use Drupal Context 'I am at'.
+      default:
+        throw new \Exception("Unknown page type '$page_type'.");
+    }
+
+    $path .= "/$subpage";
+
+    //TODO: The title and type should be properly escaped.
+    $query = "\"
+      SELECT $id AS identifier
+      FROM $table
+      WHERE title = '$title'
+      AND type = '$type'
+    \"";
+
+    $result = $this->getDriver()->drush('sql-query', array($query));
+    $id = trim(substr($result, strlen('identifier')));
+
+    if (!$id) {
+      throw new \Exception("No $page_type with title '$title' was found.");
+    }
+    $path = str_replace('%', $id, $path);
     return new Given("I am at \"$path\"");
   }
 
