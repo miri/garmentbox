@@ -12,6 +12,7 @@ before_script:
   - sudo apt-get install apache2
   - sudo a2enmod actions
   - sudo a2enmod rewrite
+  - cat /etc/apache2/apache2.conf
   - "mysql -e 'create database drupal;'"
   - pear channel-discover pear.drush.org
   - pear install drush/drush
