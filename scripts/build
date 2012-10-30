@@ -23,8 +23,6 @@ cd $ROOT
   else
     mkdir -p www/sites/default
   fi
-  chmod +w www/sites/* || true
-  rm -Rf www || true
 
   # Build core.
   $DRUSH make opengizra/drupal-org-core.make www
