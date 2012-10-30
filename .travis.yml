@@ -12,6 +12,8 @@ before_script:
   - sudo apt-get install apache2
   - sudo a2enmod actions
   - sudo a2enmod rewrite
+  - sudo cp opengizra/behat/travis/default /etc/apache2/sites-available/default
+  - sudo service apache2 restrart
   - "mysql -e 'create database drupal;'"
   - pear channel-discover pear.drush.org
   - pear install drush/drush

@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+  ServerAdmin itamar@gizra.com
+
+  DocumentRoot /home/travis/builds/Gizra/Garment-Box/www
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /home/travis/builds/Gizra/Garment-Box/www/>
+    AllowOverride all
+    RewriteEngine on
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+  </Directory>
+
+</VirtualHost>
