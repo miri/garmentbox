@@ -29,5 +29,5 @@ before_script:
   - cp aliases.drushrc.php ~/.drush/
   - composer install
 
-+script:
+script:
   - ./bin/behat
