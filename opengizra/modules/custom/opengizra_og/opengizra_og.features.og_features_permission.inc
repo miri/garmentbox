@@ -29,8 +29,8 @@ function opengizra_og_og_features_default_permissions() {
   // Exported og permission: 'node:department:create customer content'
   $permissions['node:department:create customer content'] = array(
     'roles' => array(
-      'member' => 'member',
       'administrator member' => 'administrator member',
+      'member' => 'member',
     ),
   );
 
@@ -85,8 +85,8 @@ function opengizra_og_og_features_default_permissions() {
   // Exported og permission: 'node:department:create page content'
   $permissions['node:department:create page content'] = array(
     'roles' => array(
-      'member' => 'member',
       'administrator member' => 'administrator member',
+      'member' => 'member',
     ),
   );
 
@@ -237,8 +237,8 @@ function opengizra_og_og_features_default_permissions() {
   // Exported og permission: 'node:department:update any task content'
   $permissions['node:department:update any task content'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
       'member' => 'member',
+      'administrator member' => 'administrator member',
     ),
   );
 
@@ -277,16 +277,16 @@ function opengizra_og_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own event content'
   $permissions['node:department:update own event content'] = array(
     'roles' => array(
-      'member' => 'member',
       'administrator member' => 'administrator member',
+      'member' => 'member',
     ),
   );
 
   // Exported og permission: 'node:department:update own inventory_line content'
   $permissions['node:department:update own inventory_line content'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
       'member' => 'member',
+      'administrator member' => 'administrator member',
     ),
   );
 
@@ -333,8 +333,8 @@ function opengizra_og_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own pattern content'
   $permissions['node:department:update own pattern content'] = array(
     'roles' => array(
-      'member' => 'member',
       'administrator member' => 'administrator member',
+      'member' => 'member',
     ),
   );
 
