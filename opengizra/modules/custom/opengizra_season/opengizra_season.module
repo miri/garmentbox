@@ -21,7 +21,8 @@ function opengizra_season_ctools_plugin_directory($module, $plugin) {
  * Redirect from the front page to a season page.
  */
 function opengizra_season_init() {
-  if (drupal_is_cli()) {
+  global $user;
+  if (empty($user->uid)) {
     return;
   }
 
