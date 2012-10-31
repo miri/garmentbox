@@ -3,7 +3,6 @@
 use Drupal\DrupalExtension\Context\DrupalContext;
 use Behat\Behat\Context\Step\Given;
 use Behat\Gherkin\Node\TableNode;
-use Guzzle\Service\Client;
 
 require 'vendor/autoload.php';
 
@@ -256,7 +255,7 @@ class FeatureContext extends DrupalContext {
     /* TODO: Find a way to enable styled images creation on Travis ci.
     // Send a GET request to the image to make sure it's accessible.
     $image_url = $image_element->getAttribute('src');
-    $client = new Client();
+    $client = new \Guzzle\Service\Client();
     $response = $client->get($image_url)->send();
     $info = $response->getInfo();
     if ($info['http_code'] != 200) {
