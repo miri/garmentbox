@@ -14,3 +14,30 @@ function opengizra_season_ctools_plugin_directory($module, $plugin) {
     return 'plugins/' . $plugin;
   }
 }
+
+/**
+ * Implements hook_init().
+ *
+ * Redirect from the front page to a season page.
+ */
+function opengizra_season_init() {
+  if (!drupal_is_front_page()) {
+    return;
+  }
+
+  // Find the last changed season.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'season')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyOrderBy('changed', 'DESC')
+    ->range(0, 1)
+    ->execute();
+
+  if (empty($result)) {
+    return;
+  }
+
+  $nid = key($result['node']);
+  drupal_goto("node/$nid");
+}
