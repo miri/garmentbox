@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * garment_box_bubble.strongarm.inc
+ * garmentbox_bubble.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function garment_box_bubble_strongarm() {
+function garmentbox_bubble_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

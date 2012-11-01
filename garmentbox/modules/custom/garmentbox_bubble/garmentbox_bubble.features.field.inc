@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * garment_box_bubble.features.field.inc
+ * garmentbox_bubble.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function garment_box_bubble_field_default_fields() {
+function garmentbox_bubble_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-bubble-body'.

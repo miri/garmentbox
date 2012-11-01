@@ -4,21 +4,21 @@
  * Code for the Garment-box Bubble feature.
  */
 
-include_once 'garment_box_bubble.features.inc';
+include_once 'garmentbox_bubble.features.inc';
 
 /**
  * Implements hook_view_pre_render().
  */
-function garment_box_bubble_views_pre_render(&$view) {
+function garmentbox_bubble_views_pre_render(&$view) {
   if (empty($view->result)) {
-    garment_box_bubble_bubble_manager('view_' . $view->name . '_empty');
+    garmentbox_bubble_bubble_manager('view_' . $view->name . '_empty');
   }
 }
 
 /**
  * Get and set bubbles.
  */
-function garment_box_bubble_bubble_manager($id = NULL) {
+function garmentbox_bubble_bubble_manager($id = NULL) {
   $cache = &drupal_static(__FUNCTION__, array());
   if ($id) {
     // Register the ID.
@@ -66,21 +66,21 @@ function garment_box_bubble_bubble_manager($id = NULL) {
         break;
     }
 
-    $beautytips['garment_box_bubble_' . $node->nid] = $beautytip;
+    $beautytips['garmentbox_bubble_' . $node->nid] = $beautytip;
   }
 
   beautytips_add_beautytips($beautytips);
   if (!empty($settings['opened_selectors'])) {
-    drupal_add_js(array('garment_box_bubble' => $settings), 'setting');
-    drupal_add_js(drupal_get_path('module', 'garment_box_bubble') . '/js/garment_box_bubble.js', 'file');
+    drupal_add_js(array('garmentbox_bubble' => $settings), 'setting');
+    drupal_add_js(drupal_get_path('module', 'garmentbox_bubble') . '/js/garmentbox_bubble.js', 'file');
   }
 }
 
 /**
  * Implements hook_page_build().
  */
-function garment_box_bubble_page_build(&$page) {
-  garment_box_bubble_bubble_manager();
+function garmentbox_bubble_page_build(&$page) {
+  garmentbox_bubble_bubble_manager();
 }
 
 /**
@@ -88,7 +88,7 @@ function garment_box_bubble_page_build(&$page) {
  *
  * Add the general help bubbles to pages.
  */
-function garment_box_bubble_init() {
+function garmentbox_bubble_init() {
   // TODO: Add other pages that should have help bubbles.
   $node_pages = array('season/%');
 
@@ -107,5 +107,5 @@ function garment_box_bubble_init() {
     return;
   }
 
-  garment_box_bubble_bubble_manager($node->type . '_help');
+  garmentbox_bubble_bubble_manager($node->type . '_help');
 }
