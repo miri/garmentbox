@@ -26,7 +26,14 @@ function opengizra_season_init() {
 
   _opengizra_season_redirect_to_season();
 
-  _opengizra_season_redirect_to_season_items();
+  $node = menu_get_object();
+  if (!$node || $node->type != 'season') {
+    return;
+  }
+
+  _opengizra_season_redirect_to_season_items($node->nid);
+
+  _opengizra_season_redirect_to_season_tasks($node->nid);
 }
 
 /**
@@ -57,24 +64,39 @@ function _opengizra_season_redirect_to_season() {
 /**
  * Redirect from a season page to the season's items tab if there are no items.
  */
-function _opengizra_season_redirect_to_season_items() {
-  $node = menu_get_object();
-  if (!$node || $node->type != 'season') {
-    return;
-  }
-
+function _opengizra_season_redirect_to_season_items($nid) {
   // Query for an item of the season.
   $query = new EntityFieldQuery();
   $count = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'item')
     ->propertyCondition('status', NODE_PUBLISHED)
-    ->fieldCondition('field_season', 'target_id', $node->nid)
+    ->fieldCondition('field_season', 'target_id', $nid)
     ->range(0, 1)
     ->count()
     ->execute();
 
   // If there are no items at all, redirect to items page.
   if (!$count) {
-    drupal_goto("season/{$node->nid}/items");
+    drupal_goto("season/$nid/items");
+  }
+}
+
+/**
+ * Redirect from a season page to the season's tasks tab if there are no tasks.
+ */
+function _opengizra_season_redirect_to_season_tasks($nid) {
+    // Query for an item of the season.
+  $query = new EntityFieldQuery();
+  $count = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'task')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_entity_reference', 'target_id', $nid)
+    ->range(0, 1)
+    ->count()
+    ->execute();
+
+  // If there are no items at all, redirect to items page.
+  if (!$count) {
+    drupal_goto("season/$nid");
   }
 }
