@@ -1,5 +1,5 @@
-name = Opengizra Order
-description = Opengizra Order
+name = Garmentbox Order
+description = Garmentbox Order
 core = 7.x
 package = Features
 php = 5.2.4

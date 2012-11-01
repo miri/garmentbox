@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Breadcrumbs'),
   'description' => t('Display node breadcrumbs.'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra'),
+  'category' => t('Garmentbox'),
 );
 
 /**

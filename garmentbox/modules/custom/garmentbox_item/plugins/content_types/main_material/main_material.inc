@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Main material'),
   'description' => t('Display the main material of an item variant.'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Item'),
+  'category' => t('Garmentbox Item'),
 );
 
 /**

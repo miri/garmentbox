@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra CAD feature.
+ * Code for the Garmentbox CAD feature.
  */
 
 include_once 'garmentbox_cad.features.inc';

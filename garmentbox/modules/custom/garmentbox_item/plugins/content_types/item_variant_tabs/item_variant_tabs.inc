@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Item variants tabs'),
   'description' => t('Show item instances as tabs'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Item'),
+  'category' => t('Garmentbox Item'),
 );
 
 /**

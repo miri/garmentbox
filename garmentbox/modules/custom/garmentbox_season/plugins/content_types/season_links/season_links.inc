@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Season links'),
   'description' => t('Display season links.'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra'),
+  'category' => t('Garmentbox'),
 );
 
 /**

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra season feature.
+ * Code for the Garmentbox season feature.
  */
 
 include_once 'garmentbox_season.features.inc';

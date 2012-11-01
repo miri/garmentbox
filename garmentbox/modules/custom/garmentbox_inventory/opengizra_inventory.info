@@ -1,5 +1,5 @@
-name = Opengizra Inventory
-description = Opengizra Inventory
+name = Garmentbox Inventory
+description = Garmentbox Inventory
 core = 7.x
 package = Features
 php = 5.2.4

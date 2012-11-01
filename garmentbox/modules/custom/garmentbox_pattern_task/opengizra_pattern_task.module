@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra Pattern Task feature.
+ * Code for the Garmentbox Pattern Task feature.
  */
 
 include_once 'garmentbox_pattern_task.features.inc';

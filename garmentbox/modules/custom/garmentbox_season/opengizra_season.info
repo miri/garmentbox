@@ -1,5 +1,5 @@
-name = Opengizra season
-description = Opengizra season
+name = Garmentbox season
+description = Garmentbox season
 core = 7.x
 package = Features
 php = 5.2.4

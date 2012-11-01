@@ -1,5 +1,5 @@
-name = Opengizra BOL
-description = Opengizra Bill of Labor
+name = Garmentbox BOL
+description = Garmentbox Bill of Labor
 core = 7.x
 package = Features
 php = 5.2.4

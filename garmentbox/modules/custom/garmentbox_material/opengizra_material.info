@@ -1,5 +1,5 @@
-name = Opengizra material
-description = Opengizra material
+name = Garmentbox material
+description = Garmentbox material
 core = 7.x
 package = Features
 php = 5.2.4

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra material feature.
+ * Code for the Garmentbox material feature.
  */
 
 include_once 'garmentbox_material.features.inc';

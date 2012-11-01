@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Item variant action links'),
   'description' => t('Display item variant action links.'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Item'),
+  'category' => t('Garmentbox Item'),
 );
 
 /**

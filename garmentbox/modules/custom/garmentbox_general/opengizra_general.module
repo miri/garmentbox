@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra General feature.
+ * Code for the Garmentbox General feature.
  */
 
 include_once 'garmentbox_general.features.inc';
@@ -130,7 +130,7 @@ function garmentbox_general_field_access($op, $field, $entity_type, $entity, $ac
  */
 function garmentbox_general_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['garmentbox_header'] = array(
-    'label' => t('Opengizra header'),
+    'label' => t('Garmentbox header'),
     'custom settings' => TRUE,
   );
 }

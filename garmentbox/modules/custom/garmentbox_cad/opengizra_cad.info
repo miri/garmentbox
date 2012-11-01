@@ -1,5 +1,5 @@
-name = Opengizra CAD
-description = Opengizra CAD
+name = Garmentbox CAD
+description = Garmentbox CAD
 core = 7.x
 package = Features
 php = 5.2.4

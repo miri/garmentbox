@@ -1,5 +1,5 @@
-name = Opengizra Event
-description = Opengizra Event
+name = Garmentbox Event
+description = Garmentbox Event
 core = 7.x
 package = Features
 php = 5.2.4

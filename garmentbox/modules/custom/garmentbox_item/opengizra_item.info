@@ -1,5 +1,5 @@
-name = Opengizra Item
-description = Opengizra Item
+name = Garmentbox Item
+description = Garmentbox Item
 core = 7.x
 package = Features
 php = 5.2.4

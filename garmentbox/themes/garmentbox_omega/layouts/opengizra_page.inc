@@ -2,8 +2,8 @@
 
 // Plugin definition
 $plugin = array(
-  'title' => t('Opengizra page'),
-  'category' => t('Opengizra'),
+  'title' => t('Garmentbox page'),
+  'category' => t('Garmentbox'),
   'theme' => 'garmentbox_page',
   'icon' => 'garmentbox-page.png',
   'regions' => array(

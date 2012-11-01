@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Opengizra profile.
+ * Garmentbox profile.
  */
 
 /**

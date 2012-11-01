@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Production price'),
   'description' => t('Display the production price of an item variant.'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Item'),
+  'category' => t('Garmentbox Item'),
   'hook theme' => 'garmentbox_item_production_price_content_type_theme',
 );
 

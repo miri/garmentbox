@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Inventory summary'),
   'description' => t('Show inventory summary per Item/ Season'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Inventory'),
+  'category' => t('Garmentbox Inventory'),
   'hook theme' => 'garmentbox_inventory_summary_content_type_theme',
 );
 

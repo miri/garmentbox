@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra Inventory feature.
+ * Code for the Garmentbox Inventory feature.
  */
 
 include_once 'garmentbox_inventory.features.inc';

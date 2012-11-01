@@ -6,7 +6,7 @@
 $plugin = array(
   'title' => t('Line Sheet'),
   'description' => t('Show a line sheet of a season.'),
-  'category' => t('Opengizra - Line Sheet'),
+  'category' => t('Garmentbox - Line Sheet'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
   'hook theme' => 'garmentbox_line_sheet_line_sheet_content_type_theme',
 );

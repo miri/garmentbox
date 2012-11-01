@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra Line Sheet feature.
+ * Code for the Garmentbox Line Sheet feature.
  */
 
 include_once 'garmentbox_line_sheet.features.inc';

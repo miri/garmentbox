@@ -1,5 +1,5 @@
-name = Opengizra Customer
-description = Opengizra Customer
+name = Garmentbox Customer
+description = Garmentbox Customer
 core = 7.x
 package = Features
 php = 5.2.4

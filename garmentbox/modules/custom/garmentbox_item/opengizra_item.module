@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Opengizra Item feature.
+ * Code for the Garmentbox Item feature.
  */
 
 include_once 'garmentbox_item.features.inc';
@@ -40,7 +40,7 @@ function garmentbox_item_field_formatter_info() {
       'field types' => array('field_collection'),
     ),
     'garmentbox_slideshow' => array(
-      'label' => t('Opengizra slideshow'),
+      'label' => t('Garmentbox slideshow'),
       'field types' => array('image'),
     ),
   );

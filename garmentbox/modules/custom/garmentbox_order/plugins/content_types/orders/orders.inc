@@ -7,7 +7,7 @@ $plugin = array(
   'title' => t('Orders'),
   'description' => t('Displau orders per Item/ Season'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'category' => t('Opengizra Order'),
+  'category' => t('Garmentbox Order'),
 );
 
 /**
