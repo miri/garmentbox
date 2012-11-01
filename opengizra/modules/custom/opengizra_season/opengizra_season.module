@@ -24,12 +24,18 @@ function opengizra_season_init() {
     return;
   }
 
-  _opengizra_season_redirect_to_season();
+  if (drupal_is_front_page()) {
+    _opengizra_season_redirect_to_season();
+  }
 
   $node = menu_get_object();
   if (!$node || $node->type != 'season') {
     return;
   }
+
+  $item = menu_get_item();
+
+
 
   _opengizra_season_redirect_to_season_items($node->nid);
 
@@ -40,10 +46,6 @@ function opengizra_season_init() {
  * Redirect from the front page to a season page.
  */
 function _opengizra_season_redirect_to_season() {
-  if (!drupal_is_front_page()) {
-    return;
-  }
-
   // Find the last changed season.
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'node')
