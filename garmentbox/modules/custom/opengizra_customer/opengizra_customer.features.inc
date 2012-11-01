@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_customer.features.inc
+ * garmentbox_customer.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_customer_ctools_plugin_api() {
+function garmentbox_customer_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
@@ -17,7 +17,7 @@ function opengizra_customer_ctools_plugin_api() {
 /**
  * Implements hook_node_info().
  */
-function opengizra_customer_node_info() {
+function garmentbox_customer_node_info() {
   $items = array(
     'customer' => array(
       'name' => t('Customer'),

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_event.features.inc
+ * garmentbox_event.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_event_ctools_plugin_api() {
+function garmentbox_event_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
@@ -17,7 +17,7 @@ function opengizra_event_ctools_plugin_api() {
 /**
  * Implements hook_node_info().
  */
-function opengizra_event_node_info() {
+function garmentbox_event_node_info() {
   $items = array(
     'event' => array(
       'name' => t('Event'),

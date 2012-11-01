@@ -9,7 +9,7 @@
 /**
  * Page preprocess.
  */
-function opengizra_omega_preprocess_page(&$variables) {
+function garmentbox_omega_preprocess_page(&$variables) {
   $node = menu_get_object();
   // When the node wasn't loaded, try fetching it from the menu item.
   if (!$node) {
@@ -20,15 +20,15 @@ function opengizra_omega_preprocess_page(&$variables) {
   }
 
   if ($node) {
-    $variables['page']['title'] = node_view($node, 'opengizra_header');
+    $variables['page']['title'] = node_view($node, 'garmentbox_header');
   }
 }
 
 /**
  * Node preprocess.
  */
-function opengizra_omega_preprocess_node(&$variables) {
-  if ($variables['view_mode'] == 'opengizra_header') {
+function garmentbox_omega_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'garmentbox_header') {
     $variables['display_submitted'] = FALSE;
   }
 }

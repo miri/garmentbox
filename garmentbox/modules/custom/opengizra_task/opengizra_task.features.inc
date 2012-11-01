@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_task.features.inc
+ * garmentbox_task.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_task_ctools_plugin_api() {
+function garmentbox_task_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
@@ -21,14 +21,14 @@ function opengizra_task_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function opengizra_task_views_api() {
+function garmentbox_task_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function opengizra_task_node_info() {
+function garmentbox_task_node_info() {
   $items = array(
     'task' => array(
       'name' => t('Task'),

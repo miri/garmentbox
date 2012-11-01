@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.features.field.inc
+ * garmentbox_item.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_item_field_default_fields() {
+function garmentbox_item_field_default_fields() {
   $fields = array();
 
   // Exported field: 'field_collection_item-field_bom_info-field_material_item'.
@@ -435,7 +435,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -510,7 +510,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'hidden',
           'weight' => '1',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
@@ -622,7 +622,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '3',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'module' => 'entityreference',
           'settings' => array(
@@ -724,7 +724,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 6,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -829,7 +829,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '4',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -908,7 +908,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -979,7 +979,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => 6,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1054,7 +1054,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'image',
           'weight' => 3,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'hidden',
           'module' => 'image_delta_formatter',
           'settings' => array(
@@ -1164,7 +1164,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1265,7 +1265,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 7,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'module' => 'entityreference',
           'settings' => array(
@@ -1370,7 +1370,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 5,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1446,7 +1446,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'commerce_price_default',
           'weight' => 8,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1519,7 +1519,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1527,9 +1527,9 @@ function opengizra_item_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'opengizra_item',
+          'module' => 'garmentbox_item',
           'settings' => array(),
-          'type' => 'opengizra_size_info',
+          'type' => 'garmentbox_size_info',
           'weight' => '1',
         ),
       ),
@@ -1584,7 +1584,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'commerce_price_default',
           'weight' => 9,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1660,7 +1660,7 @@ function opengizra_item_field_default_fields() {
           'type' => 'hidden',
           'weight' => 10,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),

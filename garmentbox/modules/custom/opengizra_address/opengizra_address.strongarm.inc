@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_address.strongarm.inc
+ * garmentbox_address.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function opengizra_address_strongarm() {
+function garmentbox_address_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

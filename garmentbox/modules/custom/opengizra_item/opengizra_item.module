@@ -4,27 +4,27 @@
  * Code for the Opengizra Item feature.
  */
 
-include_once 'opengizra_item.features.inc';
+include_once 'garmentbox_item.features.inc';
 
 /**
  * Implements hook_node_presave().
  *
  * Populate the Season reference field based on the selected entity.
  */
-function opengizra_item_node_presave($node) {
+function garmentbox_item_node_presave($node) {
   if ($node->type != 'item_variant' && $node->type != 'item') {
     return;
   }
 
   $wrapper = entity_metadata_wrapper('node', $node);
-  $nids = array_keys(opengizra_general_get_node_hierarchy($node));
+  $nids = array_keys(garmentbox_general_get_node_hierarchy($node));
   $wrapper->field_reference_hierarchy->set($nids);
 }
 
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function opengizra_item_ctools_plugin_directory($module, $plugin) {
+function garmentbox_item_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools') {
     return 'plugins/' . $plugin;
   }
@@ -33,13 +33,13 @@ function opengizra_item_ctools_plugin_directory($module, $plugin) {
 /**
  * Implements hook_field_formatter_info().
  */
-function opengizra_item_field_formatter_info() {
+function garmentbox_item_field_formatter_info() {
   return array(
-    'opengizra_size_info' => array(
+    'garmentbox_size_info' => array(
       'label' => t('Size information'),
       'field types' => array('field_collection'),
     ),
-    'opengizra_slideshow' => array(
+    'garmentbox_slideshow' => array(
       'label' => t('Opengizra slideshow'),
       'field types' => array('image'),
     ),
@@ -49,12 +49,12 @@ function opengizra_item_field_formatter_info() {
 /**
  * Implements hook_field_formatter_view().
  */
-function opengizra_item_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function garmentbox_item_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
   $settings = $display['settings'];
 
   switch ($display['type']) {
-    case 'opengizra_size_info':
+    case 'garmentbox_size_info':
       $sizes = array();
       foreach ($items as $item) {
         $wrapper = entity_metadata_wrapper('field_collection_item', $item['value']);
@@ -64,7 +64,7 @@ function opengizra_item_field_formatter_view($entity_type, $entity, $field, $ins
       $element[0]['#markup'] = theme('item_list', array('items' => $sizes));
       return $element;
 
-    case 'opengizra_slideshow':
+    case 'garmentbox_slideshow':
       $options = array();
       foreach ($items as &$item) {
         $item = theme('image_style', array('style_name' => 'variant_preview', 'path' => $item['uri']));
@@ -81,8 +81,8 @@ function opengizra_item_field_formatter_view($entity_type, $entity, $field, $ins
  *
  * Remove mass measurement units from the item variant BOM form.
  */
-function opengizra_item_form_item_variant_node_form_alter(&$form, $form_state) {
-  $mass_units = opengizra_material_get_units('mass');
+function garmentbox_item_form_item_variant_node_form_alter(&$form, $form_state) {
+  $mass_units = garmentbox_material_get_units('mass');
   foreach (array_keys($form['field_bom_info'][LANGUAGE_NONE][0]['field_unit'][LANGUAGE_NONE]['#options']) as $tid) {
     if (in_array($tid, $mass_units)) {
       unset($form['field_bom_info'][LANGUAGE_NONE][0]['field_unit'][LANGUAGE_NONE]['#options'][$tid]);
@@ -99,7 +99,7 @@ function opengizra_item_form_item_variant_node_form_alter(&$form, $form_state) {
  * @return
  *   Rendered icon of the item variant main material.
  */
-function opengizra_item_get_main_material_icon($node) {
+function garmentbox_item_get_main_material_icon($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if (!$wrapper->field_bom_info->value()) {
     return;

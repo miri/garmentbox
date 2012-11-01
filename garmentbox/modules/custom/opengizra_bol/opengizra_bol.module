@@ -13,7 +13,7 @@
  * @return
  *   The total raw price.
  */
-function opengizra_bol_get_variant_bol_price($node) {
+function garmentbox_bol_get_variant_bol_price($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   // Iterate the BOL and some the prices.
   $price = 0;

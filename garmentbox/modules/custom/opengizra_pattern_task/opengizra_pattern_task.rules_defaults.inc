@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_pattern_task.rules_defaults.inc
+ * garmentbox_pattern_task.rules_defaults.inc
  */
 
 /**
  * Implements hook_default_rules_configuration().
  */
-function opengizra_pattern_task_default_rules_configuration() {
+function garmentbox_pattern_task_default_rules_configuration() {
   $items = array();
   $items['rules_create_pattern_tasks'] = entity_import('rules_config', '{ "rules_create_pattern_tasks" : {
       "LABEL" : "Create Pattern Tasks",

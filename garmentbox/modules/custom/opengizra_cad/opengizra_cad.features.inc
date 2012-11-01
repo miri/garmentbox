@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_cad.features.inc
+ * garmentbox_cad.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_cad_ctools_plugin_api() {
+function garmentbox_cad_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
@@ -21,14 +21,14 @@ function opengizra_cad_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function opengizra_cad_views_api() {
+function garmentbox_cad_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function opengizra_cad_node_info() {
+function garmentbox_cad_node_info() {
   $items = array(
     'pattern' => array(
       'name' => t('Pattern'),

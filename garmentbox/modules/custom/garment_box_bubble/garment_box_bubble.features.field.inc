@@ -52,7 +52,7 @@ function garment_box_bubble_field_default_fields() {
           'type' => 'text_default',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -132,7 +132,7 @@ function garment_box_bubble_field_default_fields() {
           'type' => 'text_default',
           'weight' => 3,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -207,7 +207,7 @@ function garment_box_bubble_field_default_fields() {
           'type' => 'text_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -280,7 +280,7 @@ function garment_box_bubble_field_default_fields() {
           'type' => 'list_default',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

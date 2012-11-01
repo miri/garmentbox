@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_season.pages_default.inc
+ * garmentbox_season.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_handlers().
  */
-function opengizra_season_default_page_manager_handlers() {
+function garmentbox_season_default_page_manager_handlers() {
   $export = array();
 
   $handler = new stdClass();
@@ -45,7 +45,7 @@ function opengizra_season_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -168,7 +168,7 @@ function opengizra_season_default_page_manager_handlers() {
 /**
  * Implements hook_default_page_manager_pages().
  */
-function opengizra_season_default_page_manager_pages() {
+function garmentbox_season_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
@@ -214,7 +214,7 @@ function opengizra_season_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -347,7 +347,7 @@ function opengizra_season_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -506,7 +506,7 @@ function opengizra_season_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -665,7 +665,7 @@ function opengizra_season_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(

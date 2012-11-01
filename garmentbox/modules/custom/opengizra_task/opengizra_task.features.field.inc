@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_task.features.field.inc
+ * garmentbox_task.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_task_field_default_fields() {
+function garmentbox_task_field_default_fields() {
   $fields = array();
 
   // Exported field: 'comment-comment_node_task-field_date'.
@@ -464,7 +464,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -549,7 +549,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'date_default',
           'weight' => 7,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -657,7 +657,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '2',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -760,7 +760,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 5,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -863,7 +863,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '3',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -964,7 +964,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '1',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1043,7 +1043,7 @@ function opengizra_task_field_default_fields() {
           'type' => 'hidden',
           'weight' => 6,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

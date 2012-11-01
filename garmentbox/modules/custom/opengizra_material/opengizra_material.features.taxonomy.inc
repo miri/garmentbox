@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_material.features.taxonomy.inc
+ * garmentbox_material.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function opengizra_material_taxonomy_default_vocabularies() {
+function garmentbox_material_taxonomy_default_vocabularies() {
   return array(
     'measurement_units' => array(
       'name' => 'Measurement units',

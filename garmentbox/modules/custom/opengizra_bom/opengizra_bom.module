@@ -8,13 +8,13 @@
 /**
  * Implement hook_field_formatter_info().
  */
-function opengizra_bom_field_formatter_info() {
+function garmentbox_bom_field_formatter_info() {
   return array(
-    'opengizra_bom_table' => array(
+    'garmentbox_bom_table' => array(
       'label' => t('BOM table'),
       'field types' => array('field_collection'),
     ),
-    'opengizra_bom_main_material_icon' => array(
+    'garmentbox_bom_main_material_icon' => array(
       'label' => t('Main material icon'),
       'field types' => array('field_collection'),
     ),
@@ -24,12 +24,12 @@ function opengizra_bom_field_formatter_info() {
 /**
  * Implements hook_field_formatter_view().
  */
-function opengizra_bom_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function garmentbox_bom_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
   $settings = $display['settings'];
 
   switch ($display['type']) {
-    case 'opengizra_bom_table':
+    case 'garmentbox_bom_table':
       $field_name = $field['field_name'];
       $dummy_display = $display;
       $dummy_display['type'] = 'field_collection_table_view';
@@ -75,7 +75,7 @@ function opengizra_bom_field_formatter_view($entity_type, $entity, $field, $inst
         $wrapper = entity_metadata_wrapper('field_collection_item', $row['data'][$delta]['data']['#object']->item_id);
         $field_price = field_view_field('field_collection_item', $wrapper->field_material_item->value(), 'field_price', array('label' => 'hidden', 'type' => 'commerce_price_formatted_amount'));
 
-        $total += $price = opengizra_bom_get_material_price($wrapper->value());
+        $total += $price = garmentbox_bom_get_material_price($wrapper->value());
         $field_price[0]['#markup'] = commerce_currency_format($price, commerce_default_currency());
 
         $row['data'][] = array(
@@ -95,9 +95,9 @@ function opengizra_bom_field_formatter_view($entity_type, $entity, $field, $inst
       $element[0]['total']['#markup'] = t('<div class="bom-total"><span class="label">Total:</span><span class="amount">@total</span></div>', array('@total' => commerce_currency_format($total, commerce_default_currency())));
       return $element;
 
-    case 'opengizra_bom_main_material_icon':
+    case 'garmentbox_bom_main_material_icon':
       $element = array(
-        array('#markup' => opengizra_item_get_main_material_icon($entity)),
+        array('#markup' => garmentbox_item_get_main_material_icon($entity)),
       );
       return $element;
   }
@@ -112,12 +112,12 @@ function opengizra_bom_field_formatter_view($entity_type, $entity, $field, $inst
  * @return
  *   The total raw price.
  */
-function opengizra_bom_get_variant_bom_price($node) {
+function garmentbox_bom_get_variant_bom_price($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   // Iterate the BOM.
   $price = 0;
   for ($delta = 0; $delta < $wrapper->field_bom_info->count(); $delta++) {
-    $price += opengizra_bom_get_material_price($wrapper->field_bom_info->get($delta)->value());
+    $price += garmentbox_bom_get_material_price($wrapper->field_bom_info->get($delta)->value());
   }
 
   return $price;
@@ -132,7 +132,7 @@ function opengizra_bom_get_variant_bom_price($node) {
  * @return
  *   The price of the given item.
  */
-function opengizra_bom_get_material_price($collection_item) {
+function garmentbox_bom_get_material_price($collection_item) {
   $wrapper = entity_metadata_wrapper('field_collection_item', $collection_item);
 
   $m_unit = $wrapper->field_material_item->field_unit->value();
@@ -142,7 +142,7 @@ function opengizra_bom_get_material_price($collection_item) {
   $m_price = $wrapper->field_material_item->field_price->value();
   $bom_unit_conversion = !empty($wrapper->field_unit->field_conversion_ratio) ? $wrapper->field_unit->field_conversion_ratio->value() : 1;
 
-  $length_price = opengizra_bom_get_length_price($m_price['amount'], $m_unit, $m_length, $m_length_unit_conversion / $bom_unit_conversion);
+  $length_price = garmentbox_bom_get_length_price($m_price['amount'], $m_unit, $m_length, $m_length_unit_conversion / $bom_unit_conversion);
   $bom_quantity = $wrapper->field_quantity->value();
   return $length_price * $bom_quantity;
 }
@@ -163,7 +163,7 @@ function opengizra_bom_get_material_price($collection_item) {
  * @return
  *   The converted price.
  */
-function opengizra_bom_get_length_price($price, $unit, $length, $length_ratio) {
+function garmentbox_bom_get_length_price($price, $unit, $length, $length_ratio) {
   $wrapper = entity_metadata_wrapper('taxonomy_term', $unit);
 
   // If the material price is given in mass, convert it to price per length.
@@ -178,8 +178,8 @@ function opengizra_bom_get_length_price($price, $unit, $length, $length_ratio) {
 /**
  * Implements hook_entity_info_alter().
  */
-function opengizra_bom_entity_info_alter(&$entity_info) {
-  $entity_info['field_collection_item']['label callback'] = 'opengizra_bom_field_collection_item_label';
+function garmentbox_bom_entity_info_alter(&$entity_info) {
+  $entity_info['field_collection_item']['label callback'] = 'garmentbox_bom_field_collection_item_label';
 }
 
 /**
@@ -188,9 +188,9 @@ function opengizra_bom_entity_info_alter(&$entity_info) {
  * Rebulid the label for source info field collections to present the material
  * and the vendor.
  *
- * @see opengizra_bom_entity_info_alter().
+ * @see garmentbox_bom_entity_info_alter().
  */
-function opengizra_bom_field_collection_item_label($entity) {
+function garmentbox_bom_field_collection_item_label($entity) {
   if ($entity->field_name != 'field_source_info') {
      // Fall to the default value, which is the item ID.
     return $entity->item_id;

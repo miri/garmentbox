@@ -4,13 +4,13 @@
  * Code for the Opengizra General feature.
  */
 
-include_once 'opengizra_general.features.inc';
+include_once 'garmentbox_general.features.inc';
 
 /**
  * Implements hook_init().
  */
-function opengizra_general_init() {
-  if (($node = menu_get_object()) && $nids = opengizra_general_get_node_hierarchy($node)) {
+function garmentbox_general_init() {
+  if (($node = menu_get_object()) && $nids = garmentbox_general_get_node_hierarchy($node)) {
     $breadcrumb[] = l(t('Home'), '<front>');
     foreach ($nids as $nid => $title) {
       $breadcrumb[] = l($title, 'node/' . $nid);
@@ -22,7 +22,7 @@ function opengizra_general_init() {
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function opengizra_general_ctools_plugin_directory($module, $plugin) {
+function garmentbox_general_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools') {
     return 'plugins/' . $plugin;
   }
@@ -41,7 +41,7 @@ function opengizra_general_ctools_plugin_directory($module, $plugin) {
  *   Array keyed with node IDs and the node title as value, sorted by
  *   hierarchy. If no hierarchy found returns FALSE.
  */
-function opengizra_general_get_node_hierarchy($node, &$nids = array()) {
+function garmentbox_general_get_node_hierarchy($node, &$nids = array()) {
   if ($nids === FALSE) {
     // We reached a content type that has no hierarchy so break here.
     return;
@@ -84,7 +84,7 @@ function opengizra_general_get_node_hierarchy($node, &$nids = array()) {
 
   $referenced_node = $wrapper->{$field_name}->value();
   $nids[$referenced_node->nid] = $referenced_node->title;
-  opengizra_general_get_node_hierarchy($referenced_node, $nids);
+  garmentbox_general_get_node_hierarchy($referenced_node, $nids);
 
   return array_reverse($nids, TRUE);
 }
@@ -99,7 +99,7 @@ function opengizra_general_get_node_hierarchy($node, &$nids = array()) {
  *    The mini panel name that his rendered html will replace the node rendered
  *    html.
  */
-function opengizra_general_render_node_as_mini_panel($node, $mini_name) {
+function garmentbox_general_render_node_as_mini_panel($node, $mini_name) {
   ctools_include('context');
   $mini = panels_mini_load($mini_name);
   $contexts = array();
@@ -119,7 +119,7 @@ function opengizra_general_render_node_as_mini_panel($node, $mini_name) {
  *
  * Hide the reference hierarchy field.
  */
-function opengizra_general_field_access($op, $field, $entity_type, $entity, $account) {
+function garmentbox_general_field_access($op, $field, $entity_type, $entity, $account) {
   if (!empty($field['field_name']) && $field['field_name'] == 'field_reference_hierarchy') {
     return FALSE;
   }
@@ -128,8 +128,8 @@ function opengizra_general_field_access($op, $field, $entity_type, $entity, $acc
 /**
  * Implements hook_entity_info_alter()
  */
-function opengizra_general_entity_info_alter(&$entity_info) {
-  $entity_info['node']['view modes']['opengizra_header'] = array(
+function garmentbox_general_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['garmentbox_header'] = array(
     'label' => t('Opengizra header'),
     'custom settings' => TRUE,
   );

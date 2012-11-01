@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.panels_default.inc
+ * garmentbox_item.panels_default.inc
  */
 
 /**
  * Implements hook_default_panels_mini().
  */
-function opengizra_item_default_panels_mini() {
+function garmentbox_item_default_panels_mini() {
   $export = array();
 
   $mini = new stdClass();
@@ -110,7 +110,7 @@ function opengizra_item_default_panels_mini() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'title',
-      'formatter' => 'opengizra_bom_table',
+      'formatter' => 'garmentbox_bom_table',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,
@@ -306,7 +306,7 @@ function opengizra_item_default_panels_mini() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'above',
-      'formatter' => 'opengizra_size_info',
+      'formatter' => 'garmentbox_size_info',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,

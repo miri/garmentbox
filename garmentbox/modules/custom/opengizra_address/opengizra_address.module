@@ -4,4 +4,4 @@
  * Code for the Opengizra Address feature.
  */
 
-include_once 'opengizra_address.features.inc';
+include_once 'garmentbox_address.features.inc';

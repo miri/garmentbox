@@ -4,4 +4,4 @@
  * Code for the Opengizra Event feature.
  */
 
-include_once 'opengizra_event.features.inc';
+include_once 'garmentbox_event.features.inc';

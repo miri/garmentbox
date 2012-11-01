@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_cad.pages_default.inc
+ * garmentbox_cad.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_handlers().
  */
-function opengizra_cad_default_page_manager_handlers() {
+function garmentbox_cad_default_page_manager_handlers() {
   $export = array();
 
   $handler = new stdClass();

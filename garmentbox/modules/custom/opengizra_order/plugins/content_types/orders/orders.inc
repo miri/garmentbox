@@ -13,14 +13,14 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_order_orders_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_order_orders_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
 
   $node = $context->data;
 
-  $module = 'opengizra_order';
+  $module = 'garmentbox_order';
 
   $block = new stdClass();
   $block->module = $module;
@@ -234,6 +234,6 @@ function opengizra_order_orders_content_type_render($subtype, $conf, $args, $con
 /**
  * Edit form.
  */
-function opengizra_order_orders_content_type_edit_form($form, &$form_state) {
+function garmentbox_order_orders_content_type_edit_form($form, &$form_state) {
   return $form;
 }

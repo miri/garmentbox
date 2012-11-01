@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_inventory.features.field.inc
+ * garmentbox_inventory.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_inventory_field_default_fields() {
+function garmentbox_inventory_field_default_fields() {
   $fields = array();
 
   // Exported field: 'field_collection_item-field_quantity_info-field_quantity'.
@@ -207,7 +207,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'date_default',
           'weight' => 5,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -311,7 +311,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -412,7 +412,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -484,7 +484,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'commerce_price_default',
           'weight' => 7,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -564,7 +564,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'date_default',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -643,7 +643,7 @@ function opengizra_inventory_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

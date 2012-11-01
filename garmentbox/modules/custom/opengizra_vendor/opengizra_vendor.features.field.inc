@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_vendor.features.field.inc
+ * garmentbox_vendor.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_vendor_field_default_fields() {
+function garmentbox_vendor_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-vendor-field_address_inline'.
@@ -72,7 +72,7 @@ function opengizra_vendor_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

@@ -8,13 +8,13 @@ $plugin = array(
   'description' => t('Show inventory summary per Item/ Season'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
   'category' => t('Opengizra Inventory'),
-  'hook theme' => 'opengizra_inventory_summary_content_type_theme',
+  'hook theme' => 'garmentbox_inventory_summary_content_type_theme',
 );
 
 /**
  * Render callback.
  */
-function opengizra_inventory_summary_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_inventory_summary_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
@@ -24,7 +24,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     throw new Exception('Wrong node type passed to Inventory summary');
   }
 
-  $module = 'opengizra_inventory';
+  $module = 'garmentbox_inventory';
 
   $block = new stdClass();
   $block->module = $module;
@@ -135,7 +135,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
     }
 
-    $is_ordered = opengizra_inventory_is_inventory_item_ordered($inventory_node->nid);
+    $is_ordered = garmentbox_inventory_is_inventory_item_ordered($inventory_node->nid);
 
     foreach ($wrapper->field_quantity_info as $quantity_wrapper) {
       $size_tid = $quantity_wrapper->field_size->getIdentifier();
@@ -201,7 +201,7 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
     $expand_link = l('', url(''), $params);
     $row['data'][] = $expand_link . t('@variant - Total', array('@variant' => $variant_label));
     foreach($size_tree as $term) {
-      $row['data'][] = theme('opengizra_inventory_cell', $variant_data['total'][$term->tid] + array('quantity_title' => t('Stock')));
+      $row['data'][] = theme('garmentbox_inventory_cell', $variant_data['total'][$term->tid] + array('quantity_title' => t('Stock')));
     }
 
     // Total row description.
@@ -229,11 +229,11 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
 
       foreach($size_tree as $term) {
         if (empty($variant_inventory_data['data'][$term->tid])) {
-          $row['data'][] = theme('opengizra_inventory_cell', array('quantity' => 0));
+          $row['data'][] = theme('garmentbox_inventory_cell', array('quantity' => 0));
           continue;
         }
 
-        $row['data'][] = theme('opengizra_inventory_cell', $variant_inventory_data['data'][$term->tid]);
+        $row['data'][] = theme('garmentbox_inventory_cell', $variant_inventory_data['data'][$term->tid]);
       }
       $row['data'][] = $variant_inventory_data['type_label'];
       $rows[] = $row;
@@ -251,15 +251,15 @@ function opengizra_inventory_summary_content_type_render($subtype, $conf, $args,
 /**
  * Edit form.
  */
-function opengizra_inventory_summary_content_type_edit_form($form, &$form_state) {
+function garmentbox_inventory_summary_content_type_edit_form($form, &$form_state) {
   return $form;
 }
 
 /**
  * Delegated hook_theme().
  */
-function opengizra_inventory_summary_content_type_theme(&$theme, $plugin) {
-  $theme['opengizra_inventory_cell'] = array(
+function garmentbox_inventory_summary_content_type_theme(&$theme, $plugin) {
+  $theme['garmentbox_inventory_cell'] = array(
     'variables' => array(
       'quantity' => NULL,
       'available' => NULL,

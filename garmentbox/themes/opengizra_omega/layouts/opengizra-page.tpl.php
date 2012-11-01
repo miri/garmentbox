@@ -1,7 +1,7 @@
 <?php
 /**
- * @file opengizra.tpl.php
- * Template for opengizra pages with tabs section.
+ * @file garmentbox.tpl.php
+ * Template for garmentbox pages with tabs section.
  *
  * Variables:
  * - $id: An optional CSS id to use for the layout.

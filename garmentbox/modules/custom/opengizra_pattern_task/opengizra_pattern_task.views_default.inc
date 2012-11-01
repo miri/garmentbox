@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_pattern_task.views_default.inc
+ * garmentbox_pattern_task.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function opengizra_pattern_task_views_default_views() {
+function garmentbox_pattern_task_views_default_views() {
   $export = array();
 
   $view = new view;

@@ -4,12 +4,12 @@
  * Code for the Opengizra material feature.
  */
 
-include_once 'opengizra_material.features.inc';
+include_once 'garmentbox_material.features.inc';
 
 /**
  * Implements hook_field_attach_form().
  */
-function opengizra_material_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+function garmentbox_material_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   if ($entity_type != 'field_collection_item') {
     return;
   }
@@ -19,7 +19,7 @@ function opengizra_material_field_attach_form($entity_type, $entity, &$form, &$f
     return;
   }
 
-  $mass_terms = opengizra_material_get_units('mass');
+  $mass_terms = garmentbox_material_get_units('mass');
 
   // Check if we are in a node context, or directly inside a field
   // collection.
@@ -37,11 +37,11 @@ function opengizra_material_field_attach_form($entity_type, $entity, &$form, &$f
   $form['field_length'] += $state;
   $form['field_length_unit'] += $state;
 
-  $form['field_length']['#element_validate'][] = 'opengizra_material_length_validate';
-  $form['field_length_unit']['#element_validate'][] = 'opengizra_material_length_validate';
+  $form['field_length']['#element_validate'][] = 'garmentbox_material_length_validate';
+  $form['field_length_unit']['#element_validate'][] = 'garmentbox_material_length_validate';
 
   // Remove non-length units from the length_unit field.
-  $length_terms = opengizra_material_get_units('length');
+  $length_terms = garmentbox_material_get_units('length');
   foreach (array_keys($form['field_length_unit'][LANGUAGE_NONE]['#options']) as $tid) {
     if (!in_array($tid, $length_terms)) {
       unset($form['field_length_unit'][LANGUAGE_NONE]['#options'][$tid]);
@@ -55,9 +55,9 @@ function opengizra_material_field_attach_form($entity_type, $entity, &$form, &$f
  * If the selected unit is of mass type (e.g. Kilogram), we need to make
  * those fields required.
  */
-function opengizra_material_length_validate($element, &$form_state) {
+function garmentbox_material_length_validate($element, &$form_state) {
   $values = !empty($form_state['values']['field_source_info']) ? $form_state['values']['field_source_info'][LANGUAGE_NONE][0] : $form_state['values'];
-  $mass_terms = opengizra_material_get_units('mass');
+  $mass_terms = garmentbox_material_get_units('mass');
   if (!in_array($values['field_unit'][LANGUAGE_NONE], $mass_terms)) {
     return;
   }
@@ -77,7 +77,7 @@ function opengizra_material_length_validate($element, &$form_state) {
  * @return
  *   Array of terms.
  */
-function opengizra_material_get_units($type) {
+function garmentbox_material_get_units($type) {
   // Fetch all mass unit types.
   $vocabulary = taxonomy_vocabulary_machine_name_load('measurement_units');
   $query = new EntityFieldQuery();

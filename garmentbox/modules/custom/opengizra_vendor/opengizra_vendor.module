@@ -4,4 +4,4 @@
  * Code for the Opengizra Vendor feature.
  */
 
-include_once 'opengizra_vendor.features.inc';
+include_once 'garmentbox_vendor.features.inc';

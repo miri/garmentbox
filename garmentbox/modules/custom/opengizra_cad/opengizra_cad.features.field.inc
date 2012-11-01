@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_cad.features.field.inc
+ * garmentbox_cad.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_cad_field_default_fields() {
+function garmentbox_cad_field_default_fields() {
   $fields = array();
 
   // Exported field: 'field_collection_item-field_files_collection-field_file'.
@@ -126,7 +126,7 @@ function opengizra_cad_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -201,7 +201,7 @@ function opengizra_cad_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => '1',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -295,7 +295,7 @@ function opengizra_cad_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '2',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -394,7 +394,7 @@ function opengizra_cad_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '3',
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

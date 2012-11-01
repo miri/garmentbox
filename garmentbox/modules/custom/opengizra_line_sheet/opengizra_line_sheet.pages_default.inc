@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_line_sheet.pages_default.inc
+ * garmentbox_line_sheet.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_pages().
  */
-function opengizra_line_sheet_default_page_manager_pages() {
+function garmentbox_line_sheet_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;

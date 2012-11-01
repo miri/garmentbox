@@ -13,7 +13,7 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_general_breadcrumbs_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_general_breadcrumbs_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
@@ -21,7 +21,7 @@ function opengizra_general_breadcrumbs_content_type_render($subtype, $conf, $arg
   $wrapper = entity_metadata_wrapper('node', $context->data);
 
   $block = new stdClass();
-  $block->module = 'opengizra_general';
+  $block->module = 'garmentbox_general';
   $block->title = '';
 
   $links = array();
@@ -45,6 +45,6 @@ function opengizra_general_breadcrumbs_content_type_render($subtype, $conf, $arg
 /**
  * Edit form.
  */
-function opengizra_general_breadcrumbs_content_type_edit_form($form, &$form_state) {
+function garmentbox_general_breadcrumbs_content_type_edit_form($form, &$form_state) {
   return $form;
 }

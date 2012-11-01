@@ -166,7 +166,7 @@ class openGizraDepartments extends openGizraMigration {
 
   public function complete($node) {
     if ($node->title == 'Main') {
-      variable_set('opengizra_og_main_department', $node->nid);
+      variable_set('garmentbox_og_main_department', $node->nid);
     }
   }
 }
@@ -335,7 +335,7 @@ class openGizraMaterials extends openGizraMigration {
       ->defaultValue(FILE_EXISTS_REPLACE);
     $this
       ->addFieldMapping('field_images:source_dir')
-      ->defaultValue(drupal_get_path('module', 'opengizra_migrate') . '/images');
+      ->defaultValue(drupal_get_path('module', 'garmentbox_migrate') . '/images');
   }
 }
 
@@ -379,7 +379,7 @@ class openGizraItems extends openGizraMigration {
       ->defaultValue(FILE_EXISTS_REPLACE);
     $this
       ->addFieldMapping('field_image:source_dir')
-      ->defaultValue(drupal_get_path('module', 'opengizra_migrate') . '/images');
+      ->defaultValue(drupal_get_path('module', 'garmentbox_migrate') . '/images');
   }
 }
 
@@ -458,7 +458,7 @@ class openGizraItemVariants extends openGizraMigration {
       ->defaultValue(FILE_EXISTS_REPLACE);
     $this
       ->addFieldMapping('field_images:source_dir')
-      ->defaultValue(drupal_get_path('module', 'opengizra_migrate') . '/images');
+      ->defaultValue(drupal_get_path('module', 'garmentbox_migrate') . '/images');
 
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')

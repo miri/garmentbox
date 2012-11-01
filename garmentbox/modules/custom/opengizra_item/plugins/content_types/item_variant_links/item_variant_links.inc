@@ -13,13 +13,13 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_item_item_variant_links_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_item_item_variant_links_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
 
   $block = new stdClass();
-  $block->module = 'opengizra_item';
+  $block->module = 'garmentbox_item';
   $block->title = '';
   $block->css_class = 'tabs';
 
@@ -59,6 +59,6 @@ function opengizra_item_item_variant_links_content_type_render($subtype, $conf, 
 /**
  * Edit form.
  */
-function opengizra_item_item_variant_links_content_type_edit_form($form, &$form_state) {
+function garmentbox_item_item_variant_links_content_type_edit_form($form, &$form_state) {
   return $form;
 }

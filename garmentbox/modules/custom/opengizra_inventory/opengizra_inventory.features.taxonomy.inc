@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_inventory.features.taxonomy.inc
+ * garmentbox_inventory.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function opengizra_inventory_taxonomy_default_vocabularies() {
+function garmentbox_inventory_taxonomy_default_vocabularies() {
   return array(
     'inventory_type' => array(
       'name' => 'Inventory type',

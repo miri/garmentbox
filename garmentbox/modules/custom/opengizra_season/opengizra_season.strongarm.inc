@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_season.strongarm.inc
+ * garmentbox_season.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function opengizra_season_strongarm() {
+function garmentbox_season_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

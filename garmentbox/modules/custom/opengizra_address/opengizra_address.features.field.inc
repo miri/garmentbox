@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_address.features.field.inc
+ * garmentbox_address.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_address_field_default_fields() {
+function garmentbox_address_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-address-field_postal_address'.
@@ -52,7 +52,7 @@ function opengizra_address_field_default_fields() {
           'type' => 'addressfield_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

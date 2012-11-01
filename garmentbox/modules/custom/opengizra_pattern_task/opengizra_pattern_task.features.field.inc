@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_pattern_task.features.field.inc
+ * garmentbox_pattern_task.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_pattern_task_field_default_fields() {
+function garmentbox_pattern_task_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-pattern_task-body'.
@@ -52,7 +52,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'text_default',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -152,7 +152,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 5,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -257,7 +257,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 3,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -356,7 +356,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -459,7 +459,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -564,7 +564,7 @@ function opengizra_pattern_task_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

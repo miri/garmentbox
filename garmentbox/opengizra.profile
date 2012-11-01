@@ -9,7 +9,7 @@
  *
  * Allows the profile to alter the site configuration form.
  */
-function opengizra_form_install_configure_form_alter(&$form, $form_state) {
+function garmentbox_form_install_configure_form_alter(&$form, $form_state) {
   // Pre-populate the site name with the server name.
   $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
 }
@@ -17,10 +17,10 @@ function opengizra_form_install_configure_form_alter(&$form, $form_state) {
 /**
  * Implements hook_install_tasks().
  */
-function opengizra_install_tasks() {
+function garmentbox_install_tasks() {
   $tasks = array();
 
-  $tasks['opengizra_import_data'] = array(
+  $tasks['garmentbox_import_data'] = array(
     'display_name' => st('Import content'),
     'display' => TRUE,
     'type' => 'batch',
@@ -33,7 +33,7 @@ function opengizra_install_tasks() {
  * Task callback: return a batch API array, for importing content and creating
  * menues.
  */
-function opengizra_import_data() {
+function garmentbox_import_data() {
   drupal_set_title(st('Import content'));
 
   // Fixes problems when the CSV files used for importing have been created
@@ -42,10 +42,10 @@ function opengizra_import_data() {
 
   $migrations = migrate_migrations();
   foreach ($migrations as $machine_name => $migration) {
-    $operations[] =  array('_opengizra_import_data', array($machine_name, t('Importing content.')));
+    $operations[] =  array('_garmentbox_import_data', array($machine_name, t('Importing content.')));
   }
   // Perform post-import tasks.
-  $operations[] = array('_opengizra_setup_blocks', array(t('Setup blocks.')));
+  $operations[] = array('_garmentbox_setup_blocks', array(t('Setup blocks.')));
 
   $batch = array(
     'title' => t('Importing content'),
@@ -58,9 +58,9 @@ function opengizra_import_data() {
 /**
  * BatchAPI callback.
  *
- * @see opengizra_profile_import_data()
+ * @see garmentbox_profile_import_data()
  */
-function _opengizra_import_data($operation, $type, &$context) {
+function _garmentbox_import_data($operation, $type, &$context) {
   $context['message'] = t('@operation', array('@operation' => $type));
   $migration =  Migration::getInstance($operation);
   $migration->processImport();
@@ -69,10 +69,10 @@ function _opengizra_import_data($operation, $type, &$context) {
 /**
  * BatchAPI callback.
  *
- * @see opengizra_profile_import_data()
+ * @see garmentbox_profile_import_data()
  */
-function _opengizra_setup_blocks($operation, &$context) {
-  $default_theme = variable_get('theme_default', 'opengizra_omega');
+function _garmentbox_setup_blocks($operation, &$context) {
+  $default_theme = variable_get('theme_default', 'garmentbox_omega');
 
   $blocks = array(
     array(

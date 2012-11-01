@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.features.taxonomy.inc
+ * garmentbox_item.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function opengizra_item_taxonomy_default_vocabularies() {
+function garmentbox_item_taxonomy_default_vocabularies() {
   return array(
     'item_status' => array(
       'name' => 'Item status',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_bol.features.taxonomy.inc
+ * garmentbox_bol.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function opengizra_bol_taxonomy_default_vocabularies() {
+function garmentbox_bol_taxonomy_default_vocabularies() {
   return array(
     'bol' => array(
       'name' => 'Bill of labor',

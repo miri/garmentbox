@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_season.views_default.inc
+ * garmentbox_season.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function opengizra_season_views_default_views() {
+function garmentbox_season_views_default_views() {
   $export = array();
 
   $view = new view;
@@ -232,7 +232,7 @@ function opengizra_season_views_default_views() {
   $handler->display->display_options['fields']['field_bom_info']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_bom_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_bom_info']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_bom_info']['type'] = 'opengizra_bom_main_material_icon';
+  $handler->display->display_options['fields']['field_bom_info']['type'] = 'garmentbox_bom_main_material_icon';
   $handler->display->display_options['fields']['field_bom_info']['settings'] = array(
     'edit' => 'Edit',
     'delete' => 'Delete',

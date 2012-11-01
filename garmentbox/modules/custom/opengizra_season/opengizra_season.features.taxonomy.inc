@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_season.features.taxonomy.inc
+ * garmentbox_season.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function opengizra_season_taxonomy_default_vocabularies() {
+function garmentbox_season_taxonomy_default_vocabularies() {
   return array(
     'season_status' => array(
       'name' => 'season status',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_bol.features.field.inc
+ * garmentbox_bol.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_bol_field_default_fields() {
+function garmentbox_bol_field_default_fields() {
   $fields = array();
 
   // Exported field: 'field_collection_item-field_bol_info-field_bol_term'.
@@ -186,7 +186,7 @@ function opengizra_bol_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => 11,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

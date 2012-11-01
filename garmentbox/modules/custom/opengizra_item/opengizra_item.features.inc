@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.features.inc
+ * garmentbox_item.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_item_ctools_plugin_api() {
+function garmentbox_item_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
@@ -25,14 +25,14 @@ function opengizra_item_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function opengizra_item_views_api() {
+function garmentbox_item_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_image_default_styles().
  */
-function opengizra_item_image_default_styles() {
+function garmentbox_item_image_default_styles() {
   $styles = array();
 
   // Exported image style: header_thumbnail.
@@ -129,7 +129,7 @@ function opengizra_item_image_default_styles() {
 /**
  * Implements hook_node_info().
  */
-function opengizra_item_node_info() {
+function garmentbox_item_node_info() {
   $items = array(
     'item' => array(
       'name' => t('Item'),

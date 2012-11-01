@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_material.features.field.inc
+ * garmentbox_material.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_material_field_default_fields() {
+function garmentbox_material_field_default_fields() {
   $fields = array();
 
   // Exported field: 'field_collection_item-field_source_info-field_length'.
@@ -421,7 +421,7 @@ function opengizra_material_field_default_fields() {
           'type' => 'text_default',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -503,7 +503,7 @@ function opengizra_material_field_default_fields() {
           'type' => 'image',
           'weight' => 5,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -586,7 +586,7 @@ function opengizra_material_field_default_fields() {
           'type' => 'text_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -657,7 +657,7 @@ function opengizra_material_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

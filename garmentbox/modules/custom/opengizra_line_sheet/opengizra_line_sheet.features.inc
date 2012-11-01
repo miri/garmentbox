@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_line_sheet.features.inc
+ * garmentbox_line_sheet.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opengizra_line_sheet_ctools_plugin_api() {
+function garmentbox_line_sheet_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
@@ -17,7 +17,7 @@ function opengizra_line_sheet_ctools_plugin_api() {
 /**
  * Implements hook_flag_default_flags().
  */
-function opengizra_line_sheet_flag_default_flags() {
+function garmentbox_line_sheet_flag_default_flags() {
   $flags = array();
   // Exported flag: "Line Sheet".
   $flags['line_sheet'] = array(
@@ -50,7 +50,7 @@ function opengizra_line_sheet_flag_default_flags() {
     'show_on_teaser' => 0,
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'module' => 'opengizra_line_sheet',
+    'module' => 'garmentbox_line_sheet',
     'locked' => array(
       0 => 'name',
     ),

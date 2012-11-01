@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.strongarm.inc
+ * garmentbox_item.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function opengizra_item_strongarm() {
+function garmentbox_item_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
@@ -117,7 +117,7 @@ function opengizra_item_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'opengizra_header' => array(
+      'garmentbox_header' => array(
         'custom_settings' => TRUE,
       ),
       'full' => array(

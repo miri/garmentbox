@@ -8,25 +8,25 @@ $plugin = array(
   'description' => t('Show a line sheet of a season.'),
   'category' => t('Opengizra - Line Sheet'),
   'required context' => new ctools_context_required(t('Node'), 'node'),
-  'hook theme' => 'opengizra_line_sheet_line_sheet_content_type_theme',
+  'hook theme' => 'garmentbox_line_sheet_line_sheet_content_type_theme',
 );
 
 /**
  * Render callback.
  */
-function opengizra_line_sheet_line_sheet_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_line_sheet_line_sheet_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return;
   }
 
   $node = $context->data;
 
-  $module = 'opengizra_line_sheet';
+  $module = 'garmentbox_line_sheet';
   $block = new stdClass();
   $block->module = $module;
   $block->title = t('Line Sheet @season', array('@season' => $node->title));
 
-  if (!$nids = opengizra_line_sheet_flag_get_flagged_content('line_sheet', $node)) {
+  if (!$nids = garmentbox_line_sheet_flag_get_flagged_content('line_sheet', $node)) {
     $block->content = t('No items added to the line sheet.');
     return $block;
   }
@@ -73,7 +73,7 @@ function opengizra_line_sheet_line_sheet_content_type_render($subtype, $conf, $a
   foreach ($items as $nid => $variables) {
     $variables['images'] = theme('item_list', array('items' => $variables['images']));
     $variables['links'] = theme('item_list', array('items' => $variables['links']));
-    $output .= theme('opengizra_line_sheet', $variables);
+    $output .= theme('garmentbox_line_sheet', $variables);
   }
 
   $block->content = $output;
@@ -83,15 +83,15 @@ function opengizra_line_sheet_line_sheet_content_type_render($subtype, $conf, $a
 /**
  * Form settings.
  */
-function opengizra_line_sheet_line_sheet_content_type_edit_form($form, &$form_state) {
+function garmentbox_line_sheet_line_sheet_content_type_edit_form($form, &$form_state) {
   return $form;
 }
 
 /**
  * Delegated hook_teheme().
  */
-function opengizra_line_sheet_line_sheet_content_type_theme(&$theme, $plugin) {
-  $theme['opengizra_line_sheet'] = array(
+function garmentbox_line_sheet_line_sheet_content_type_theme(&$theme, $plugin) {
+  $theme['garmentbox_line_sheet'] = array(
     'path' => $plugin['path'],
     'template' => 'line-sheet',
     'variables' => array(

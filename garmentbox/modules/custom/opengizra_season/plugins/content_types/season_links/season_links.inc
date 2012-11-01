@@ -13,14 +13,14 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_season_season_links_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_season_season_links_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return;
   }
   $nid = $context->data->nid;
 
   $block = new stdClass();
-  $block->module = 'opengizra_season';
+  $block->module = 'garmentbox_season';
   $block->title = '';
 
   $items = array();
@@ -36,6 +36,6 @@ function opengizra_season_season_links_content_type_render($subtype, $conf, $arg
 /**
  * Edit form.
  */
-function opengizra_season_season_links_content_type_edit_form($form, &$form_state) {
+function garmentbox_season_season_links_content_type_edit_form($form, &$form_state) {
   return $form;
 }

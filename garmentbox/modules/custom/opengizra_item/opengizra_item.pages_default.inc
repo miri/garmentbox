@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_item.pages_default.inc
+ * garmentbox_item.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_handlers().
  */
-function opengizra_item_default_page_manager_handlers() {
+function garmentbox_item_default_page_manager_handlers() {
   $export = array();
 
   $handler = new stdClass();
@@ -45,7 +45,7 @@ function opengizra_item_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -242,7 +242,7 @@ function opengizra_item_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'opengizra_page';
+  $display->layout = 'garmentbox_page';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -292,7 +292,7 @@ function opengizra_item_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'title',
-      'formatter' => 'opengizra_bom_table',
+      'formatter' => 'garmentbox_bom_table',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,
@@ -362,7 +362,7 @@ function opengizra_item_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
-      'formatter' => 'opengizra_slideshow',
+      'formatter' => 'garmentbox_slideshow',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,

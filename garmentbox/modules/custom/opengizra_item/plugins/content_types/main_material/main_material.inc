@@ -13,23 +13,23 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_item_main_material_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_item_main_material_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
 
   $block = new stdClass();
-  $block->module = 'opengizra_item';
+  $block->module = 'garmentbox_item';
   $block->title = '';
 
   $node = $context->data;
-  $block->content = opengizra_item_get_main_material_icon($node);
+  $block->content = garmentbox_item_get_main_material_icon($node);
   return $block;
 }
 
 /**
  * Edit form.
  */
-function opengizra_item_main_material_content_type_edit_form($form, &$form_state) {
+function garmentbox_item_main_material_content_type_edit_form($form, &$form_state) {
   return $form;
 }

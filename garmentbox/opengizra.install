@@ -4,17 +4,17 @@
 /**
  * Implements hook_install().
  */
-function opengizra_install() {
-  opengizra_standard_install();
+function garmentbox_install() {
+  garmentbox_standard_install();
 
   // Disable bartik.
   theme_disable(array('bartik'));
 
   // Enable our themes.
-  theme_enable(array('omega', 'opengizra_omega'));
+  theme_enable(array('omega', 'garmentbox_omega'));
 
   // Set the default theme.
-  variable_set('theme_default', 'opengizra_omega');
+  variable_set('theme_default', 'garmentbox_omega');
 
   // Enable node view page override by Page manager module.
   variable_set('page_manager_node_view_disabled', FALSE);
@@ -30,7 +30,7 @@ function opengizra_install() {
 /**
  * Copied from Standard profile -- standard_install()
  */
-function opengizra_standard_install() {
+function garmentbox_standard_install() {
   // Add text formats.
   $filtered_html_format = array(
     'format' => 'filtered_html',

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_task.field_group.inc
+ * garmentbox_task.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function opengizra_task_field_group_info() {
+function garmentbox_task_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();

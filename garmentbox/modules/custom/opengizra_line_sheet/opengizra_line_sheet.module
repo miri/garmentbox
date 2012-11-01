@@ -4,12 +4,12 @@
  * Code for the Opengizra Line Sheet feature.
  */
 
-include_once 'opengizra_line_sheet.features.inc';
+include_once 'garmentbox_line_sheet.features.inc';
 
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function opengizra_line_sheet_ctools_plugin_directory($module, $plugin) {
+function garmentbox_line_sheet_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools') {
     return 'plugins/' . $plugin;
   }
@@ -26,7 +26,7 @@ function opengizra_line_sheet_ctools_plugin_directory($module, $plugin) {
  * @param $node
  *   The season node.
  */
-function opengizra_line_sheet_flag_get_flagged_content($flag_name, $node) {
+function garmentbox_line_sheet_flag_get_flagged_content($flag_name, $node) {
   $field = field_info_field('field_reference_hierarchy');
   $table_name = _field_sql_storage_tablename($field);
 

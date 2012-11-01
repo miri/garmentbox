@@ -13,7 +13,7 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_general_prepopulate_link_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_general_prepopulate_link_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
@@ -26,7 +26,7 @@ function opengizra_general_prepopulate_link_content_type_render($subtype, $conf,
   }
 
   $block = new stdClass();
-  $block->module = 'opengizra_general';
+  $block->module = 'garmentbox_general';
   $block->title = '';
 
   switch ($conf['type']) {
@@ -59,7 +59,7 @@ function opengizra_general_prepopulate_link_content_type_render($subtype, $conf,
 /**
  * Edit form.
  */
-function opengizra_general_prepopulate_link_content_type_edit_form($form, &$form_state) {
+function garmentbox_general_prepopulate_link_content_type_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
 
   $options = array();
@@ -80,7 +80,7 @@ function opengizra_general_prepopulate_link_content_type_edit_form($form, &$form
 /**
  * Edit form submit callback.
  */
-function opengizra_general_prepopulate_link_content_type_edit_form_submit($form, &$form_state) {
+function garmentbox_general_prepopulate_link_content_type_edit_form_submit($form, &$form_state) {
   $form_state['conf']['type'] = $form_state['values']['type'];
 }
 

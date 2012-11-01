@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_order.features.field.inc
+ * garmentbox_order.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_order_field_default_fields() {
+function garmentbox_order_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-order-field_address'.
@@ -73,7 +73,7 @@ function opengizra_order_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -174,7 +174,7 @@ function opengizra_order_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -274,7 +274,7 @@ function opengizra_order_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -378,7 +378,7 @@ function opengizra_order_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -479,7 +479,7 @@ function opengizra_order_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 3,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

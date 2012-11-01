@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_event.features.field.inc
+ * garmentbox_event.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_event_field_default_fields() {
+function garmentbox_event_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-event-body'.
@@ -52,7 +52,7 @@ function opengizra_event_field_default_fields() {
           'type' => 'text_default',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -138,7 +138,7 @@ function opengizra_event_field_default_fields() {
           'type' => 'date_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -246,7 +246,7 @@ function opengizra_event_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -349,7 +349,7 @@ function opengizra_event_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => 3,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

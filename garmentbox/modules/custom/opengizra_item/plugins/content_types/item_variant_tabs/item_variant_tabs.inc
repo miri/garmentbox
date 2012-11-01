@@ -13,7 +13,7 @@ $plugin = array(
 /**
  * Render callback.
  */
-function opengizra_item_item_variant_tabs_content_type_render($subtype, $conf, $args, $context) {
+function garmentbox_item_item_variant_tabs_content_type_render($subtype, $conf, $args, $context) {
   if (empty($context->data)) {
     return FALSE;
   }
@@ -23,7 +23,7 @@ function opengizra_item_item_variant_tabs_content_type_render($subtype, $conf, $
     throw new Exception('Item variants tabs expects passed node to be of type Instance');
   }
 
-  $module = 'opengizra_item';
+  $module = 'garmentbox_item';
   $block = new stdClass();
   $block->module = $module;
   $block->title = '';
@@ -58,7 +58,7 @@ function opengizra_item_item_variant_tabs_content_type_render($subtype, $conf, $
     $items[] = '<a href="#item-variant-' . $node->nid . '">' . check_plain($node->title) . '</a>';
 
 
-    $output = '<div id="item-variant-' . $node->nid . '">' . opengizra_general_render_node_as_mini_panel($node, 'item_variant') . '</div>';
+    $output = '<div id="item-variant-' . $node->nid . '">' . garmentbox_general_render_node_as_mini_panel($node, 'item_variant') . '</div>';
     // Add the tab itself.
     $form['tabs_wrapper']['item_variant_' . $node->nid] = array('#markup' => $output);
   }
@@ -70,7 +70,7 @@ function opengizra_item_item_variant_tabs_content_type_render($subtype, $conf, $
   );
 
   $form['#attached']['library'][] = array('system', 'ui.tabs');
-  $form['#attached']['js'][] = drupal_get_path('module', 'opengizra_item') . "/plugins/content_types/$subtype/$subtype.js";
+  $form['#attached']['js'][] = drupal_get_path('module', 'garmentbox_item') . "/plugins/content_types/$subtype/$subtype.js";
 
   $block->content = $form;
   return $block;
@@ -79,6 +79,6 @@ function opengizra_item_item_variant_tabs_content_type_render($subtype, $conf, $
 /**
  * Edit form.
  */
-function opengizra_item_item_variant_tabs_content_type_edit_form($form, &$form_state) {
+function garmentbox_item_item_variant_tabs_content_type_edit_form($form, &$form_state) {
   return $form;
 }

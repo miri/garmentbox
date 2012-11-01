@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * opengizra_og.features.field.inc
+ * garmentbox_og.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function opengizra_og_field_default_fields() {
+function garmentbox_og_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-address-og_group_ref'.
@@ -66,7 +66,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 2,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -174,7 +174,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 11,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -282,7 +282,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -379,7 +379,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_group_subscribe',
           'weight' => 0,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -480,7 +480,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -588,7 +588,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 8,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -696,7 +696,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 7,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -804,7 +804,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 12,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -912,7 +912,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 6,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1020,7 +1020,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1128,7 +1128,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1236,7 +1236,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1344,7 +1344,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 6,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1452,7 +1452,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 4,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1560,7 +1560,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 8,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1668,7 +1668,7 @@ function opengizra_og_field_default_fields() {
           'type' => 'og_list_default',
           'weight' => 1,
         ),
-        'opengizra_header' => array(
+        'garmentbox_header' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
