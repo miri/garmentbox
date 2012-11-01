@@ -4,7 +4,7 @@
 /**
  * Destination class implementing migration into field_collection.
  */
-class openGizraMigrateDestinationFieldCollection extends MigrateDestinationEntity {
+class garmentboxMigrateDestinationFieldCollection extends MigrateDestinationEntity {
   /**
    * The type of entity hosting this collection field (e.g., node).
    *

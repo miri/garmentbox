@@ -1,6 +1,6 @@
 <?php
 
-abstract class openGizraFieldCollectionMigration extends Migration {
+abstract class garmentboxFieldCollectionMigration extends Migration {
 
   public function __construct() {
     parent::__construct();
@@ -18,7 +18,7 @@ abstract class openGizraFieldCollectionMigration extends Migration {
 
     // Create a MigrateSource object.
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'garmentbox_migrate') . '/csv/' . $this->entityType . '/' . $this->bundle . '.csv', $this->csvColumns, array('header_rows' => 1));
-    $this->destination = new openGizraMigrateDestinationFieldCollection($this->bundle, array('host_entity_type' => $this->hostEntityType));
+    $this->destination = new garmentboxMigrateDestinationFieldCollection($this->bundle, array('host_entity_type' => $this->hostEntityType));
   }
 
   function prepareRow($row) {

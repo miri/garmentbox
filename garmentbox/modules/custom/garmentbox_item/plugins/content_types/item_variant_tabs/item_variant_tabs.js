@@ -1,6 +1,6 @@
 (function ($) {
 
-Drupal.behaviors.openGizraItemVariantTabs = {
+Drupal.behaviors.GarmentboxItemVariantTabs = {
   attach: function(context) {
     // Add tabs.
     $('#tabs').tabs();

@@ -5,14 +5,14 @@
  * Populate distribution with some content.
  */
 
-abstract class openGizraMigration extends Migration {
+abstract class garmentboxMigration extends Migration {
 
   public function __construct() {
     parent::__construct();
 
     // Make sure we can use it for node and term only.
     if (!in_array($this->entityType, array('node', 'taxonomy_term'))) {
-      throw new Exception('openGizraMigration supports only nodes and terms.');
+      throw new Exception('garmentboxMigration supports only nodes and terms.');
     }
 
     $this->description = t('Import @type - @bundle from CSV file.', array('@type' => $this->entityType, '@bundle' => $this->bundle));

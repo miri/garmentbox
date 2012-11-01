@@ -6,7 +6,7 @@
 /**
  * Migrate Season status terms.
  */
-class openGizraSeasonStatusTerms extends openGizraMigration {
+class garmentboxSeasonStatusTerms extends garmentboxMigration {
 
   /**
    * Map the field and properties to the CSV header.
@@ -23,7 +23,7 @@ class openGizraSeasonStatusTerms extends openGizraMigration {
 /**
  * Migrate Item status terms.
  */
-class openGizraItemStatusTerms extends openGizraMigration {
+class garmentboxItemStatusTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -37,7 +37,7 @@ class openGizraItemStatusTerms extends openGizraMigration {
 /**
  * Migrate Task status terms.
  */
-class openGizraTaskStatusTerms extends openGizraMigration {
+class garmentboxTaskStatusTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -57,7 +57,7 @@ class openGizraTaskStatusTerms extends openGizraMigration {
 /**
  * Migrate Size terms.
  */
-class openGizraSizeTerms extends openGizraMigration {
+class garmentboxSizeTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -77,7 +77,7 @@ class openGizraSizeTerms extends openGizraMigration {
 /**
  * Migrate Size terms.
  */
-class openGizraInventoryTypeTerms extends openGizraMigration {
+class garmentboxInventoryTypeTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -101,7 +101,7 @@ class openGizraInventoryTypeTerms extends openGizraMigration {
 /**
  * Migrate measurement unit terms.
  */
-class openGizraMeasurementUnitTerms extends openGizraMigration {
+class garmentboxMeasurementUnitTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -123,7 +123,7 @@ class openGizraMeasurementUnitTerms extends openGizraMigration {
 /**
  * Migrate BOL terms.
  */
-class openGizraBolTerms extends openGizraMigration {
+class garmentboxBolTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -137,7 +137,7 @@ class openGizraBolTerms extends openGizraMigration {
 /**
  * Migrate order status terms.
  */
-class openGizraOrderStatusTerms extends openGizraMigration {
+class garmentboxOrderStatusTerms extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -154,7 +154,7 @@ class openGizraOrderStatusTerms extends openGizraMigration {
 /**
  * Migrate Department nodes.
  */
-class openGizraDepartments extends openGizraMigration {
+class garmentboxDepartments extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -174,7 +174,7 @@ class openGizraDepartments extends openGizraMigration {
 /**
  * Migrate Collection nodes.
  */
-class openGizraSeasons extends openGizraMigration {
+class garmentboxSeasons extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -187,8 +187,8 @@ class openGizraSeasons extends openGizraMigration {
   public $bundle = 'season';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraSeasonStatusTerms',
+    'garmentboxDepartments',
+    'garmentboxSeasonStatusTerms',
   );
 
   public function __construct() {
@@ -196,14 +196,14 @@ class openGizraSeasons extends openGizraMigration {
     $this->addFieldMapping('body', 'body');
     $this
       ->addFieldMapping('field_season_status', 'field_season_status')
-      ->sourceMigration('openGizraSeasonStatusTerms');
+      ->sourceMigration('garmentboxSeasonStatusTerms');
   }
 }
 
 /**
  * Migrate Address nodes.
  */
-class openGizraAddresses extends openGizraMigration {
+class garmentboxAddresses extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -218,7 +218,7 @@ class openGizraAddresses extends openGizraMigration {
   public $bundle = 'address';
 
   public $dependencies = array(
-    'openGizraDepartments',
+    'garmentboxDepartments',
   );
 
   public function __construct() {
@@ -244,7 +244,7 @@ class openGizraAddresses extends openGizraMigration {
 /**
  * Migrate Vendors nodes.
  */
-class openGizraVendors extends openGizraMigration {
+class garmentboxVendors extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -256,8 +256,8 @@ class openGizraVendors extends openGizraMigration {
   public $bundle = 'vendor';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraAddresses',
+    'garmentboxDepartments',
+    'garmentboxAddresses',
   );
 
   public function __construct() {
@@ -266,14 +266,14 @@ class openGizraVendors extends openGizraMigration {
 
     $this
       ->addFieldMapping('field_address_inline', 'field_address_inline')
-      ->sourceMigration('openGizraAddresses');
+      ->sourceMigration('garmentboxAddresses');
   }
 }
 
 /**
  * Migrate Customers nodes.
  */
-class openGizraCustomers extends openGizraMigration {
+class garmentboxCustomers extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -285,7 +285,7 @@ class openGizraCustomers extends openGizraMigration {
   public $bundle = 'customer';
 
   public $dependencies = array(
-     'openGizraAddresses',
+     'garmentboxAddresses',
   );
 
   public function __construct() {
@@ -293,7 +293,7 @@ class openGizraCustomers extends openGizraMigration {
 
     $this
       ->addFieldMapping('field_addresses_inline', 'field_addresses_inline')
-      ->sourceMigration('openGizraAddresses');
+      ->sourceMigration('garmentboxAddresses');
   }
 
   function prepareRow($row) {
@@ -305,7 +305,7 @@ class openGizraCustomers extends openGizraMigration {
 /**
  * Migrate Materials nodes.
  */
-class openGizraMaterials extends openGizraMigration {
+class garmentboxMaterials extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -319,8 +319,8 @@ class openGizraMaterials extends openGizraMigration {
   public $bundle = 'material';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraVendors',
+    'garmentboxDepartments',
+    'garmentboxVendors',
   );
 
   public function __construct() {
@@ -342,7 +342,7 @@ class openGizraMaterials extends openGizraMigration {
 /**
  * Migrate Items nodes.
  */
-class openGizraItems extends openGizraMigration {
+class garmentboxItems extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -357,9 +357,9 @@ class openGizraItems extends openGizraMigration {
   public $bundle = 'item';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraItemStatusTerms',
-    'openGizraSeasons',
+    'garmentboxDepartments',
+    'garmentboxItemStatusTerms',
+    'garmentboxSeasons',
   );
 
   public function __construct() {
@@ -367,11 +367,11 @@ class openGizraItems extends openGizraMigration {
     $this->addFieldMapping('body', 'body');
     $this
       ->addFieldMapping('field_season', 'field_season')
-      ->sourceMigration('openGizraSeasons');
+      ->sourceMigration('garmentboxSeasons');
 
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')
-      ->sourceMigration('openGizraItemStatusTerms');
+      ->sourceMigration('garmentboxItemStatusTerms');
 
     $this->addFieldMapping('field_image', 'field_image');
     $this
@@ -386,7 +386,7 @@ class openGizraItems extends openGizraMigration {
 /**
  * Migrate Task nodes.
  */
-class openGizraTasks extends openGizraMigration {
+class garmentboxTasks extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -400,11 +400,11 @@ class openGizraTasks extends openGizraMigration {
   public $bundle = 'task';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraTaskStatusTerms',
-    'openGizraSeasons',
-    'openGizraItems',
-    'openGizraItemVariants',
+    'garmentboxDepartments',
+    'garmentboxTaskStatusTerms',
+    'garmentboxSeasons',
+    'garmentboxItems',
+    'garmentboxItemVariants',
   );
 
   public function __construct() {
@@ -412,18 +412,18 @@ class openGizraTasks extends openGizraMigration {
     $this->addFieldMapping('body', 'body');
     $this
       ->addFieldMapping('field_entity_reference', 'field_entity_reference')
-      ->sourceMigration(array('openGizraSeasons', 'openGizraItems','openGizraItemVariants'));
+      ->sourceMigration(array('garmentboxSeasons', 'garmentboxItems','garmentboxItemVariants'));
 
     $this
       ->addFieldMapping('field_task_status', 'field_task_status')
-      ->sourceMigration('openGizraTaskStatusTerms');
+      ->sourceMigration('garmentboxTaskStatusTerms');
   }
 }
 
 /**
  * Migrate Item variants nodes.
  */
-class openGizraItemVariants extends openGizraMigration {
+class garmentboxItemVariants extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -439,9 +439,9 @@ class openGizraItemVariants extends openGizraMigration {
   public $bundle = 'item_variant';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraItems',
-    'openGizraItemStatusTerms',
+    'garmentboxDepartments',
+    'garmentboxItems',
+    'garmentboxItemStatusTerms',
   );
 
   public function __construct() {
@@ -449,7 +449,7 @@ class openGizraItemVariants extends openGizraMigration {
     $this->addFieldMapping('body', 'body');
     $this
       ->addFieldMapping('field_item', 'field_item')
-      ->sourceMigration('openGizraItems');
+      ->sourceMigration('garmentboxItems');
 
 
     $this->addFieldMapping('field_images', 'field_images');
@@ -462,7 +462,7 @@ class openGizraItemVariants extends openGizraMigration {
 
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')
-      ->sourceMigration('openGizraItemStatusTerms');
+      ->sourceMigration('garmentboxItemStatusTerms');
 
     $this->addFieldMapping('field_retail_price', 'field_retail_price');
 
@@ -478,7 +478,7 @@ class openGizraItemVariants extends openGizraMigration {
 /**
  * Migrate inventory line nodes.
  */
-class openGizraInventoryLines extends openGizraMigration {
+class garmentboxInventoryLines extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -494,9 +494,9 @@ class openGizraInventoryLines extends openGizraMigration {
   public $bundle = 'inventory_line';
 
   public $dependencies = array(
-    'openGizraDepartments',
-    'openGizraItemVariants',
-    'openGizraInventoryTypeTerms',
+    'garmentboxDepartments',
+    'garmentboxItemVariants',
+    'garmentboxInventoryTypeTerms',
   );
 
   public function __construct() {
@@ -504,11 +504,11 @@ class openGizraInventoryLines extends openGizraMigration {
 
     $this
       ->addFieldMapping('field_item_variant', 'field_item_variant')
-      ->sourceMigration('openGizraItemVariants');
+      ->sourceMigration('garmentboxItemVariants');
 
     $this
       ->addFieldMapping('field_inventory_type', 'field_inventory_type')
-      ->sourceMigration('openGizraInventoryTypeTerms');
+      ->sourceMigration('garmentboxInventoryTypeTerms');
 
     $this->addFieldMapping('field_production_start_date', 'field_production_start_date');
     $this->addFieldMapping('field_delivery_date', 'field_delivery_date');
@@ -520,7 +520,7 @@ class openGizraInventoryLines extends openGizraMigration {
 /**
  * Migrate order nodes.
  */
-class openGizraOrders extends openGizraMigration {
+class garmentboxOrders extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -536,11 +536,11 @@ class openGizraOrders extends openGizraMigration {
   public $bundle = 'order';
 
   public $dependencies = array(
-    'openGizraSeasons',
-    'openGizraCustomers',
-    'openGizraAddresses',
-    'openGizraInventoryLines',
-    'openGizraOrderStatusTerms'
+    'garmentboxSeasons',
+    'garmentboxCustomers',
+    'garmentboxAddresses',
+    'garmentboxInventoryLines',
+    'garmentboxOrderStatusTerms'
   );
 
   public function __construct() {
@@ -548,24 +548,24 @@ class openGizraOrders extends openGizraMigration {
 
     $this
       ->addFieldMapping('field_season', 'field_season')
-      ->sourceMigration('openGizraSeasons');
+      ->sourceMigration('garmentboxSeasons');
 
     $this
       ->addFieldMapping('field_customer', 'field_customer')
-      ->sourceMigration('openGizraCustomers');
+      ->sourceMigration('garmentboxCustomers');
 
     $this
       ->addFieldMapping('field_address', 'field_address')
-      ->sourceMigration('openGizraAddresses');
+      ->sourceMigration('garmentboxAddresses');
 
     $this
       ->addFieldMapping('field_inventory_line_inline', 'field_inventory_line_inline')
-      ->sourceMigration('openGizraInventoryLines')
+      ->sourceMigration('garmentboxInventoryLines')
       ->separator('|');
 
     $this
       ->addFieldMapping('field_order_status', 'field_order_status')
-      ->sourceMigration('openGizraOrderStatusTerms');
+      ->sourceMigration('garmentboxOrderStatusTerms');
   }
 
   public function prepare($entity, $row) {
@@ -580,7 +580,7 @@ class openGizraOrders extends openGizraMigration {
 /**
  * Migrate bubble nodes.
  */
-class garmentBoxBubbles extends openGizraMigration {
+class garmentBoxBubbles extends garmentboxMigration {
 
   public $csvColumns = array(
     array('id', 'Unique ID'),
@@ -612,7 +612,7 @@ class garmentBoxBubbles extends openGizraMigration {
 /**
  * Migrate "Status info" field collection.
  */
-class openGizraCollectionsFieldStatusInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldStatusInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Season'),
@@ -625,19 +625,19 @@ class openGizraCollectionsFieldStatusInfo extends openGizraFieldCollectionMigrat
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraSeasonStatusTerms',
-    'openGizraSeasons',
+    'garmentboxSeasonStatusTerms',
+    'garmentboxSeasons',
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraSeasons');
+      ->sourceMigration('garmentboxSeasons');
 
     $this
       ->addFieldMapping('field_season_status', 'field_season_status')
-      ->sourceMigration('openGizraSeasonStatusTerms');
+      ->sourceMigration('garmentboxSeasonStatusTerms');
 
     $this->addFieldMapping('field_date', 'field_date');
   }
@@ -647,7 +647,7 @@ class openGizraCollectionsFieldStatusInfo extends openGizraFieldCollectionMigrat
 /**
  * Migrate "Size info" field collection.
  */
-class openGizraCollectionsFieldSizeInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldSizeInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Item variant'),
@@ -660,19 +660,19 @@ class openGizraCollectionsFieldSizeInfo extends openGizraFieldCollectionMigratio
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraSizeTerms',
-    'openGizraItemVariants',
+    'garmentboxSizeTerms',
+    'garmentboxItemVariants',
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraItemVariants');
+      ->sourceMigration('garmentboxItemVariants');
 
     $this
       ->addFieldMapping('field_size', 'field_size')
-      ->sourceMigration('openGizraSizeTerms');
+      ->sourceMigration('garmentboxSizeTerms');
 
     $this->addFieldMapping('field_sku', 'field_sku');
   }
@@ -682,7 +682,7 @@ class openGizraCollectionsFieldSizeInfo extends openGizraFieldCollectionMigratio
 /**
  * Migrate "Source info" field collection.
  */
-class openGizraCollectionsFieldSourceInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldSourceInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Material'),
@@ -698,39 +698,39 @@ class openGizraCollectionsFieldSourceInfo extends openGizraFieldCollectionMigrat
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraMaterials',
-    'openGizraVendors',
-    'openGizraMeasurementUnitTerms',
+    'garmentboxMaterials',
+    'garmentboxVendors',
+    'garmentboxMeasurementUnitTerms',
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraMaterials');
+      ->sourceMigration('garmentboxMaterials');
 
     $this
       ->addFieldMapping('field_vendor', 'field_vendor')
-      ->sourceMigration('openGizraVendors');
+      ->sourceMigration('garmentboxVendors');
 
     $this->addFieldMapping('field_price', 'field_price');
 
     $this
       ->addFieldMapping('field_unit', 'field_unit')
-      ->sourceMigration('openGizraMeasurementUnitTerms');
+      ->sourceMigration('garmentboxMeasurementUnitTerms');
 
     $this->addFieldMapping('field_length', 'field_length');
 
     $this
       ->addFieldMapping('field_length_unit', 'field_length_unit')
-      ->sourceMigration('openGizraMeasurementUnitTerms');
+      ->sourceMigration('garmentboxMeasurementUnitTerms');
   }
 }
 
 /**
  * Migrate "Bom info" field collection.
  */
-class openGizraCollectionsFieldBomInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldBomInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Item variant'),
@@ -744,25 +744,25 @@ class openGizraCollectionsFieldBomInfo extends openGizraFieldCollectionMigration
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraItemVariants',
-    'openGizraMaterials',
-    'openGizraCollectionsFieldSourceInfo',
-    'openGizraMeasurementUnitTerms',
+    'garmentboxItemVariants',
+    'garmentboxMaterials',
+    'garmentboxCollectionsFieldSourceInfo',
+    'garmentboxMeasurementUnitTerms',
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraItemVariants');
+      ->sourceMigration('garmentboxItemVariants');
 
     $this
       ->addFieldMapping('field_material_item', 'field_material_item')
-      ->sourceMigration('openGizraCollectionsFieldSourceInfo');
+      ->sourceMigration('garmentboxCollectionsFieldSourceInfo');
 
     $this
       ->addFieldMapping('field_unit', 'field_unit')
-      ->sourceMigration('openGizraMeasurementUnitTerms');
+      ->sourceMigration('garmentboxMeasurementUnitTerms');
 
     $this->addFieldMapping('field_quantity', 'field_quantity');
   }
@@ -771,7 +771,7 @@ class openGizraCollectionsFieldBomInfo extends openGizraFieldCollectionMigration
 /**
  * Migrate "Bol info" field collection.
  */
-class openGizraCollectionsFieldBolInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldBolInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Item variant'),
@@ -784,19 +784,19 @@ class openGizraCollectionsFieldBolInfo extends openGizraFieldCollectionMigration
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraItemVariants',
-    'openGizraBolTerms'
+    'garmentboxItemVariants',
+    'garmentboxBolTerms'
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraItemVariants');
+      ->sourceMigration('garmentboxItemVariants');
 
     $this
       ->addFieldMapping('field_bol_term', 'field_bol_term')
-      ->sourceMigration('openGizraBolTerms');
+      ->sourceMigration('garmentboxBolTerms');
 
     $this->addFieldMapping('field_price', 'field_price');
   }
@@ -805,7 +805,7 @@ class openGizraCollectionsFieldBolInfo extends openGizraFieldCollectionMigration
 /**
  * Migrate "Quantity info" field collection.
  */
-class openGizraCollectionsFieldQuantityInfo extends openGizraFieldCollectionMigration {
+class garmentboxCollectionsFieldQuantityInfo extends garmentboxFieldCollectionMigration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Inventory line'),
@@ -818,19 +818,19 @@ class openGizraCollectionsFieldQuantityInfo extends openGizraFieldCollectionMigr
   public $hostEntityType = 'node';
 
   public $dependencies = array(
-    'openGizraInventoryLines',
-    'openGizraSizeTerms',
+    'garmentboxInventoryLines',
+    'garmentboxSizeTerms',
   );
 
   public function __construct() {
     parent::__construct();
     $this
       ->addFieldMapping('host_entity_id', 'host_entity_id')
-      ->sourceMigration('openGizraInventoryLines');
+      ->sourceMigration('garmentboxInventoryLines');
 
     $this
       ->addFieldMapping('field_size', 'field_size')
-      ->sourceMigration('openGizraSizeTerms');
+      ->sourceMigration('garmentboxSizeTerms');
 
     $this->addFieldMapping('field_quantity', 'field_quantity');
   }
