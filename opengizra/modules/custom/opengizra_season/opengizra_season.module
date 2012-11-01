@@ -29,17 +29,27 @@ function opengizra_season_init() {
   }
 
   $node = menu_get_object();
+  $item = menu_get_item();
+  if (!$node) {
+    if (substr($item['path'], 0, 8) == 'season/%') {
+      $node = $item['map'][1]->data;
+    }
+  }
+
   if (!$node || $node->type != 'season') {
     return;
   }
 
-  $item = menu_get_item();
-
-
-
-  _opengizra_season_redirect_to_season_items($node->nid);
-
-  _opengizra_season_redirect_to_season_tasks($node->nid);
+  if (!opengizra_season_has_items($node->nid)) {
+    if ($item['path'] != 'season/%/items') {
+      drupal_goto("season/{$node->nid}/items");
+    }
+  }
+  elseif(!opengizra_season_has_tasks($node->nid)) {
+    if ($item['path'] != 'node/%') {
+      drupal_goto("season/{$node->nid}");
+    }
+  }
 }
 
 /**
@@ -66,7 +76,7 @@ function _opengizra_season_redirect_to_season() {
 /**
  * Redirect from a season page to the season's items tab if there are no items.
  */
-function _opengizra_season_redirect_to_season_items($nid) {
+function opengizra_season_has_items($nid) {
   // Query for an item of the season.
   $query = new EntityFieldQuery();
   $count = $query->entityCondition('entity_type', 'node')
@@ -78,16 +88,14 @@ function _opengizra_season_redirect_to_season_items($nid) {
     ->execute();
 
   // If there are no items at all, redirect to items page.
-  if (!$count) {
-    drupal_goto("season/$nid/items");
-  }
+  return $count;
 }
 
 /**
  * Redirect from a season page to the season's tasks tab if there are no tasks.
  */
-function _opengizra_season_redirect_to_season_tasks($nid) {
-    // Query for an item of the season.
+function opengizra_season_has_tasks($nid) {
+  // Query for an item of the season.
   $query = new EntityFieldQuery();
   $count = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'task')
@@ -98,7 +106,5 @@ function _opengizra_season_redirect_to_season_tasks($nid) {
     ->execute();
 
   // If there are no items at all, redirect to items page.
-  if (!$count) {
-    drupal_goto("season/$nid");
-  }
+  return $count;
 }
