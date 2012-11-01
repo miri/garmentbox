@@ -1,6 +1,6 @@
 ; $Id: standard.info,v 1.2 2010/10/25 15:48:41 webchick Exp $
 name = Garmentbox
-description = Open gizra PLM (Product Lifecycle Management)
+description = Garmentbox PLM (Product Lifecycle Management)
 version = VERSION
 core = 7.x
 
