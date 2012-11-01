@@ -93,4 +93,4 @@ dependencies[] = garmentbox_season
 dependencies[] = garmentbox_task
 dependencies[] = garmentbox_vendor
 dependencies[] = garmentbox_og
-dependencies[] = garment_box_bubble
+dependencies[] = garmentbox_bubble
