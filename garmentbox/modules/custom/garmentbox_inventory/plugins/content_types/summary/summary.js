@@ -3,7 +3,7 @@
 /**
  * Expand and contract variant items of specific inventory types.
  */
-Drupal.behaviors.OpenGizraInventorySummary = {
+Drupal.behaviors.GarmentboxInventorySummary = {
   attach: function (context) {
     $('tr.expandable td').click(function(event) {
       event.preventDefault();
