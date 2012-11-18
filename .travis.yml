@@ -29,7 +29,6 @@ before_script:
   - cd profiles/garmentbox/behat
   - cp behat.local.yml.travis behat.local.yml
   - composer install
-  - curl http://127.0.0.1
 
 script:
   - ./bin/behat
