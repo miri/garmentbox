@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 5.4
+  - 5.3
 
 mysql:
   database: drupal
@@ -9,6 +9,10 @@ mysql:
   encoding: utf8
 
 before_script:
+  - sudo apt-get install apache2
+  - sudo a2enmod actions
+  - sudo a2enmod rewrite
+  - sudo service apache2 restart    
   - "mysql -e 'create database drupal;'"
   - pear channel-discover pear.drush.org
   - pear install drush/drush
@@ -17,18 +21,12 @@ before_script:
   - bash scripts/build
   - cd www
   - drush si garmentbox --db-url=mysql://root:@127.0.0.1/drupal --account-pass=admin --yes
-  - drush cc all --yes
-  - cd ..
 
   # Create a behat configuration file.
-  - cd garmentbox/behat
+  - cd profiles/garmentbox/behat
   - cp behat.local.yml.travis behat.local.yml
-
-  # Create Drush alias.
-  - cp aliases.drushrc.php ~/.drush/
   - composer install
 
 script:
-  - sudo drush @garmentbox runserver --server=builtin 80 &
   - ./bin/behat
 
