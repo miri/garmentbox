@@ -33,7 +33,7 @@ projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.x-dev"
 
 projects[entityreference][subdir] = "contrib"
-projects[entityreference][version] = "1.x-dev"
+projects[entityreference][version] = "1.0"
 projects[entityreference][patch][] = "http://drupal.org/files/1354482-er-user-roles-19.patch"
 
 projects[entityreference_prepopulate][subdir] = "contrib"
@@ -133,7 +133,7 @@ projects[jcarousel][subdir] = "contrib"
 projects[jcarousel][version] = "2.6"
 
 projects[og][subdir] = "contrib"
-projects[og][version] = "2.x-dev"
+projects[og][version] = "2.0-beta3"
 
 projects[beautytips][subdir] = "contrib"
 projects[beautytips][version] = "2.x-dev"
