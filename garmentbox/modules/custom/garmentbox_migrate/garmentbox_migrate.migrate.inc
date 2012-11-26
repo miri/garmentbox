@@ -99,6 +99,31 @@ class garmentboxInventoryTypeTerms extends garmentboxMigration {
 }
 
 /**
+ * Migrate material type terms.
+ */
+class garmentboxMaterialTypeTerms extends garmentboxMigration {
+
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('name', 'Name'),
+    array('field_has_width', 'Has width'),
+    array('field_has_length', 'Has length'),
+    array('field_has_radius', 'Has radius'),
+  );
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'material_types';
+
+  public function __construct() {
+    parent::__construct();
+    $this->addFieldMapping('field_has_width', 'field_has_width');
+    $this->addFieldMapping('field_has_length', 'field_has_length');
+    $this->addFieldMapping('field_has_radius', 'field_has_radius');
+  }
+}
+
+
+/**
  * Migrate measurement unit terms.
  */
 class garmentboxMeasurementUnitTerms extends garmentboxMigration {
@@ -313,6 +338,12 @@ class garmentboxMaterials extends garmentboxMigration {
     array('body', 'Body'),
     array('field_nick_name', 'Nick name'),
     array('field_images', 'Images'),
+    array('field_material_type', 'Material type'),
+    array('field_length', 'Length'),
+    array('field_width', 'Width'),
+    array('field_radius', 'Radius'),
+    array('field_washing_instructions', 'Washing instructions'),
+    array('field_fabric_content', 'Fabric content'),
   );
 
   public $entityType = 'node';
@@ -321,6 +352,7 @@ class garmentboxMaterials extends garmentboxMigration {
   public $dependencies = array(
     'garmentboxDepartments',
     'garmentboxVendors',
+    'garmentboxMaterialTypeTerms',
   );
 
   public function __construct() {
@@ -328,14 +360,23 @@ class garmentboxMaterials extends garmentboxMigration {
 
     $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('field_nick_name', 'field_nick_name');
-
     $this->addFieldMapping('field_images', 'field_images');
+
     $this
       ->addFieldMapping('field_images:file_replace')
       ->defaultValue(FILE_EXISTS_REPLACE);
     $this
       ->addFieldMapping('field_images:source_dir')
       ->defaultValue(drupal_get_path('module', 'garmentbox_migrate') . '/images');
+    $this
+      ->addFieldMapping('field_material_type', 'field_material_type')
+      ->sourceMigration('garmentboxMaterialTypeTerms');
+
+    $this->addFieldMapping('field_length', 'field_length');
+    $this->addFieldMapping('field_width', 'field_width');
+    $this->addFieldMapping('field_radius', 'field_radius');
+    $this->addFieldMapping('field_washing_instructions', 'field_washing_instructions');
+    $this->addFieldMapping('field_fabric_content', 'field_fabric_content');
   }
 }
 
@@ -401,10 +442,11 @@ class garmentboxTasks extends garmentboxMigration {
 
   public $dependencies = array(
     'garmentboxDepartments',
-    'garmentboxTaskStatusTerms',
-    'garmentboxSeasons',
     'garmentboxItems',
     'garmentboxItemVariants',
+    'garmentboxMaterials',
+    'garmentboxSeasons',
+    'garmentboxTaskStatusTerms',
   );
 
   public function __construct() {
@@ -412,7 +454,7 @@ class garmentboxTasks extends garmentboxMigration {
     $this->addFieldMapping('body', 'body');
     $this
       ->addFieldMapping('field_entity_reference', 'field_entity_reference')
-      ->sourceMigration(array('garmentboxSeasons', 'garmentboxItems','garmentboxItemVariants'));
+      ->sourceMigration(array('garmentboxSeasons', 'garmentboxItems','garmentboxItemVariants', 'garmentboxMaterials',));
 
     $this
       ->addFieldMapping('field_task_status', 'field_task_status')
@@ -754,7 +796,7 @@ class garmentboxCollectionsFieldBomInfo extends garmentboxFieldCollectionMigrati
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('host_entity_id', 'Item variant'),
-    array('field_material_item', 'Material source'),
+    array('field_source_info_ref', 'Material source'),
     array('field_unit', 'Unit'),
     array('field_quantity_decimal', 'Quantity'),
   );
@@ -777,7 +819,7 @@ class garmentboxCollectionsFieldBomInfo extends garmentboxFieldCollectionMigrati
       ->sourceMigration('garmentboxItemVariants');
 
     $this
-      ->addFieldMapping('field_material_item', 'field_material_item')
+      ->addFieldMapping('field_source_info_ref', 'field_source_info_ref')
       ->sourceMigration('garmentboxCollectionsFieldSourceInfo');
 
     $this

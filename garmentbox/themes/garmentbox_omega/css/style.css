@@ -182,12 +182,14 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
   background-image: url("../images/expand.gif"); }
 
 .panel-pane.tabs ul {
-  margin: 20px 0 0; }
+  margin: 20px 0 0;
+  max-width: 990px; }
   .panel-pane.tabs ul li {
     margin: 0;
     height: 36px;
     float: left;
-    margin-right: 6px; }
+    margin-right: 6px;
+    margin-top: 6px; }
     .panel-pane.tabs ul li a {
       background-color: white;
       text-align: center;
@@ -313,30 +315,30 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
       text-shadow: 0 1px #b4d1cf;
       padding: 0;
       font-size: 13px; }
-  #title .field-name-field-item-status, #title .field-name-field-season-status {
+  #title .field-name-field-item-status, #title .field-name-field-season-status, #title .field-name-field-material-type {
     float: right;
     margin-top: 10px; }
-    #title .field-name-field-item-status .field-label, #title .field-name-field-season-status .field-label {
+    #title .field-name-field-item-status .field-label, #title .field-name-field-season-status .field-label, #title .field-name-field-material-type .field-label {
       color: #c4eeed;
       text-transform: lowercase; }
-    #title .field-name-field-item-status .field-item, #title .field-name-field-season-status .field-item {
+    #title .field-name-field-item-status .field-item, #title .field-name-field-season-status .field-item, #title .field-name-field-material-type .field-item {
       color: #f6fafb;
       text-transform: uppercase;
       font-size: 20px; }
 
-.node-type-item #title, .node-type-item-variant #title {
+.node-type-item #title, .node-type-item-variant #title, .node-type-material #title {
   background: url("../images/title-large-bg.png") repeat-x;
   height: 86px; }
-  .node-type-item #title .field-name-field-item-status, .node-type-item-variant #title .field-name-field-item-status {
+  .node-type-item #title .field-name-field-item-status, .node-type-item-variant #title .field-name-field-item-status, .node-type-material #title .field-name-field-item-status {
     margin-top: 22px; }
-  .node-type-item #title .field-name-field-image, .node-type-item #title .field-name-field-images, .node-type-item-variant #title .field-name-field-image, .node-type-item-variant #title .field-name-field-images {
+  .node-type-item #title .field-name-field-image, .node-type-item #title .field-name-field-images, .node-type-item-variant #title .field-name-field-image, .node-type-item-variant #title .field-name-field-images, .node-type-material #title .field-name-field-image, .node-type-material #title .field-name-field-images {
     margin-top: 7px;
     margin-right: 10px;
     background: url("../images/header-thumbnail-bg.png") repeat-x;
     float: left;
     width: 57px;
     height: 77px; }
-    .node-type-item #title .field-name-field-image img, .node-type-item #title .field-name-field-images img, .node-type-item-variant #title .field-name-field-image img, .node-type-item-variant #title .field-name-field-images img {
+    .node-type-item #title .field-name-field-image img, .node-type-item #title .field-name-field-images img, .node-type-item-variant #title .field-name-field-image img, .node-type-item-variant #title .field-name-field-images img, .node-type-material #title .field-name-field-image img, .node-type-material #title .field-name-field-images img {
       margin: 3px auto;
       display: block; }
 
@@ -413,6 +415,98 @@ section.content {
   #add-task.secondary-button a:before {
     content: url("../images/gray-plus.png");
     margin-right: 8px; }
+
+.node-type-material .pane-prepopulate-link#task-add {
+  position: relative; }
+  .node-type-material .pane-prepopulate-link#task-add a {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    border: 1px solid #60636a;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: #27282d;
+    border-color: #636468;
+    background: #acb4b4;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acb4b4), color-stop(4%, #bdd5d5), color-stop(8%, #a7c7c7), color-stop(27%, #97bdbd), color-stop(35%, #94bbbb), color-stop(77%, #93baba), color-stop(100%, #8fb4b4));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
+    /* IE6-9 */ }
+    .node-type-material .pane-prepopulate-link#task-add a:hover {
+      text-decoration: none; }
+    .node-type-material .pane-prepopulate-link#task-add a:before {
+      content: url("../images/gray-plus.png");
+      margin-right: 8px; }
+.node-type-material .pane-node-content {
+  margin-top: 10px; }
+.node-type-material .pane-task-list-material-task-list .view-footer {
+  margin-top: 5px; }
+.node-type-material .pane-node-field-source-info {
+  position: relative;
+  margin-top: 40px; }
+  .node-type-material .pane-node-field-source-info table {
+    width: 100%; }
+    .node-type-material .pane-node-field-source-info table .field_collection_item_operations {
+      width: 85px; }
+    .node-type-material .pane-node-field-source-info table .field_price {
+      width: 150px; }
+  .node-type-material .pane-node-field-source-info .action-links li {
+    list-style-type: none; }
+    .node-type-material .pane-node-field-source-info .action-links li a {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      border: 1px solid #60636a;
+      border-radius: 5px;
+      padding: 5px 8px;
+      color: #27282d;
+      border-color: #636468;
+      background: #acb4b4;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+      /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acb4b4), color-stop(4%, #bdd5d5), color-stop(8%, #a7c7c7), color-stop(27%, #97bdbd), color-stop(35%, #94bbbb), color-stop(77%, #93baba), color-stop(100%, #8fb4b4));
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+      /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+      /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+      /* IE10+ */
+      background: linear-gradient(to bottom, #acb4b4 0%, #bdd5d5 4%, #a7c7c7 8%, #97bdbd 27%, #94bbbb 35%, #93baba 77%, #8fb4b4 100%);
+      /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
+      /* IE6-9 */ }
+      .node-type-material .pane-node-field-source-info .action-links li a:hover {
+        text-decoration: none; }
+      .node-type-material .pane-node-field-source-info .action-links li a:before {
+        content: url("../images/gray-plus.png");
+        margin-right: 8px; }
+.node-type-material .primary-button#material-add a {
+  margin-top: 6px; }
+.node-type-material .field-name-field-washing-instructions::after, .node-type-material .field-name-field-fabric-content::after,
+.node-type-material .field-name-field-radius::after, .node-type-material .field-name-field-width::after, .node-type-material .field-name-field-length::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+.node-type-material .field-name-field-washing-instructions .field-label, .node-type-material .field-name-field-fabric-content .field-label,
+.node-type-material .field-name-field-radius .field-label, .node-type-material .field-name-field-width .field-label, .node-type-material .field-name-field-length .field-label {
+  float: left; }
+.node-type-material .content .panel-col-last .jcarousel-skin-default .jcarousel-container-horizontal .jcarousel-clip-horizontal ul.jcarousel-view--material--material-item-variants li {
+  height: 100%; }
 
 .node-type-item-variant .pane-item-variant-summary {
   border-bottom: 1px solid #d1d1d1;
@@ -569,65 +663,20 @@ li {
 .item-list ul li {
   margin: 0; }
 
-html.js fieldset.collapsible {
-  border: none;
-  padding: 0;
-  margin-bottom: 45px; }
-  html.js fieldset.collapsible.collapsed .fieldset-legend {
-    background: url("../images/arrow-white-down-status.png") 7px 10px no-repeat #4f4f4f; }
-  html.js fieldset.collapsible a {
-    font-size: 15px; }
-    html.js fieldset.collapsible a.fieldset-title {
-      color: white; }
-  html.js fieldset.collapsible .fieldset-hr {
-    border: 0;
-    border-bottom: solid #4f4f4f 1px;
-    height: 0px;
-    margin: 0;
-    padding-top: 25px;
-    background: url("../images/top-shaddow-collapsible.jpg") repeat-x bottom; }
-  html.js fieldset.collapsible legend {
-    padding: 0; }
-    html.js fieldset.collapsible legend .fieldset-legend {
-      font-weight: bold;
-      background: url("../images/arrow-white-up-status.png") 7px 10px no-repeat #4f4f4f;
-      padding-top: 3px;
-      padding-bottom: 3px;
-      margin: 0;
-      position: absolute; }
-  html.js fieldset.collapsible .views-table caption {
-    display: none; }
-  html.js fieldset.collapsible .fieldset-wrapper tr, html.js fieldset.collapsible .fieldset-wrapper td {
-    padding: 0; }
-  html.js fieldset.collapsible .fieldset-wrapper thead th {
-    font-family: Dosis, Arial, Helvetica, sans-serif; }
-    html.js fieldset.collapsible .fieldset-wrapper thead th .active img {
-      margin-left: 5px; }
-  html.js fieldset.collapsible .fieldset-wrapper .display-cell .display-cell-image {
-    padding: 1px;
-    float: left; }
-    html.js fieldset.collapsible .fieldset-wrapper .display-cell .display-cell-image a {
-      display: block;
-      height: 75px; }
-  html.js fieldset.collapsible .fieldset-wrapper .display-cell .display-cell-title {
-    float: left;
-    margin-top: 28px; }
-  html.js fieldset.collapsible .fieldset-wrapper .views-field-field-bom-info a {
-    display: block;
-    height: 75px; }
-  html.js fieldset.collapsible .fieldset-wrapper .views-field-field-bom-info img {
-    border-right: 1px solid #B7B7B7;
-    padding: 5px; }
-  html.js fieldset.collapsible .fieldset-wrapper td.views-field-field-item-status, html.js fieldset.collapsible .fieldset-wrapper td.views-field-field-retail-price, html.js fieldset.collapsible .fieldset-wrapper td.views-field-field-wholesale-price {
-    font-weight: bold;
-    font-size: 15px;
-    color: #010101;
-    padding-left: 10px; }
-  html.js fieldset.collapsible .fieldset-wrapper td.views-field-field-item-status {
-    font-weight: normal; }
-
 table tbody td {
   font-family: Arial, Helvetica, sans-serif; }
+
+.content .panel-col-first {
+  float: left;
+  width: 49.5%; }
+.content .panel-col-last {
+  float: left;
+  width: 49.5%;
+  margin-left: 1%; }
+  .content .panel-col-last .jcarousel-skin-default .jcarousel-container-horizontal .jcarousel-clip-horizontal {
+    width: 414px; }
+    .content .panel-col-last .jcarousel-skin-default .jcarousel-container-horizontal .jcarousel-clip-horizontal ul li {
+      height: 213px; }
 
 html.js fieldset.collapsible {
   border: none;
