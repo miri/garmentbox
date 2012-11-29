@@ -434,26 +434,31 @@ input.triple-checkbox.checked {
   background-position: -24px;
 }
 
-/* line 3, ../sass/partials/layout/_header.scss */
+/* line 1, ../sass/partials/layout/_header.scss */
+#admin-menu {
+  margin-top: -30px;
+}
+
+/* line 7, ../sass/partials/layout/_header.scss */
 header#header {
   background: url("../images/header-bg.png") repeat-x;
   height: 38px;
   padding-top: 14px;
 }
-/* line 8, ../sass/partials/layout/_header.scss */
+/* line 12, ../sass/partials/layout/_header.scss */
 header#header #block-search-form {
   display: none;
 }
-/* line 12, ../sass/partials/layout/_header.scss */
+/* line 16, ../sass/partials/layout/_header.scss */
 header#header .region-header {
   float: right;
 }
-/* line 15, ../sass/partials/layout/_header.scss */
+/* line 19, ../sass/partials/layout/_header.scss */
 header#header .region-header #block-system-user-menu ul {
   padding: 0;
   margin: 0;
 }
-/* line 19, ../sass/partials/layout/_header.scss */
+/* line 23, ../sass/partials/layout/_header.scss */
 header#header .region-header #block-system-user-menu ul li {
   list-style-type: none;
   list-style-image: none;
@@ -461,16 +466,16 @@ header#header .region-header #block-system-user-menu ul li {
   float: left;
   font-size: 11px;
 }
-/* line 30, ../sass/partials/layout/_header.scss */
+/* line 34, ../sass/partials/layout/_header.scss */
 header#title {
   background: url("../images/title-bg.png") repeat-x;
   height: 68px;
 }
-/* line 34, ../sass/partials/layout/_header.scss */
+/* line 38, ../sass/partials/layout/_header.scss */
 header#title * {
   font-family: Dosis, Arial, Helvetica, sans-serif;
 }
-/* line 38, ../sass/partials/layout/_header.scss */
+/* line 42, ../sass/partials/layout/_header.scss */
 header#title h1 {
   font-weight: normal;
   float: left;
@@ -480,7 +485,7 @@ header#title h1 {
   text-shadow: 0 1px #cadcdc;
   font-size: 40px;
 }
-/* line 48, ../sass/partials/layout/_header.scss */
+/* line 52, ../sass/partials/layout/_header.scss */
 header#title .tabs {
   border: none;
   padding: 0;
@@ -489,7 +494,7 @@ header#title .tabs {
   margin-top: 32px;
   margin-left: 5px;
 }
-/* line 56, ../sass/partials/layout/_header.scss */
+/* line 60, ../sass/partials/layout/_header.scss */
 header#title .tabs a {
   background-color: transparent;
   border: none;
@@ -499,33 +504,33 @@ header#title .tabs a {
   padding: 0;
   font-size: 13px;
 }
-/* line 67, ../sass/partials/layout/_header.scss */
+/* line 71, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status, header#title .field-name-field-season-status {
   float: right;
   margin-top: 10px;
 }
-/* line 71, ../sass/partials/layout/_header.scss */
+/* line 75, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status .field-label, header#title .field-name-field-season-status .field-label {
   color: #c4eeed;
   text-transform: lowercase;
 }
-/* line 76, ../sass/partials/layout/_header.scss */
+/* line 80, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status .field-item, header#title .field-name-field-season-status .field-item {
   color: #f6fafb;
   text-transform: uppercase;
   font-size: 20px;
 }
 
-/* line 86, ../sass/partials/layout/_header.scss */
+/* line 90, ../sass/partials/layout/_header.scss */
 .node-type-item #title, .node-type-item-variant #title {
   background: url("../images/title-large-bg.png") repeat-x;
   height: 86px;
 }
-/* line 90, ../sass/partials/layout/_header.scss */
+/* line 94, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-item-status, .node-type-item-variant #title .field-name-field-item-status {
   margin-top: 22px;
 }
-/* line 94, ../sass/partials/layout/_header.scss */
+/* line 98, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image, .node-type-item #title .field-name-field-images, .node-type-item-variant #title .field-name-field-image, .node-type-item-variant #title .field-name-field-images {
   margin-top: 7px;
   margin-right: 10px;
@@ -534,7 +539,7 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   width: 57px;
   height: 77px;
 }
-/* line 102, ../sass/partials/layout/_header.scss */
+/* line 106, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image img, .node-type-item #title .field-name-field-images img, .node-type-item-variant #title .field-name-field-image img, .node-type-item-variant #title .field-name-field-images img {
   margin: 3px auto;
   display: block;
