@@ -55,6 +55,7 @@
  * Regions:
  * - $page['header']: Items for the header region.
  * - $page['navigation']: Items for the navigation region, below the main menu (if any).
+ * - $page['breadcrumbs']: Breadcrumbs region.
  * - $page['help']: Dynamic help text, mostly for admin pages.
  * - $page['highlighted']: Items for the highlighted content region.
  * - $page['content']: The main content of the current page.
@@ -91,6 +92,19 @@
 
 <div id="main">
   <div id="main-content" role="main" class="container">
+
+    <?php if (!empty($page['breadcrumbs'])): ?>
+      <div id="breadcrumbs">
+        <?php print render($page['breadcrumbs']); ?>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!empty($page['tabs'])): ?>
+      <div id="tabs">
+        <?php print render($page['tabs']); ?>
+      </div>
+    <?php endif; ?>
+
     <?php print render($page['highlighted']); ?>
     <a id="main-content-anchor"></a>
 

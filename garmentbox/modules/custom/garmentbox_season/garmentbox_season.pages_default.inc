@@ -87,53 +87,6 @@ function garmentbox_season_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'tabs';
-    $pane->type = 'breadcrumbs';
-    $pane->subtype = 'breadcrumbs';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['tabs'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'tabs';
-    $pane->type = 'season_links';
-    $pane->subtype = 'season_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'tabs',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['tabs'][1] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'tabs';
     $pane->type = 'prepopulate_link';
     $pane->subtype = 'prepopulate_link';
     $pane->shown = TRUE;
@@ -153,10 +106,10 @@ function garmentbox_season_default_page_manager_handlers() {
       'css_class' => 'primary-button',
     );
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['tabs'][2] = 'new-4';
+    $display->content['new-2'] = $pane;
+    $display->panels['tabs'][0] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -273,55 +226,8 @@ function garmentbox_season_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-1'] = $pane;
     $display->panels['content'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'tabs';
-    $pane->type = 'breadcrumbs';
-    $pane->subtype = 'breadcrumbs';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['tabs'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'tabs';
-    $pane->type = 'season_links';
-    $pane->subtype = 'season_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'tabs',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['tabs'][1] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['season_inventory'] = $page;
@@ -409,7 +315,7 @@ function garmentbox_season_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-2';
     $pane->panel = 'content';
     $pane->type = 'views_panes';
     $pane->subtype = 'item_variants-panel_pane_item_variants';
@@ -428,57 +334,10 @@ function garmentbox_season_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['content'][0] = 'new-4';
+    $display->content['new-2'] = $pane;
+    $display->panels['content'][0] = 'new-2';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'tabs';
-    $pane->type = 'breadcrumbs';
-    $pane->subtype = 'breadcrumbs';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['tabs'][0] = 'new-5';
-    $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'tabs';
-    $pane->type = 'season_links';
-    $pane->subtype = 'season_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'tabs',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['tabs'][1] = 'new-6';
-    $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-3';
     $pane->panel = 'tabs';
     $pane->type = 'prepopulate_link';
     $pane->subtype = 'prepopulate_link';
@@ -499,12 +358,12 @@ function garmentbox_season_default_page_manager_pages() {
       'css_class' => 'primary-button',
     );
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['tabs'][2] = 'new-7';
+    $display->content['new-3'] = $pane;
+    $display->panels['tabs'][0] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-5';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['season_items'] = $page;
@@ -592,7 +451,7 @@ function garmentbox_season_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-4';
     $pane->panel = 'content';
     $pane->type = 'orders';
     $pane->subtype = 'orders';
@@ -611,57 +470,10 @@ function garmentbox_season_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['content'][0] = 'new-8';
+    $display->content['new-4'] = $pane;
+    $display->panels['content'][0] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
-    $pane->panel = 'tabs';
-    $pane->type = 'breadcrumbs';
-    $pane->subtype = 'breadcrumbs';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['tabs'][0] = 'new-9';
-    $pane = new stdClass();
-    $pane->pid = 'new-10';
-    $pane->panel = 'tabs';
-    $pane->type = 'season_links';
-    $pane->subtype = 'season_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'tabs',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['tabs'][1] = 'new-10';
-    $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-5';
     $pane->panel = 'tabs';
     $pane->type = 'prepopulate_link';
     $pane->subtype = 'prepopulate_link';
@@ -682,12 +494,12 @@ function garmentbox_season_default_page_manager_pages() {
       'css_class' => 'primary-button',
     );
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['tabs'][2] = 'new-11';
+    $display->content['new-5'] = $pane;
+    $display->panels['tabs'][0] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-9';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['season_orders'] = $page;
@@ -751,7 +563,7 @@ function garmentbox_season_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-6';
     $pane->panel = 'content';
     $pane->type = 'views_panes';
     $pane->subtype = 'production_orders-panel_pane_1';
@@ -770,57 +582,10 @@ function garmentbox_season_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['content'][0] = 'new-12';
+    $display->content['new-6'] = $pane;
+    $display->panels['content'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-13';
-    $pane->panel = 'tabs';
-    $pane->type = 'breadcrumbs';
-    $pane->subtype = 'breadcrumbs';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['tabs'][0] = 'new-13';
-    $pane = new stdClass();
-    $pane->pid = 'new-14';
-    $pane->panel = 'tabs';
-    $pane->type = 'season_links';
-    $pane->subtype = 'season_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'tabs',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['tabs'][1] = 'new-14';
-    $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-7';
     $pane->panel = 'tabs';
     $pane->type = 'prepopulate_link';
     $pane->subtype = 'prepopulate_link';
@@ -841,12 +606,12 @@ function garmentbox_season_default_page_manager_pages() {
       'css_class' => 'primary-button',
     );
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-15'] = $pane;
-    $display->panels['tabs'][2] = 'new-15';
+    $display->content['new-7'] = $pane;
+    $display->panels['tabs'][0] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-13';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['season_production_orders'] = $page;

@@ -135,3 +135,98 @@ function garmentbox_general_entity_info_alter(&$entity_info) {
     'custom settings' => TRUE,
   );
 }
+
+/**
+ * Create the breadcrumbs for a node.
+ *
+ * @see garmentbox_omega_preprocess_page().
+ */
+function garmentbox_general_get_node_breadcrumbs($node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+
+  $links = array();
+  $links[] = l(t('home'), '');
+
+  if (!empty($wrapper->field_reference_hierarchy)) {
+    $count = count($wrapper->field_reference_hierarchy->value());
+    for ($delta = 0; $delta < $count; $delta++) {
+      $node = $wrapper->field_reference_hierarchy->get($delta)->value();
+      $links[] = l($node->title, 'node/' . $node->nid);
+    }
+  }
+
+  $links[] = '<span>' . $wrapper->label() . '</span>';
+  $breadcrumbs = implode('<span>&gt;</span>', $links);
+  return $breadcrumbs;
+}
+
+/**
+ * Build the tabs for a node.
+ *
+ * @see garmentbox_omega_preprocess_page().
+ */
+function garmentbox_general_get_node_tabs($node) {
+  switch ($node->type) {
+    case 'season':
+      return garmentbox_season_get_tabs($node);
+
+    case 'item':
+      break;
+  }
+}
+
+/**
+ * Create the main button (The pink link of the tabs row) of a node.
+ *
+ * @see garmentbox_omega_preprocess_page().
+ */
+function garmentbox_general_get_node_main_button($node) {
+  // If the node is an item variant, load the related item.
+  if ($node->type == 'item_variant') {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $node = $wrapper->field_item->value();
+  }
+
+  $add_destination = TRUE;
+
+  switch ($type) {
+    case 'task':
+      $field_name = 'field_entity_reference';
+      $link_text = t('Add new task');
+      break;
+
+    case 'item_variant':
+      $field_name = 'field_item';
+      $link_text = t('Add new variation');
+      break;
+
+    case 'order':
+      $field_name = 'field_season';
+      $link_text = t('Add new order');
+      break;
+
+    case 'item':
+      $field_name = 'field_season';
+      $link_text = t('Add new item');
+      // Don't add destination, as we will redirect user to create an
+      // item-variant.
+      $add_destination = FALSE;
+      break;
+
+    case 'production_order':
+      $field_name = 'field_season';
+      $link_text = t('Add new production order');
+      break;
+
+    default:
+      throw new Exception("Main button for '$type' not defined.");
+  }
+
+  $options = array('query' => array($field_name => $node->nid));
+
+  if ($add_destination) {
+    $options['query'] = $options['query'] + drupal_get_destination();
+  }
+  $block->content = l($link_text, 'node/add/' . str_replace('_', '-', $conf['type']), $options);
+  return $block;
+}

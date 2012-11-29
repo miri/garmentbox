@@ -301,18 +301,18 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
 }
 
 /* line 1, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul {
+#tabs ul {
   margin: 20px 0 0;
 }
 /* line 4, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul li {
+#tabs ul li {
   margin: 0;
   height: 36px;
   float: left;
   margin-right: 6px;
 }
 /* line 10, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul li a {
+#tabs ul li a {
   background-color: white;
   text-align: center;
   min-width: 114px;
@@ -326,7 +326,7 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
   box-shadow: 1px 1px 2px 0 #cacaca;
 }
 /* line 22, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul li a:hover {
+#tabs ul li a:hover {
   text-decoration: none;
   background-color: #fafafa;
   -moz-box-shadow: 0 0 3px 0 #cacaca;
@@ -338,7 +338,7 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
   transition: 0.2s;
 }
 /* line 29, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul li a.active {
+#tabs ul li a.active {
   color: #ea166b;
   -moz-box-shadow: 0 -1px 2px 0 #cacaca;
   -webkit-box-shadow: 0 -1px 2px 0 #cacaca;
@@ -347,7 +347,7 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
   height: 42px;
 }
 /* line 35, ../sass/partials/widget/_tabs.scss */
-.panel-pane.tabs ul li a.active:hover {
+#tabs ul li a.active:hover {
   background-color: white;
   -moz-box-shadow: 0 -1px 2px 0 #cacaca;
   -webkit-box-shadow: 0 -1px 2px 0 #cacaca;
@@ -355,17 +355,17 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
 }
 
 /* line 3, ../sass/partials/widget/_breadcrumbs.scss */
-.pane-breadcrumbs span, .pane-breadcrumbs a {
+#breadcrumbs span, #breadcrumbs a {
   color: #7b7b7b;
   margin-right: 5px;
   font-size: 11px;
 }
 /* line 9, ../sass/partials/widget/_breadcrumbs.scss */
-.pane-breadcrumbs a {
+#breadcrumbs a {
   border-bottom: 1px solid #d5d5d3;
 }
 /* line 12, ../sass/partials/widget/_breadcrumbs.scss */
-.pane-breadcrumbs a:hover {
+#breadcrumbs a:hover {
   text-decoration: none;
   border-bottom: 1px solid #7b7b7b;
   -moz-transition: 0.3s;
@@ -537,7 +537,7 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
 }
 
 /* line 1, ../sass/partials/layout/_page.scss */
-section.tabs {
+#tabs {
   margin-top: 10px;
 }
 
