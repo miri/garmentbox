@@ -94,16 +94,22 @@
   <div id="main-content" role="main" class="container">
 
     <?php if (!empty($page['breadcrumbs'])): ?>
-      <div id="breadcrumbs">
+      <div id="breadcrumbs" class="clearfix">
         <?php print render($page['breadcrumbs']); ?>
       </div>
     <?php endif; ?>
 
-    <?php if (!empty($page['tabs'])): ?>
-      <div id="tabs">
+
+    <?php if (!empty($page['tabs']) || !empty($page['main_button'])): ?>
+      <div id="tabs" class="clearfix">
         <?php print render($page['tabs']); ?>
+
+        <div id="main-button">
+          <?php print render($page['main_button']); ?>
+        </div>
       </div>
     <?php endif; ?>
+
 
     <?php print render($page['highlighted']); ?>
     <a id="main-content-anchor"></a>

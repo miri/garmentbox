@@ -354,17 +354,21 @@ html.js fieldset.collapsible.collapsed .fieldset-legend {
   box-shadow: 0 -1px 2px 0 #cacaca;
 }
 
-/* line 3, ../sass/partials/widget/_breadcrumbs.scss */
+/* line 1, ../sass/partials/widget/_breadcrumbs.scss */
+#breadcrumbs {
+  margin-top: 10px;
+}
+/* line 4, ../sass/partials/widget/_breadcrumbs.scss */
 #breadcrumbs span, #breadcrumbs a {
   color: #7b7b7b;
   margin-right: 5px;
   font-size: 11px;
 }
-/* line 9, ../sass/partials/widget/_breadcrumbs.scss */
+/* line 10, ../sass/partials/widget/_breadcrumbs.scss */
 #breadcrumbs a {
   border-bottom: 1px solid #d5d5d3;
 }
-/* line 12, ../sass/partials/widget/_breadcrumbs.scss */
+/* line 13, ../sass/partials/widget/_breadcrumbs.scss */
 #breadcrumbs a:hover {
   text-decoration: none;
   border-bottom: 1px solid #7b7b7b;
@@ -430,26 +434,26 @@ input.triple-checkbox.checked {
   background-position: -24px;
 }
 
-/* line 2, ../sass/partials/layout/_header.scss */
+/* line 3, ../sass/partials/layout/_header.scss */
 header#header {
   background: url("../images/header-bg.png") repeat-x;
   height: 38px;
   padding-top: 14px;
 }
-/* line 7, ../sass/partials/layout/_header.scss */
+/* line 8, ../sass/partials/layout/_header.scss */
 header#header #block-search-form {
   display: none;
 }
-/* line 11, ../sass/partials/layout/_header.scss */
+/* line 12, ../sass/partials/layout/_header.scss */
 header#header .region-header {
   float: right;
 }
-/* line 14, ../sass/partials/layout/_header.scss */
+/* line 15, ../sass/partials/layout/_header.scss */
 header#header .region-header #block-system-user-menu ul {
   padding: 0;
   margin: 0;
 }
-/* line 18, ../sass/partials/layout/_header.scss */
+/* line 19, ../sass/partials/layout/_header.scss */
 header#header .region-header #block-system-user-menu ul li {
   list-style-type: none;
   list-style-image: none;
@@ -457,16 +461,16 @@ header#header .region-header #block-system-user-menu ul li {
   float: left;
   font-size: 11px;
 }
-/* line 29, ../sass/partials/layout/_header.scss */
+/* line 30, ../sass/partials/layout/_header.scss */
 header#title {
   background: url("../images/title-bg.png") repeat-x;
   height: 68px;
 }
-/* line 33, ../sass/partials/layout/_header.scss */
+/* line 34, ../sass/partials/layout/_header.scss */
 header#title * {
   font-family: Dosis, Arial, Helvetica, sans-serif;
 }
-/* line 37, ../sass/partials/layout/_header.scss */
+/* line 38, ../sass/partials/layout/_header.scss */
 header#title h1 {
   font-weight: normal;
   float: left;
@@ -476,7 +480,7 @@ header#title h1 {
   text-shadow: 0 1px #cadcdc;
   font-size: 40px;
 }
-/* line 47, ../sass/partials/layout/_header.scss */
+/* line 48, ../sass/partials/layout/_header.scss */
 header#title .tabs {
   border: none;
   padding: 0;
@@ -485,7 +489,7 @@ header#title .tabs {
   margin-top: 32px;
   margin-left: 5px;
 }
-/* line 55, ../sass/partials/layout/_header.scss */
+/* line 56, ../sass/partials/layout/_header.scss */
 header#title .tabs a {
   background-color: transparent;
   border: none;
@@ -495,33 +499,33 @@ header#title .tabs a {
   padding: 0;
   font-size: 13px;
 }
-/* line 66, ../sass/partials/layout/_header.scss */
+/* line 67, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status, header#title .field-name-field-season-status {
   float: right;
   margin-top: 10px;
 }
-/* line 70, ../sass/partials/layout/_header.scss */
+/* line 71, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status .field-label, header#title .field-name-field-season-status .field-label {
   color: #c4eeed;
   text-transform: lowercase;
 }
-/* line 75, ../sass/partials/layout/_header.scss */
+/* line 76, ../sass/partials/layout/_header.scss */
 header#title .field-name-field-item-status .field-item, header#title .field-name-field-season-status .field-item {
   color: #f6fafb;
   text-transform: uppercase;
   font-size: 20px;
 }
 
-/* line 85, ../sass/partials/layout/_header.scss */
+/* line 86, ../sass/partials/layout/_header.scss */
 .node-type-item #title, .node-type-item-variant #title {
   background: url("../images/title-large-bg.png") repeat-x;
   height: 86px;
 }
-/* line 89, ../sass/partials/layout/_header.scss */
+/* line 90, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-item-status, .node-type-item-variant #title .field-name-field-item-status {
   margin-top: 22px;
 }
-/* line 93, ../sass/partials/layout/_header.scss */
+/* line 94, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image, .node-type-item #title .field-name-field-images, .node-type-item-variant #title .field-name-field-image, .node-type-item-variant #title .field-name-field-images {
   margin-top: 7px;
   margin-right: 10px;
@@ -530,7 +534,7 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   width: 57px;
   height: 77px;
 }
-/* line 101, ../sass/partials/layout/_header.scss */
+/* line 102, ../sass/partials/layout/_header.scss */
 .node-type-item #title .field-name-field-image img, .node-type-item #title .field-name-field-images img, .node-type-item-variant #title .field-name-field-image img, .node-type-item-variant #title .field-name-field-images img {
   margin: 3px auto;
   display: block;
@@ -558,8 +562,12 @@ section.content h2.pane-title {
 }
 
 /* line 1, ../sass/partials/layout/_buttons.scss */
-#add-variant a, .primary-button a {
+#main-button {
+  margin-top: 6px;
   float: right;
+}
+/* line 5, ../sass/partials/layout/_buttons.scss */
+#main-button a {
   border: 1px solid #60636a;
   border-radius: 5px;
   padding: 5px 8px;
@@ -584,16 +592,16 @@ section.content h2.pane-title {
   /* IE6-9 */
 }
 /* line 20, ../sass/_mixins.scss */
-#add-variant a:hover, .primary-button a:hover {
+#main-button a:hover {
   text-decoration: none;
 }
 /* line 40, ../sass/_mixins.scss */
-#add-variant a:before, .primary-button a:before {
+#main-button a:before {
   content: url("../images/white-plus.png");
   margin-right: 8px;
 }
 
-/* line 6, ../sass/partials/layout/_buttons.scss */
+/* line 10, ../sass/partials/layout/_buttons.scss */
 #add-task.secondary-button a {
   float: right;
   border: 1px solid #60636a;

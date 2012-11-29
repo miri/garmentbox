@@ -23,6 +23,7 @@ function garmentbox_omega_preprocess_page(&$variables) {
     $variables['page']['title'] = node_view($node, 'garmentbox_header');
     $variables['page']['breadcrumbs'] = garmentbox_general_get_node_breadcrumbs($node);
     $variables['page']['tabs'] = garmentbox_general_get_node_tabs($node);
+    $variables['page']['main_button'] = garmentbox_general_get_node_main_button($node);
   }
 }
 
