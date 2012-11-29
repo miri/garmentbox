@@ -14,8 +14,15 @@ function garmentbox_omega_preprocess_page(&$variables) {
   // When the node wasn't loaded, try fetching it from the menu item.
   if (!$node) {
     $item = menu_get_item();
-    if (substr($item['path'], 0, 8) == 'season/%' && !empty($item['map'][1]->data)) {
-      $node = $item['map'][1]->data;
+    if (substr($item['path'], 0, 8) == 'season/%') {
+      // When on a panels page, ['map'][1] has the node itself.
+      if (!empty($item['map'][1]->data)) {
+        $node = $item['map'][1]->data;
+      }
+      // When on a views page, ['map'][1] has the node ID.
+      elseif (is_numeric($item['map'][1])) {
+        $node = node_load($item['map'][1]);
+      }
     }
   }
 

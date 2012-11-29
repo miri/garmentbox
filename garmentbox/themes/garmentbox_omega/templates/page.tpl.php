@@ -110,17 +110,22 @@
       </div>
     <?php endif; ?>
 
+    <div id="content" class="clearfix">
+      <h2><?php print $title; ?></h2>
 
-    <?php print render($page['highlighted']); ?>
-    <a id="main-content-anchor"></a>
+      <?php print render($page['highlighted']); ?>
+      <a id="main-content-anchor"></a>
 
-    <?php print $messages; ?>
+      <?php print $messages; ?>
 
-    <?php print render($page['help']); ?>
-    <?php if ($action_links): ?>
-      <ul class="action-links"><?php print render($action_links); ?></ul>
-    <?php endif; ?>
-    <?php print render($page['content']); ?>
+      <?php print render($page['help']); ?>
+      <?php if ($action_links): ?>
+        <ul class="action-links"><?php print render($action_links); ?></ul>
+      <?php endif; ?>
+
+
+      <?php print render($page['content']); ?>
+    </div>
   </div>
 
   <?php if (render($page['navigation'])): ?>
