@@ -18,6 +18,13 @@ function garmentbox_season_init() {
   if (drupal_is_front_page()) {
     _garmentbox_season_redirect_to_season();
   }
+
+  // When on the main season page, redirect to the season's tasks page.
+  $item = menu_get_item();
+  if ($item['path'] == 'node/%' && $item['map'][1]->type == 'season') {
+    $nid = $item['map'][1]->nid;
+    drupal_goto("season/$nid/tasks");
+  }
 }
 
 /**
@@ -70,7 +77,7 @@ function _garmentbox_season_redirect_to_season() {
     drupal_goto("season/$nid/items");
   }
   else {
-    drupal_goto("season/$nid");
+    drupal_goto("season/$nid/tasks");
   }
 }
 
@@ -102,7 +109,7 @@ function _garmentbox_season_count_view_rows($view_name, $nid) {
  */
 function garmentbox_season_get_tabs($nid) {
   $items = array();
-  $items[] = l(t('Task List'), "node/$nid");
+  $items[] = l(t('Task List'), "season/$nid/tasks");
   $items[] = l(t('Items'), "season/$nid/items");
   $items[] = l(t('Inventory'), "season/$nid/inventory");
   $items[] = l(t('Orders'), "season/$nid/orders");

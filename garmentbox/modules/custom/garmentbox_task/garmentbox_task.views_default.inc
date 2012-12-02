@@ -376,6 +376,10 @@ function garmentbox_task_views_default_views() {
       'label' => 'Content: Reference hierarchy (field_reference_hierarchy)',
     ),
   );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['path'] = 'season/%/tasks';
   $export['task_list'] = $view;
 
   return $export;
