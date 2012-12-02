@@ -20,16 +20,6 @@ function garmentbox_general_init() {
 }
 
 /**
- * Implements hook_ctools_plugin_directory().
- */
-function garmentbox_general_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'ctools') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-
-/**
  * Get the hierachy for a node.
  *
  * @todo: Move to general module.
