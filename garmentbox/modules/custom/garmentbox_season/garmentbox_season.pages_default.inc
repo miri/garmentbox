@@ -58,7 +58,6 @@ function garmentbox_season_default_page_manager_pages() {
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
-      'tabs' => NULL,
       'content' => NULL,
     ),
   );
