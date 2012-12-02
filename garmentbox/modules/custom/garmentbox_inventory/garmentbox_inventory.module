@@ -7,6 +7,15 @@
 include_once 'garmentbox_inventory.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function garmentbox_inventory_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
  * Implements hook_field_access().
  *
  * Hide date fields from inventory form.
@@ -116,14 +125,16 @@ function garmentbox_inventory_is_inventory_item_ordered($nid) {
 /**
  * Show the inventory of a season or item.
  *
- * @param $nid
- *   Season or item node ID.
+ * @param $node
+ *   Season or item node or node ID.
  *
  * @return
  *   Rendered table with inventory info.
  */
-function garmentbox_inventory_get_summary($nid) {
-  $node = node_load($nid);
+function garmentbox_inventory_get_summary($node) {
+  if (!is_object($node)) {
+    $node = node_load($nid);
+  }
 
   $empty_message = t('No inventory created yet.');
 
