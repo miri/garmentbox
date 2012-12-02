@@ -133,7 +133,7 @@ function garmentbox_inventory_is_inventory_item_ordered($nid) {
  */
 function garmentbox_inventory_get_summary($node) {
   if (!is_object($node)) {
-    $node = node_load($nid);
+    $node = node_load($node);
   }
 
   $empty_message = t('No inventory created yet.');
