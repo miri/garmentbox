@@ -87,14 +87,14 @@ projects[message][version] = "1.4"
 projects[message_notify][subdir] = "contrib"
 projects[message_notify][version] = "1.1"
 
-projects[migrate][version] = 2.4
 projects[migrate][subdir] = "contrib"
+projects[migrate][version] = "2.5"
 
-projects[migrate_extras][version] = 2.x-dev
 projects[migrate_extras][subdir] = "contrib"
+projects[migrate_extras][version] = "2.5"
 
-projects[mimemail][version] = 1.0-alpha1
 projects[mimemail][subdir] = "contrib"
+projects[mimemail][version] = 1.0-alpha1
 projects[mimemail][patch][] = "http://drupal.org/files/rules-1585546-1-moving_rules_actions.patch"
 projects[mimemail][patch][] = "http://drupal.org/files/compress_install_missing_value.patch"
 
@@ -115,8 +115,7 @@ projects[oauth][patch][] = "http://drupal.org/files/1535764-fix-signatures.patch
 projects[oauth][patch][] = "http://drupal.org/files/oauth-1431642-consumer-deletion.patch"
 
 projects[og][subdir] = "contrib"
-projects[og][version] = "2.0-beta3"
-projects[og][patch][] = "http://drupal.org/files/1856062-og-efq-base-table-1.patch"
+projects[og][version] = "2.x-dev"
 
 projects[og_purl][subdir] = "contrib"
 projects[og_purl][version] = "1.x-dev"
