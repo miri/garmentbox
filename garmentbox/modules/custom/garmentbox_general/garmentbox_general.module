@@ -7,6 +7,15 @@
 include_once 'garmentbox_general.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function garmentbox_general_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
  * Implements hook_init().
  */
 function garmentbox_general_init() {
@@ -190,12 +199,6 @@ function garmentbox_general_get_node_main_button($node) {
   switch ($item['path']) {
     case 'node/%':
       switch ($node->type) {
-        case 'season':
-          $field_name = 'field_entity_reference';
-          $link_text = t('Add new task');
-          $type = 'task';
-          break;
-
         case 'item_variant':
           $field_name = 'field_item';
           $link_text = t('Add new variation');
@@ -224,6 +227,12 @@ function garmentbox_general_get_node_main_button($node) {
           return;
           break;
       }
+      break;
+
+    case 'season/%/tasks':
+      $field_name = 'field_entity_reference';
+      $link_text = t('Add new task');
+      $type = 'task';
       break;
 
     case 'season/%/orders':
