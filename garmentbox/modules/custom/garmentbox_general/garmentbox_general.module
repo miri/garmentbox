@@ -175,6 +175,7 @@ function garmentbox_general_get_node_tabs($node) {
       return garmentbox_season_get_tabs($node->nid);
 
     case 'item':
+    case 'item_variant':
       return garmentbox_item_get_tabs($node);
       break;
   }
@@ -188,11 +189,7 @@ function garmentbox_general_get_node_tabs($node) {
 function garmentbox_general_get_node_main_button($node) {
   $item = menu_get_item();
 
-  // If the node is an item variant, load the related item.
-  if ($node->type == 'item_variant') {
-    $wrapper = entity_metadata_wrapper('node', $node);
-    $node = $wrapper->field_item->value();
-  }
+  $target_nid = $node->nid;
 
   $add_destination = TRUE;
 
@@ -208,6 +205,10 @@ function garmentbox_general_get_node_main_button($node) {
         case 'item_variant':
           $field_name = 'field_item';
           $link_text = t('Add new variation');
+          $type = 'item-variant';
+          // If the node is an item variant, load the related item.
+          $wrapper = entity_metadata_wrapper('node', $node);
+          $target_nid = $wrapper->field_item->getIdentifier();
           break;
 
         case 'item':
@@ -249,7 +250,7 @@ function garmentbox_general_get_node_main_button($node) {
       return;
   }
 
-  $options = array('query' => array($field_name => $node->nid));
+  $options = array('query' => array($field_name => $target_nid));
 
   if ($add_destination) {
     $options['query'] = $options['query'] + drupal_get_destination();
