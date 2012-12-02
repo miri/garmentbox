@@ -168,7 +168,7 @@ function garmentbox_general_get_node_breadcrumbs($node) {
 function garmentbox_general_get_node_tabs($node) {
   switch ($node->type) {
     case 'season':
-      return garmentbox_season_get_tabs($node);
+      return garmentbox_season_get_tabs($node->nid);
 
     case 'item':
       return garmentbox_item_get_tabs($node);
@@ -229,6 +229,12 @@ function garmentbox_general_get_node_main_button($node) {
       $field_name = 'field_season';
       $link_text = t('Add new production order');
       $type = 'production-order';
+      break;
+
+    case 'season/%/items':
+      $field_name = 'field_season';
+      $link_text = t('Add new item');
+      $type = 'item';
       break;
 
     default:
