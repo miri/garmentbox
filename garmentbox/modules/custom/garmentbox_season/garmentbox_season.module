@@ -83,11 +83,15 @@ function _garmentbox_season_count_view_rows($view_name, $nid) {
 }
 
 /**
- * Render callback.
+ * Build the tabs list for a season node.
+ *
+ * @param $nid
+ *   Season node ID.
+ *
+ * @return
+ *   Themed item list of tabs.
  */
-function garmentbox_season_get_tabs($node) {
-  $nid = $node->nid;
-
+function garmentbox_season_get_tabs($nid) {
   $items = array();
   $items[] = l(t('Task List'), "node/$nid");
   $items[] = l(t('Items'), "season/$nid/items");

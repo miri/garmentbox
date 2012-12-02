@@ -171,6 +171,7 @@ function garmentbox_general_get_node_tabs($node) {
       return garmentbox_season_get_tabs($node);
 
     case 'item':
+      return garmentbox_item_get_tabs($node);
       break;
   }
 }
@@ -192,28 +193,36 @@ function garmentbox_general_get_node_main_button($node) {
   $add_destination = TRUE;
 
   switch ($item['path']) {
-    case 'task':
-      $field_name = 'field_entity_reference';
-      $link_text = t('Add new task');
-      break;
+    case 'node/%':
+      $type = $node->type;
+      switch ($type) {
+        case 'task':
+          $field_name = 'field_entity_reference';
+          $link_text = t('Add new task');
+          break;
 
-    case 'item_variant':
-      $field_name = 'field_item';
-      $link_text = t('Add new variation');
+        case 'item_variant':
+          $field_name = 'field_item';
+          $link_text = t('Add new variation');
+          break;
+
+        case 'item':
+          $field_name = 'field_season';
+          $link_text = t('Add new item');
+          // Don't add destination, as we will redirect user to create an
+          // item-variant.
+          $add_destination = FALSE;
+        break;
+
+        default:
+          break;
+      }
       break;
 
     case 'season/%/orders':
       $field_name = 'field_season';
       $link_text = t('Add new order');
       $type = 'order';
-      break;
-
-    case 'item':
-      $field_name = 'field_season';
-      $link_text = t('Add new item');
-      // Don't add destination, as we will redirect user to create an
-      // item-variant.
-      $add_destination = FALSE;
       break;
 
     case 'season/%/production-orders':
