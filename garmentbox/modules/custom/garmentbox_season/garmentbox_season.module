@@ -33,6 +33,15 @@ function garmentbox_season_menu() {
     'access arguments' => array('view', 1),
   );
 
+  $items['season/%/inventory'] = array(
+    'title' => 'Inventory summary',
+    'page callback' => 'garmentbox_inventory_get_summary',
+    'page arguments' => array(1),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 1),
+  );
+
   return $items;
 }
 

@@ -215,6 +215,8 @@ function garmentbox_general_get_node_main_button($node) {
         break;
 
         default:
+          // No button defined.
+          return;
           break;
       }
       break;
@@ -238,7 +240,8 @@ function garmentbox_general_get_node_main_button($node) {
       break;
 
     default:
-      throw new Exception("Main button for '{$item['path']}' not defined.");
+      // No button defined.
+      return;
   }
 
   $options = array('query' => array($field_name => $node->nid));
