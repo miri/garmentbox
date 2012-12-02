@@ -202,9 +202,10 @@ function garmentbox_general_get_node_main_button($node) {
       $link_text = t('Add new variation');
       break;
 
-    case 'order':
+    case 'season/%/orders':
       $field_name = 'field_season';
       $link_text = t('Add new order');
+      $type = 'order';
       break;
 
     case 'item':
@@ -222,7 +223,7 @@ function garmentbox_general_get_node_main_button($node) {
       break;
 
     default:
-      throw new Exception("Main button for '$type' not defined.");
+      throw new Exception("Main button for '{$item['path']}' not defined.");
   }
 
   $options = array('query' => array($field_name => $node->nid));

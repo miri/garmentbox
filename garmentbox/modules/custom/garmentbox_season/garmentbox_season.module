@@ -21,6 +21,22 @@ function garmentbox_season_init() {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function garmentbox_season_menu() {
+  $items['season/%/orders'] = array(
+    'title' => 'Orders',
+    'page callback' => 'garmentbox_order_get_orders_table',
+    'page arguments' => array(1),
+    'type' => MENU_CALLBACK,
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 1),
+  );
+
+  return $items;
+}
+
+/**
  * Redirect from the front page to a season page.
  */
 function _garmentbox_season_redirect_to_season() {

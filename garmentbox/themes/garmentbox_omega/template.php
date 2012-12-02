@@ -19,9 +19,16 @@ function garmentbox_omega_preprocess_page(&$variables) {
       if (!empty($item['map'][1]->data)) {
         $node = $item['map'][1]->data;
       }
-      // When on a views page, ['map'][1] has the node ID.
-      elseif (is_numeric($item['map'][1])) {
-        $node = node_load($item['map'][1]);
+      else {
+        $nid = NULL;
+        // When on a views page, ['map'][1] has the node ID.
+        if (!empty($item['map']) && is_numeric($item['map'][1])) {
+          $node = node_load($item['map'][1]);
+        }
+        // When on a menu page callback. ['original_map'][1] has the node ID.
+        elseif (is_numeric($item['original_map'][1])) {
+          $node = node_load($item['original_map'][1]);
+        }
       }
     }
   }
