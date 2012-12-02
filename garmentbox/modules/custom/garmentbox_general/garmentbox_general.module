@@ -212,9 +212,9 @@ function garmentbox_general_get_node_main_button($node) {
           break;
 
         case 'item':
-          $field_name = 'field_season';
-          $link_text = t('Add new item');
-          $type = 'item_variant';
+          $field_name = 'field_item';
+          $link_text = t('Add new variation');
+          $type = 'item-variant';
           // Don't add destination, as we will redirect user to create an
           // item-variant.
           $add_destination = FALSE;
