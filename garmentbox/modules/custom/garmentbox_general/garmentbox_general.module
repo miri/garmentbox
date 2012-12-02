@@ -178,6 +178,10 @@ function garmentbox_general_get_node_tabs($node) {
     case 'item_variant':
       return garmentbox_item_get_tabs($node);
       break;
+
+    case 'material':
+      return garmentbox_material_get_tabs($node->nid);
+      break;
   }
 }
 
@@ -220,6 +224,11 @@ function garmentbox_general_get_node_main_button($node) {
           $add_destination = FALSE;
           break;
 
+        case 'material':
+          $link_text = t('Add new material');
+          $type = 'material';
+          break;
+
         default:
           // No button defined.
           return;
@@ -250,8 +259,10 @@ function garmentbox_general_get_node_main_button($node) {
       return;
   }
 
-  $options = array('query' => array($field_name => $target_nid));
-
+  $options = array('query' => array());
+  if (!empty($field_name)) {
+    $options['query'] = array($field_name => $target_nid);
+  }
   if ($add_destination) {
     $options['query'] = $options['query'] + drupal_get_destination();
   }
