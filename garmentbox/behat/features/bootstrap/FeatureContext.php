@@ -62,6 +62,34 @@ class FeatureContext extends DrupalContext {
   }
 
   /**
+   * @Given /^I am logged in as a user from "([^"]*)"$/
+   */
+  public function iAmLoggedInAsAUserFrom($company) {
+    $role = 'authenticated user';
+    // Check if a user with this role is already logged in.
+    if ($this->user && isset($this->user->role) && $this->user->role == $role) {
+      return TRUE;
+    }
+
+    // Create user (and project)
+    $user = (object) array(
+      'name' => $this->randomString(8),
+      'pass' => $this->randomString(16),
+      'role' => $role,
+    );
+    $user->mail = "{$user->name}@example.com";
+
+    // Create a new user.
+    $this->getDriver()->userCreate($user);
+
+    $this->users[] = $this->user = $user;
+
+    // Login.
+    $this->login();
+  }
+
+
+  /**
    * @Given /^I am on a "([^"]*)" page titled "([^"]*)"(?:, in the tab "([^"]*)"|)$/
    */
   public function iAmOnAPageTitled($page_type, $title, $subpage = NULL) {
