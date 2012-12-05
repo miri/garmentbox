@@ -65,27 +65,12 @@ class FeatureContext extends DrupalContext {
    * @Given /^I am logged in as a user from "([^"]*)"$/
    */
   public function iAmLoggedInAsAUserFrom($company) {
-    $role = 'authenticated user';
-    // Check if a user with this role is already logged in.
-    if ($this->user && isset($this->user->role) && $this->user->role == $role) {
-      return TRUE;
-    }
-
-    // Create user (and project)
-    $user = (object) array(
-      'name' => $this->randomString(8),
-      'pass' => $this->randomString(16),
-      'role' => $role,
-    );
-    $user->mail = "{$user->name}@example.com";
-
-    // Create a new user.
-    $this->getDriver()->userCreate($user);
-
-    $this->users[] = $this->user = $user;
-
-    // Login.
-    $this->login();
+    // Log-in and then group the created user to the given company.
+    $this->iAmLoggedInWithRole('authenticated user');
+    $uid = $this->user->uid;
+    $nid = $this->getEntityId($company);
+    $action = "\"og_group('node', $nid, array('entity' => $uid));\"";
+    $this->getDriver()->drush('php-eval', array($action));
   }
 
 
