@@ -458,7 +458,7 @@ function garmentbox_inventory_theme($existing, $type, $theme, $path) {
         'subfigure_types' => array(
           'quantity' => t('in stock'),
           'ordered' => t('ordered'),
-          'future_stock' => t('future stock'),
+          'future_stock' => t('future'),
         ),
       ),
       'template' => 'templates/inventory-summary-cell',

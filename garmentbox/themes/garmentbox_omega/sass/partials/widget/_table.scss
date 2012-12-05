@@ -108,24 +108,44 @@ table {
 
   &#inventory-summary {
 
-    &.main-box-width-1 .sub-figures .amount {
+    &.main-box-width-1 .inventory-cell .sub-figures .amount {
       width: 18px;
     }
 
-    &.main-box-width-2 .sub-figures .amount {
+    &.main-box-width-2 .inventory-cell .sub-figures .amount {
+      width: 20px;
+    }
+
+    &.main-box-width-3 .inventory-cell .sub-figures .amount {
       width: 25px;
     }
 
-    &.main-box-width-3 .sub-figures .amount {
-      width: 31px;
+    &.main-box-width-4 .inventory-cell .sub-figures .amount {
+      width: 30px;
     }
 
-    &.main-box-width-4 .sub-figures .amount {
-      width: 37px;
+    &.main-box-width-5 .inventory-cell  .sub-figures .amount {
+      width: 35px;
     }
 
-    &.main-box-width-5  .sub-figures .amount {
-      width: 43px;
+    &.size-amount-width-1 .inventory-sub-cell .main-figure .amount {
+      width: 30px;
+    }
+
+    &.size-amount-width-2 .inventory-sub-cell .main-figure .amount {
+      width: 40px;
+    }
+
+    &.size-amount-width-3 .inventory-sub-cell .main-figure .amount {
+      width: 50px;
+    }
+
+    &.size-amount-width-4 .inventory-sub-cell .main-figure .amount {
+      width: 60px;
+    }
+
+    &.size-amount-width-5 .inventory-sub-cell .main-figure .amount {
+      width: 70px;
     }
   }
 
@@ -150,6 +170,7 @@ table {
 
       .amount {
         font-size: 18px;
+        display: block;
       }
     }
 
@@ -157,6 +178,7 @@ table {
       color: #6b6b6b;
       max-width: 160px;
       text-align: center;
+      padding-top: 10px
     }
   }
     &.current {
@@ -227,10 +249,13 @@ table {
           &.amount {
             color: white;
             display: block;
+            float: left; //LTR
+            @include round-left-corners(5px);
           }
 
           &.label {
             color: #565656;
+            float: left; //LTR
           }
         }
 
@@ -240,7 +265,7 @@ table {
           span {
 
             &.amount {
-              background: orange;
+              @include orangeGradient;
             }
 
             &.label {
@@ -254,7 +279,7 @@ table {
           span {
 
             &.amount {
-              background: blue;
+                @include blueGradient;
             }
 
             &.label {
@@ -268,7 +293,7 @@ table {
           span {
 
             &.amount {
-              background: green;
+              @include greenGradient;
             }
 
             &.label {
