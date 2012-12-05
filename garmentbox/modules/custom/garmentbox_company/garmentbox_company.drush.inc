@@ -16,7 +16,7 @@ function garmentbox_company_drush_command() {
 
 
 /**
- * Command callback. Generate a number of users.
+ * Command callback. Generate a user and for a specific company.
  */
 function drush_garmentbox_company_gb_user_create($company) {
   // Search the company node ID.
@@ -25,16 +25,17 @@ function drush_garmentbox_company_gb_user_create($company) {
     ->propertyCondition('type', 'company')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->propertyCondition('title', check_plain($company))
+    ->range(0, 1)
     ->execute();
 
   if (empty($result['node'])) {
     return drush_set_error('GARMENTBOX_COMPANY_INVALID_COMPANY', t('Company "@company" not found.', array('@company' => $company)));
   }
+  $company_nid = key($result['node']);
 
   // Use a random string as the username.
   $name = user_password();
-
-  $options = array(
+  $account = (object) array(
     'uid' => NULL,
     'name' => $name,
     'pass' => NULL,
@@ -44,13 +45,11 @@ function drush_garmentbox_company_gb_user_create($company) {
     'roles' => array(DRUPAL_AUTHENTICATED_RID),
     'language' => LANGUAGE_NONE,
   );
-  $account = user_save(drupal_anonymous_user(), $options);
 
-  // if (drush_generate_is_number($num_users) == FALSE) {
+  $wrapper = entity_metadata_wrapper('user', $account);
+  $wrapper->og_user_company->set(array($company_nid));
+  $wrapper->save();
 
-  // }
-  // drush_generate_include_devel();
-  // $roles = drush_get_option('roles') ? explode(',', drush_get_option('roles')) : array();
-  // devel_create_users($num_users, drush_get_option('kill'), 0, $roles);
   drush_log(t('Generated a user under company "@company"', array('@company' => $company)), 'success');
+  drush_print_r(t('User ID: @id', array('@id' => $account->uid)));
 }
