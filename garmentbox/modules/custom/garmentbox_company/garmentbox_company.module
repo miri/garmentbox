@@ -51,6 +51,14 @@ function garmentbox_company_og_fields_info_alter(&$info) {
   $og_field['instance']['label'] = 'Company';
   $og_field['instance']['display']['default']['type'] = 'hidden';
 
+  // Enable Entity-reference prepopulate.
+  $og_field['instance']['settings']['behaviors']['prepopulate'] = array(
+    'status' => TRUE,
+    'action' => 'hide',
+    'fallback' => 'redirect',
+    'og_context' => TRUE,
+  );
+
   $info['og_company'] = $og_field;
 }
 

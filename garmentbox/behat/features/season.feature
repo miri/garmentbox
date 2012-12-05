@@ -56,8 +56,6 @@ Feature: Test Season page
     Given I am logged in as a user from "Imanimo"
       And I go to create "season" node page
       And I fill in "Title" with "Test season"
-      # Temp fix: The company should not be selected by the user.
-      And I select "Imanimo" from "Company"
       And I press "Save"
       When I visit the front page
       Then I should be on a page titled "Test season - Items | Site-Install"
