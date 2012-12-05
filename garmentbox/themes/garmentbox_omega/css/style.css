@@ -157,124 +157,149 @@ table .quantity {
   margin-right: 5px;
 }
 /* line 111, ../sass/partials/widget/_table.scss */
+table#inventory-summary.main-box-width-1 .sub-figures .amount {
+  width: 18px;
+}
+/* line 115, ../sass/partials/widget/_table.scss */
+table#inventory-summary.main-box-width-2 .sub-figures .amount {
+  width: 25px;
+}
+/* line 119, ../sass/partials/widget/_table.scss */
+table#inventory-summary.main-box-width-3 .sub-figures .amount {
+  width: 31px;
+}
+/* line 123, ../sass/partials/widget/_table.scss */
+table#inventory-summary.main-box-width-4 .sub-figures .amount {
+  width: 37px;
+}
+/* line 127, ../sass/partials/widget/_table.scss */
+table#inventory-summary.main-box-width-5 .sub-figures .amount {
+  width: 43px;
+}
+/* line 135, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type td {
   padding: 0px;
-  width: 160px;
 }
-/* line 118, ../sass/partials/widget/_table.scss */
+/* line 141, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type .inventory-sub-cell:parent {
   padding: 0;
 }
-/* line 122, ../sass/partials/widget/_table.scss */
+/* line 145, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type .inventory-sub-cell .main-figure {
   padding: 9px 0px;
   color: white;
   float: left;
+  text-align: center;
 }
-/* line 127, ../sass/partials/widget/_table.scss */
+/* line 151, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type .inventory-sub-cell .main-figure .amount {
   font-size: 18px;
 }
-/* line 132, ../sass/partials/widget/_table.scss */
+/* line 156, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type .inventory-sub-cell .sub-figure {
   color: #6b6b6b;
   max-width: 160px;
+  text-align: center;
 }
-/* line 139, ../sass/partials/widget/_table.scss */
+/* line 164, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type.current .main-figure {
   background: #70b55c;
 }
-/* line 146, ../sass/partials/widget/_table.scss */
+/* line 171, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type.future .main-figure {
   background: #d16500;
 }
-/* line 153, ../sass/partials/widget/_table.scss */
+/* line 178, ../sass/partials/widget/_table.scss */
 table tr.variant-status-type.irrelevant .main-figure {
   background: #737373;
 }
-/* line 159, ../sass/partials/widget/_table.scss */
+/* line 184, ../sass/partials/widget/_table.scss */
 table .inventory-cell {
   position: relative;
   width: 160px;
 }
-/* line 163, ../sass/partials/widget/_table.scss */
+/* line 188, ../sass/partials/widget/_table.scss */
 table .inventory-cell .main-figure {
   float: left;
   color: #474747;
+  text-align: center;
 }
-/* line 169, ../sass/partials/widget/_table.scss */
+/* line 193, ../sass/partials/widget/_table.scss */
 table .inventory-cell .main-figure span.amount {
   font-weight: bold;
   font-size: 24px;
 }
-/* line 176, ../sass/partials/widget/_table.scss */
+/* line 198, ../sass/partials/widget/_table.scss */
 table .inventory-cell .main-figure .label {
   font-size: 10px;
+  font-weight: 700;
 }
-/* line 181, ../sass/partials/widget/_table.scss */
+/* line 204, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures {
-  float: right;
-  width: 80px;
+  float: left;
+  margin-left: 10px;
+  text-align: center;
 }
-/* line 185, ../sass/partials/widget/_table.scss */
+/* line 209, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure {
   margin-right: 5px;
   margin-top: 2px;
-  font-size: 9px;
+  font-size: 10px;
   float: left;
   clear: left;
   border-radius: 4px;
   padding: 1px 0;
   width: 100%;
 }
-/* line 195, ../sass/partials/widget/_table.scss */
+/* line 219, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure:first-child {
   margin-top: 0;
 }
-/* line 199, ../sass/partials/widget/_table.scss */
+/* line 223, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure span {
   padding: 1px 6px;
   min-width: 20px;
 }
-/* line 203, ../sass/partials/widget/_table.scss */
+/* line 227, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure span.amount {
   color: white;
+  display: block;
 }
-/* line 207, ../sass/partials/widget/_table.scss */
+/* line 232, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure span.label {
   color: #565656;
 }
-/* line 212, ../sass/partials/widget/_table.scss */
+/* line 237, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.future_stock {
   -moz-box-shadow: 0 -1px 1px 0 #e6cd7e;
   -webkit-box-shadow: 0 -1px 1px 0 #e6cd7e;
   box-shadow: 0 -1px 1px 0 #e6cd7e;
 }
-/* line 217, ../sass/partials/widget/_table.scss */
+/* line 242, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.future_stock span.amount {
   background: orange;
 }
-/* line 226, ../sass/partials/widget/_table.scss */
+/* line 251, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.ordered {
   -moz-box-shadow: 0 -1px 1px 0 #bbbbf2;
   -webkit-box-shadow: 0 -1px 1px 0 #bbbbf2;
   box-shadow: 0 -1px 1px 0 #bbbbf2;
 }
-/* line 231, ../sass/partials/widget/_table.scss */
+/* line 256, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.ordered span.amount {
   background: blue;
 }
-/* line 240, ../sass/partials/widget/_table.scss */
+/* line 265, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.quantity {
   -moz-box-shadow: 0 -1px 1px 0 #ccebcc;
   -webkit-box-shadow: 0 -1px 1px 0 #ccebcc;
   box-shadow: 0 -1px 1px 0 #ccebcc;
 }
-/* line 245, ../sass/partials/widget/_table.scss */
+/* line 270, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure.quantity span.amount {
   background: green;
 }
-/* line 257, ../sass/partials/widget/_table.scss */
+/* line 282, ../sass/partials/widget/_table.scss */
 table .expander {
   display: block;
   width: 11px;
@@ -283,39 +308,39 @@ table .expander {
   margin-right: 10px;
   background: url("../images/contract.gif") no-repeat;
 }
-/* line 265, ../sass/partials/widget/_table.scss */
+/* line 290, ../sass/partials/widget/_table.scss */
 table .expander.collapsed {
   background-image: url("../images/expand.gif");
 }
-/* line 270, ../sass/partials/widget/_table.scss */
+/* line 295, ../sass/partials/widget/_table.scss */
 table ul.size-info {
   margin: 0;
 }
-/* line 273, ../sass/partials/widget/_table.scss */
+/* line 298, ../sass/partials/widget/_table.scss */
 table ul.size-info li {
   float: left;
   margin-left: 20px;
 }
-/* line 277, ../sass/partials/widget/_table.scss */
+/* line 302, ../sass/partials/widget/_table.scss */
 table ul.size-info li:first-child {
   margin-left: 0;
 }
-/* line 282, ../sass/partials/widget/_table.scss */
+/* line 307, ../sass/partials/widget/_table.scss */
 table ul.size-info label, table ul.size-info span {
   float: left;
 }
-/* line 286, ../sass/partials/widget/_table.scss */
+/* line 311, ../sass/partials/widget/_table.scss */
 table ul.size-info span {
   margin-left: 5px;
 }
 
-/* line 294, ../sass/partials/widget/_table.scss */
+/* line 319, ../sass/partials/widget/_table.scss */
 html.js fieldset.collapsible .fieldset-legend {
   background: url("../images/contract.gif") no-repeat;
   padding-left: 20px;
   margin-left: 10px;
 }
-/* line 300, ../sass/partials/widget/_table.scss */
+/* line 325, ../sass/partials/widget/_table.scss */
 html.js fieldset.collapsible.collapsed .fieldset-legend {
   background-image: url("../images/expand.gif");
 }

@@ -106,11 +106,34 @@ table {
     margin-right: 5px; //LTR
   }
 
+  &#inventory-summary {
+
+    &.main-box-width-1 .sub-figures .amount {
+      width: 18px;
+    }
+
+    &.main-box-width-2 .sub-figures .amount {
+      width: 25px;
+    }
+
+    &.main-box-width-3 .sub-figures .amount {
+      width: 31px;
+    }
+
+    &.main-box-width-4 .sub-figures .amount {
+      width: 37px;
+    }
+
+    &.main-box-width-5  .sub-figures .amount {
+      width: 43px;
+    }
+  }
+
+
   tr.variant-status-type {
 
     td {
       padding: 0px;
-      width: 160px;
     }
 
   .inventory-sub-cell {
@@ -123,6 +146,7 @@ table {
       padding: 9px 0px;
       color: white;
       float: left; //LTR
+      text-align: center;
 
       .amount {
         font-size: 18px;
@@ -132,6 +156,7 @@ table {
     .sub-figure {
       color: #6b6b6b;
       max-width: 160px;
+      text-align: center;
     }
   }
     &.current {
@@ -163,29 +188,28 @@ table {
     .main-figure {
       float: left; //LTR
       color: #474747;
+      text-align: center;
 
-      span {
-
-        &.amount {
-          font-weight: bold;
-          font-size: 24px;
-        }
-
+      span.amount {
+        font-weight: bold;
+        font-size: 24px;
       }
 
       .label {
         font-size: 10px;
+        font-weight: 700;
       }
     }
 
     .sub-figures {
-      float: right; //LTR
-      width: 80px;
+      float: left; //LTR
+      margin-left: 10px; //LTR
+      text-align: center;
 
       .sub-figure {
         margin-right: 5px; //LTR
         margin-top: 2px;
-        font-size: 9px;
+        font-size: 10px;
         float: left; //LTR
         clear: left; //LTR
         border-radius: 4px;
@@ -202,6 +226,7 @@ table {
 
           &.amount {
             color: white;
+            display: block;
           }
 
           &.label {

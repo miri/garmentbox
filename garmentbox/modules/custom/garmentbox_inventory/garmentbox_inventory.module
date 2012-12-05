@@ -292,7 +292,6 @@ function garmentbox_inventory_get_summary($node) {
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
     }
 
-    $main_box_width = max(array($main_box_width, strlen(max($inventory[$nid]['total'][$term->tid]))));
 
     $is_ordered = garmentbox_inventory_is_inventory_item_ordered($inventory_node->nid);
 
@@ -303,6 +302,7 @@ function garmentbox_inventory_get_summary($node) {
       $info['ordered'] = !empty($info['ordered']) ? $info['ordered'] : 0;
 
       $quantity = $quantity_wrapper->field_quantity_integer->value();
+      $main_box_width = max(array($main_box_width, strlen($quantity)));
 
       $info['quantity'] += $quantity;
       if ($is_ordered) {
@@ -340,6 +340,7 @@ function garmentbox_inventory_get_summary($node) {
     }
   }
 
+  $size_amount_width = 2;
   // Build the output based on the inventory data info.
   foreach ($inventory as $nid => $variant_data) {
     $items = array();
@@ -360,7 +361,7 @@ function garmentbox_inventory_get_summary($node) {
     $row['data'][] = $expand_link . t('@variant - Total', array('@variant' => $variant_label));
 
     foreach($size_tree as $term) {
-      $row['data'][] = theme('garmentbox_inventory_cell', $variant_data['total'][$term->tid] + array('quantity_title' => t('Available')));
+      $row['data'][] = theme('garmentbox_inventory_cell', $variant_data['total'][$term->tid]);
     }
 
     // Total row description.
@@ -390,6 +391,8 @@ function garmentbox_inventory_get_summary($node) {
           continue;
         }
 
+        // See that we always use the correct size for the boxes.
+        $size_amount_width = max(array($size_amount_width, strlen(max($variant_inventory_data['data'][$term->tid]))));
         $row['data'][] = theme('garmentbox_inventory_sub_cell', $variant_inventory_data['data'][$term->tid]);
       }
       $row['data'][] = $variant_inventory_data['type_label'];
@@ -402,7 +405,7 @@ function garmentbox_inventory_get_summary($node) {
     'rows' => $rows,
     'attributes' => array(
       'id' => 'inventory-summary',
-      'class' => $table_classes,
+      'class' => array('main-box-width-' . $main_box_width, 'size-amount-width-' . $size_amount_width),
     ),
   );
   return theme('table', $variables);
