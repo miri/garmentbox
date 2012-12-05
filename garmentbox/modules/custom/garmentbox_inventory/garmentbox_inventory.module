@@ -246,6 +246,9 @@ function garmentbox_inventory_get_summary($node) {
 
   drupal_add_js(drupal_get_path('module', 'garmentbox_inventory') . '/inventory_summary.js');
 
+  // Keep track of the largest number of characters in amount display.
+  $main_box_width = 1;
+
   // Build inventory data info, keyed by the inventory item type TID.
   $inventory = array();
   $inventory_nodes = node_load_multiple(array_keys($result['node']));
@@ -288,6 +291,8 @@ function garmentbox_inventory_get_summary($node) {
       $inventory[$nid]['total'][$term->tid]['future_stock'] = !empty($inventory[$nid]['total'][$term->tid]['future_stock']) ? $inventory[$nid]['total'][$term->tid]['future_stock'] : 0;
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
     }
+
+    $main_box_width = max(array($main_box_width, strlen(max($inventory[$nid]['total'][$term->tid]))));
 
     $is_ordered = garmentbox_inventory_is_inventory_item_ordered($inventory_node->nid);
 
@@ -397,6 +402,7 @@ function garmentbox_inventory_get_summary($node) {
     'rows' => $rows,
     'attributes' => array(
       'id' => 'inventory-summary',
+      'class' => $table_classes,
     ),
   );
   return theme('table', $variables);
