@@ -35,6 +35,14 @@ function garmentbox_company_field_attach_create_bundle($entity_type, $bundle) {
     $og_field['instance']['label'] = 'Company';
     $og_field['instance']['display']['default']['type'] = 'hidden';
 
+    // Enable Entity-reference prepopulate.
+    $og_field['instance']['settings']['behaviors']['prepopulate'] = array(
+      'status' => TRUE,
+      'action' => 'hide',
+      'fallback' => 'redirect',
+      'og_context' => TRUE,
+    );
+
     og_create_field('og_company', $entity_type, $bundle, $og_field);
   }
 }
