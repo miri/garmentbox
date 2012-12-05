@@ -114,6 +114,14 @@
   }
 }
 
+$default_rounded_amount: 5px;
+// Round all corners by amount
+@mixin round-corners($amount: $default_rounded_amount) {
+  border-radius: $amount;
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+}
+
 @mixin round-corner($position, $amount: $default_rounded_amount) {
   border-#{$position}-radius: $amount;
   -webkit-border-#{$position}-radius: $amount;

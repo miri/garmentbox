@@ -237,17 +237,22 @@ table {
         border-radius: 4px;
         padding: 1px 0;
         width: 100%;
+        height: 14px;
+        border: 1px solid #848484;
+        @include round-corners(10px);
 
         &:first-child {
           margin-top: 0;
         }
 
         span {
-          padding: 1px 6px;
+          padding: 0px 0px 1px 3px;
           min-width: 20px;
 
           &.amount {
             color: white;
+            height: 15px;
+            margin-top: -1px;
             display: block;
             float: left; //LTR
             @include round-left-corners(5px);
@@ -260,43 +265,30 @@ table {
         }
 
         &.future_stock {
-          @include box-shadow(0, -1px, 1px, 0, #E6CD7E);
 
           span {
 
             &.amount {
               @include orangeGradient;
             }
-
-            &.label {
-            }
           }
         }
 
         &.ordered {
-          @include box-shadow(0, -1px, 1px, 0, #BBBBF2);
-
           span {
 
             &.amount {
                 @include blueGradient;
             }
-
-            &.label {
-            }
           }
         }
 
         &.quantity {
-          @include box-shadow(0, -1px, 1px, 0, #ccebcc);
 
           span {
 
             &.amount {
               @include greenGradient;
-            }
-
-            &.label {
             }
           }
         }
