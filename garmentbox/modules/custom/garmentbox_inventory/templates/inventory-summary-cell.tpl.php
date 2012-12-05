@@ -1,7 +1,7 @@
-        <?php //dpm(get_defined_vars());?>
 <div class="inventory-cell clearfix">
   <div class="main-figure">
-    <span class="amount"><?php print $available; ?> <span class="lable">available</span></span>
+    <span class="amount"><?php print $available; ?> </span>
+    <div class="label">available</div>
   </div>
 
   <div class="sub-figures">

@@ -106,46 +106,89 @@ table {
     margin-right: 5px; //LTR
   }
 
-  .inventory-cell {
-    position: relative;
-    width: 200px;
+  tr.variant-status-type {
+
+    td {
+      padding: 0px;
+      width: 160px;
+    }
+
+  .inventory-sub-cell {
+
+    &:parent {
+      padding: 0;
+    }
 
     .main-figure {
-      position: absolute;
-      top: 50%;
-      left: 0; //LTR
-      margin-top: -10px;
-      float: left; //LTR
-      border-radius: 6px;
-      background-color: #454444;
-      @include box-shadow(0, -1px, 1px, 0, #8C8989);
+      padding: 9px 0px;
       color: white;
-      padding: 1px 0;
+      float: left; //LTR
+
+      .amount {
+        font-size: 18px;
+      }
+    }
+
+    .sub-figure {
+      color: #6b6b6b;
+      max-width: 160px;
+    }
+  }
+    &.current {
+
+      .main-figure {
+        background: #70b55c;
+      }
+    }
+
+    &.future {
+
+      .main-figure {
+        background: #d16500;
+      }
+    }
+
+    &.irrelevant {
+
+      .main-figure {
+         background: #737373;
+      }
+    }
+  }
+
+  .inventory-cell {
+    position: relative;
+    width: 160px;
+
+    .main-figure {
+      float: left; //LTR
+      color: #474747;
 
       span {
-        padding: 1px 8px;
 
-        &.amount.with-title {
-          border-right: 1px solid #2E2E2E; //LTR
+        &.amount {
+          font-weight: bold;
+          font-size: 24px;
         }
 
-        &.label {
-          border-left: 1px solid #949494; //LTR
-        }
+      }
+
+      .label {
+        font-size: 10px;
       }
     }
 
     .sub-figures {
       float: right; //LTR
+      width: 80px;
 
       .sub-figure {
         margin-right: 5px; //LTR
         margin-top: 2px;
-        font-size: 11px;
+        font-size: 9px;
         float: left; //LTR
         clear: left; //LTR
         border-radius: 4px;
-        color: white;
         padding: 1px 0;
         width: 100%;
 
@@ -156,52 +199,54 @@ table {
         span {
           padding: 1px 6px;
           min-width: 20px;
+
+          &.amount {
+            color: white;
+          }
+
+          &.label {
+            color: #565656;
+          }
         }
 
         &.future_stock {
-          background-color: #E0B21B;
           @include box-shadow(0, -1px, 1px, 0, #E6CD7E);
 
           span {
 
             &.amount {
-              border-right: 1px solid #856A13; //LTR
+              background: orange;
             }
 
             &.label {
-              border-left: 1px solid #D6CBA5; //LTR
             }
           }
         }
 
         &.ordered {
-          background-color: #5555FA;
           @include box-shadow(0, -1px, 1px, 0, #BBBBF2);
 
           span {
 
             &.amount {
-              border-right: 1px solid #16167A; //LTR
+              background: blue;
             }
 
             &.label {
-              border-left: 1px solid #9898D6; //LTR
             }
           }
         }
 
         &.quantity {
-          background-color: #099609;
           @include box-shadow(0, -1px, 1px, 0, #ccebcc);
 
           span {
 
             &.amount {
-              border-right: 1px solid #018305; //LTR
+              background: green;
             }
 
             &.label {
-              border-left: 1px solid #86ce84; //LTR
             }
           }
         }
