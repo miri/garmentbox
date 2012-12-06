@@ -274,7 +274,7 @@ function garmentbox_inventory_get_summary($node) {
       $type_key = $tid;
       $inventory[$nid]['types'][$type_key]['type_label'] = $wrapper->field_inventory_type->label();
       $inventory[$nid]['types'][$type_key]['in_total'] = $include_in_total;
-      $inventory[$nid]['types'][$type_key]['in_warehouse'] = $in_warehouse;
+      $inventory[$nid]['types'][$type_key]['in_warehouse'] = $in_warehouse  && !$defective;
       $inventory[$nid]['types'][$type_key]['closed'] = FALSE;
     }
     else {
@@ -340,6 +340,8 @@ function garmentbox_inventory_get_summary($node) {
     }
   }
 
+  // Keep track of the maximum number of characters in variants inventory type
+  // amounts.
   $size_amount_width = 2;
   // Build the output based on the inventory data info.
   foreach ($inventory as $nid => $variant_data) {
