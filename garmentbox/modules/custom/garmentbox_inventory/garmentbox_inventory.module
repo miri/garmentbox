@@ -362,7 +362,7 @@ function garmentbox_inventory_get_summary($node) {
     $params = array(
       'attributes' => array(
         'class' => array('expander', 'collapsed'),
-      )
+      ),
     );
     $expand_link = l('', url(''), $params);
     $row['data'][] = array('data' => $expand_link . t('@variant - Total', array('@variant' => $variant_label)), 'class' => array('variant-type-name'));
@@ -462,11 +462,11 @@ function garmentbox_inventory_theme($existing, $type, $theme, $path) {
         'label' => NULL,
         'class' => NULL,
         'quantity_title' => NULL,
+        'has_subfigures' => FALSE,
         'subfigure_types' => array(
           'quantity' => t('in stock'),
           'ordered' => t('ordered'),
           'future_stock' => t('future'),
-          'has_subfigures' => FALSE,
         ),
       ),
       'template' => 'templates/inventory-summary-cell',
