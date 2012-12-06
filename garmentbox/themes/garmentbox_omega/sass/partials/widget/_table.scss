@@ -49,9 +49,9 @@ table {
     padding: 9px;
 
     .minor {
-      font-size: 10px;
+      font-size: 11px;
       color: #666;
-      margin-left: 10px; //LTR
+      display: block;
     }
 
     &.hidden-label label {
@@ -62,6 +62,7 @@ table {
   th {
     color: #5e5e5e;
     font-weight: normal;
+    font-family: Dosis, Arial, Helvetica, sans-serif;
   }
 
   td {
@@ -76,6 +77,11 @@ table {
 
     &.hidden-label label {
       display: none;
+    }
+
+    &.variant-status-title {
+      font-size: 15px;
+      color: #010101;
     }
   }
 
@@ -107,25 +113,73 @@ table {
   }
 
   &#inventory-summary {
+    border: 1px solid #dbdbdb;
 
-    &.main-box-width-1 .inventory-cell .sub-figures .amount {
-      width: 18px;
+    .variant-type-name {
+      font-size: 14px;
     }
 
-    &.main-box-width-2 .inventory-cell .sub-figures .amount {
-      width: 20px;
+    .expander {
+      background-image: url("../images/collapse-.gif");
+
+      &.collapsed {
+        background-image: url("../images/collapse+.gif");
+      }
     }
 
-    &.main-box-width-3 .inventory-cell .sub-figures .amount {
-      width: 25px;
+    &.main-box-width-1 .inventory-cell .sub-figures {
+
+      .sub-figure-placeholder {
+        width: 64px;
+      }
+
+      .amount {
+        width: 18px;
+      }
     }
 
-    &.main-box-width-4 .inventory-cell .sub-figures .amount {
-      width: 30px;
+    &.main-box-width-2 .inventory-cell .sub-figures {
+
+      .sub-figure-placeholder {
+        width: 66px;
+      }
+
+      .amount {
+        width: 20px;
+      }
     }
 
-    &.main-box-width-5 .inventory-cell  .sub-figures .amount {
-      width: 35px;
+    &.main-box-width-3 .inventory-cell .sub-figures {
+
+      .sub-figure-placeholder {
+        width: 67px;
+      }
+
+      .amount {
+        width: 21px;
+      }
+    }
+
+    &.main-box-width-4 .inventory-cell .sub-figures {
+
+      .sub-figure-placeholder {
+        width: 69px;
+      }
+
+      .amount {
+        width: 23px;
+      }
+    }
+
+    &.main-box-width-5 .inventory-cell  .sub-figures {
+
+      .sub-figure-placeholder {
+        width: 71px;
+      }
+
+      .amount {
+        width: 25px;
+      }
     }
 
     &.size-amount-width-1 .inventory-sub-cell .main-figure .amount {
@@ -147,20 +201,21 @@ table {
     &.size-amount-width-5 .inventory-sub-cell .main-figure .amount {
       width: 70px;
     }
+
+    .sub-figure-placeholder {
+      display: block;
+    }
   }
 
 
   tr.variant-status-type {
 
     td {
-      padding: 0px;
+      padding: 0px 0px 0px 5px;
     }
 
   .inventory-sub-cell {
-
-    &:parent {
-      padding: 0;
-    }
+    margin-left: -5px;
 
     .main-figure {
       padding: 9px 0px;
@@ -169,7 +224,7 @@ table {
       text-align: center;
 
       .amount {
-        font-size: 18px;
+        font-size: 20px;
         display: block;
       }
     }
@@ -178,7 +233,11 @@ table {
       color: #6b6b6b;
       max-width: 160px;
       text-align: center;
-      padding-top: 10px
+      padding-top: 10px;
+
+      .ordered {
+        font-size: 14px;
+      }
     }
   }
     &.current {
@@ -205,21 +264,21 @@ table {
 
   .inventory-cell {
     position: relative;
-    width: 160px;
 
     .main-figure {
       float: left; //LTR
       color: #474747;
       text-align: center;
+      margin-top: 10px;
 
       span.amount {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 28px;
       }
 
       .label {
+        color: #848484;
         font-size: 10px;
-        font-weight: 700;
       }
     }
 
@@ -238,8 +297,8 @@ table {
         padding: 1px 0;
         width: 100%;
         height: 14px;
-        border: 1px solid #848484;
-        @include round-corners(10px);
+        border: 1px solid #DCDCDC;
+        @include greyGradient;
 
         &:first-child {
           margin-top: 0;
@@ -251,46 +310,31 @@ table {
 
           &.amount {
             color: white;
-            height: 15px;
+            height: 14px;
             margin-top: -1px;
             display: block;
             float: left; //LTR
-            @include round-left-corners(5px);
+            padding-top: 1px;
+            font-size: 12px;
           }
 
           &.label {
             color: #565656;
             float: left; //LTR
+            font-size: 11px;
           }
         }
 
-        &.future_stock {
-
-          span {
-
-            &.amount {
-              @include orangeGradient;
-            }
-          }
+        &.future_stock span.amount {
+          @include orangeGradient;
         }
 
-        &.ordered {
-          span {
-
-            &.amount {
-                @include blueGradient;
-            }
-          }
+        &.ordered span.amount {
+          @include blueGradient;
         }
 
-        &.quantity {
-
-          span {
-
-            &.amount {
-              @include greenGradient;
-            }
-          }
+        &.quantity span.amount {
+          @include greenGradient;
         }
       }
     }
