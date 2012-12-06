@@ -286,10 +286,15 @@ function garmentbox_inventory_get_summary($node) {
     }
 
     foreach ($size_tree as $term) {
-      $inventory[$nid]['total'][$term->tid]['available'] = !empty($inventory[$nid]['total'][$term->tid]['available']) ? $inventory[$nid]['total'][$term->tid]['available'] : 0;
+      // Subfigures.
       $inventory[$nid]['total'][$term->tid]['ordered'] = !empty($inventory[$nid]['total'][$term->tid]['ordered']) ? $inventory[$nid]['total'][$term->tid]['ordered'] : 0;
       $inventory[$nid]['total'][$term->tid]['future_stock'] = !empty($inventory[$nid]['total'][$term->tid]['future_stock']) ? $inventory[$nid]['total'][$term->tid]['future_stock'] : 0;
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
+      // Hide the subfigures if they are all 0.
+      $inventory[$nid]['total'][$term->tid]['has_subfigures'] = max($inventory[$nid]['total'][$term->tid]) !== 0;
+
+      // Main figure.
+      $inventory[$nid]['total'][$term->tid]['available'] = !empty($inventory[$nid]['total'][$term->tid]['available']) ? $inventory[$nid]['total'][$term->tid]['available'] : 0;
     }
 
 
@@ -461,6 +466,7 @@ function garmentbox_inventory_theme($existing, $type, $theme, $path) {
           'quantity' => t('in stock'),
           'ordered' => t('ordered'),
           'future_stock' => t('future'),
+          'has_subfigures' => FALSE,
         ),
       ),
       'template' => 'templates/inventory-summary-cell',
