@@ -145,7 +145,7 @@ table {
       }
 
       .amount {
-        width: 20px;
+        width: 21px;
       }
     }
 
@@ -156,29 +156,22 @@ table {
       }
 
       .amount {
-        width: 21px;
-      }
-    }
-
-    &.main-box-width-4 .inventory-cell .sub-figures {
-
-      .sub-figure-placeholder {
-        width: 69px;
-      }
-
-      .amount {
         width: 23px;
       }
     }
 
-    &.main-box-width-5 .inventory-cell  .sub-figures {
+    &.main-box-width-4 , &.main-box-width-5 {
 
-      .sub-figure-placeholder {
-        width: 71px;
-      }
+      .inventory-cell  .sub-figures {
 
-      .amount {
-        width: 25px;
+        .sub-figure-placeholder {
+          width: 71px;
+        }
+
+        .amount {
+          width: 28px;
+          padding-right: 1px;
+        }
       }
     }
 
@@ -195,11 +188,11 @@ table {
     }
 
     &.size-amount-width-4 .inventory-sub-cell .main-figure .amount {
-      width: 60px;
+      width: 55px;
     }
 
     &.size-amount-width-5 .inventory-sub-cell .main-figure .amount {
-      width: 70px;
+      width: 60px;
     }
 
     .sub-figure-placeholder {
@@ -316,6 +309,7 @@ table {
             float: left; //LTR
             padding-top: 1px;
             font-size: 12px;
+            @include round-left-corners(3px);
           }
 
           &.label {
