@@ -121,6 +121,8 @@ table {
 
     .expander {
       background-image: url("../images/collapse-.gif");
+      width: 14px;
+      height: 14px;
 
       &.collapsed {
         background-image: url("../images/collapse+.gif");
