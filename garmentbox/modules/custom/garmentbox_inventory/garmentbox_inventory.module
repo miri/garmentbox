@@ -290,7 +290,7 @@ function garmentbox_inventory_get_summary($node) {
       $inventory[$nid]['total'][$term->tid]['ordered'] = !empty($inventory[$nid]['total'][$term->tid]['ordered']) ? $inventory[$nid]['total'][$term->tid]['ordered'] : 0;
       $inventory[$nid]['total'][$term->tid]['future_stock'] = !empty($inventory[$nid]['total'][$term->tid]['future_stock']) ? $inventory[$nid]['total'][$term->tid]['future_stock'] : 0;
       $inventory[$nid]['total'][$term->tid]['quantity'] = !empty($inventory[$nid]['total'][$term->tid]['quantity']) ? $inventory[$nid]['total'][$term->tid]['quantity'] : 0;
-      // Hide the subfigures if they are all 0.
+      // Hides the subfigures' boxes if they are all 0.
       $inventory[$nid]['total'][$term->tid]['has_subfigures'] = max($inventory[$nid]['total'][$term->tid]) !== 0;
 
       // Main figure.
@@ -434,17 +434,21 @@ function _garmentbox_inventory_subcell_class($variables) {
   $closed = $variables['closed'];
 
   if ($total) {
+    // Included in total.
 
     if(!$warehouse && !$closed) {
+      // Included in total but not in the warehouse (yet) and not closed.
       return 'future';
     }
 
     if ($closed xor $warehouse) {
+      // Either closed OR in the warehouse.
+      // If both, the item is irrelevant.
       return 'current';
     }
   }
 
-
+  // All other options.
   return 'irrelevant';
 }
 
