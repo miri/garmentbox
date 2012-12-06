@@ -1,3 +1,11 @@
+/**
+ * Round corners.
+ *
+ * @see http://compass-style.org/reference/compass/css3/border_radius/
+ */
+@import "compass/css3/border-radius";
+
+
 @mixin vertical-gradient($color1, $color2) {
   background-color: $color1;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$color1}, endColorstr=#{$color2});
@@ -112,31 +120,6 @@
     clear: both;
     visibility: hidden;
   }
-}
-
-$default_rounded_amount: 5px;
-// Round all corners by amount
-@mixin round-corners($amount: $default_rounded_amount) {
-  border-radius: $amount;
-  -moz-border-radius: $amount;
-  -webkit-border-radius: $amount;
-}
-
-@mixin round-corner($position, $amount: $default_rounded_amount) {
-  border-#{$position}-radius: $amount;
-  -webkit-border-#{$position}-radius: $amount;
-}
-
-@mixin round-corner-mozilla($position, $amount: $default_rounded_amount) {
-  -moz-border-radius-#{$position}: $amount;
-}
-
-// Round left corners by amount
-@mixin round-left-corners($amount: 5px) {
-  @include round-corner("top-left", $amount);
-  @include round-corner("bottom-left", $amount);
-  @include round-corner-mozilla("topleft", $amount);
-  @include round-corner-mozilla("bottomleft", $amount);
 }
 
 @mixin blueGradient {

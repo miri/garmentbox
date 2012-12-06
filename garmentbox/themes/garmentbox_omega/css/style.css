@@ -1,3 +1,8 @@
+/**
+ * Round corners.
+ *
+ * @see http://compass-style.org/reference/compass/css3/border_radius/
+ */
 /* line 1, ../sass/partials/widget/_table.scss */
 table {
   width: 100%;
@@ -112,14 +117,14 @@ table .views-field-edit-node a, table li.edit a {
   overflow: hidden;
   background: url("../images/edit.png") no-repeat;
 }
-/* line 79, ../sass/_mixins.scss */
+/* line 87, ../sass/_mixins.scss */
 table .views-field-edit-node a:hover, table li.edit a:hover {
   -moz-transition: 0.3s;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-/* line 88, ../sass/_mixins.scss */
+/* line 96, ../sass/_mixins.scss */
 table .views-field-edit-node a:hover, table li.edit a:hover {
   background-image: url("../images/edit-active.png");
 }
@@ -146,14 +151,14 @@ table .field-collection-view-links li.delete a {
   overflow: hidden;
   background: url("../images/delete.png") no-repeat;
 }
-/* line 79, ../sass/_mixins.scss */
+/* line 87, ../sass/_mixins.scss */
 table .field-collection-view-links li.delete a:hover {
   -moz-transition: 0.3s;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-/* line 97, ../sass/_mixins.scss */
+/* line 105, ../sass/_mixins.scss */
 table .field-collection-view-links li.delete a:hover {
   background-image: url("../images/delete-active.png");
 }
@@ -354,12 +359,12 @@ table .inventory-cell .sub-figures .sub-figure span.amount {
   float: left;
   padding-top: 1px;
   font-size: 12px;
-  border-top-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
   -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
   -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 /* line 317, ../sass/partials/widget/_table.scss */
 table .inventory-cell .sub-figures .sub-figure span.label {
@@ -775,11 +780,11 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa8ca', endColorstr='#e80263',GradientType=0 );
   /* IE6-9 */
 }
-/* line 20, ../sass/_mixins.scss */
+/* line 28, ../sass/_mixins.scss */
 #main-button a:hover {
   text-decoration: none;
 }
-/* line 40, ../sass/_mixins.scss */
+/* line 48, ../sass/_mixins.scss */
 #main-button a:before {
   content: url("../images/white-plus.png");
   margin-right: 8px;
@@ -810,11 +815,11 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
   /* IE6-9 */
 }
-/* line 20, ../sass/_mixins.scss */
+/* line 28, ../sass/_mixins.scss */
 #add-task.secondary-button a:hover {
   text-decoration: none;
 }
-/* line 60, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 #add-task.secondary-button a:before {
   content: url("../images/gray-plus.png");
   margin-right: 8px;
@@ -955,11 +960,11 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
   /* IE6-9 */
 }
-/* line 20, ../sass/_mixins.scss */
+/* line 28, ../sass/_mixins.scss */
 .node-type-material .pane-prepopulate-link#task-add a:hover {
   text-decoration: none;
 }
-/* line 60, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .node-type-material .pane-prepopulate-link#task-add a:before {
   content: url("../images/gray-plus.png");
   margin-right: 8px;
@@ -1020,11 +1025,11 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
   /* IE6-9 */
 }
-/* line 20, ../sass/_mixins.scss */
+/* line 28, ../sass/_mixins.scss */
 .node-type-material .pane-node-field-source-info .action-links li a:hover {
   text-decoration: none;
 }
-/* line 60, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .node-type-material .pane-node-field-source-info .action-links li a:before {
   content: url("../images/gray-plus.png");
   margin-right: 8px;
@@ -1033,7 +1038,7 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
 .node-type-material .primary-button#material-add a {
   margin-top: 6px;
 }
-/* line 108, ../sass/_mixins.scss */
+/* line 116, ../sass/_mixins.scss */
 .node-type-material .field-name-field-washing-instructions::after, .node-type-material .field-name-field-fabric-content::after,
 .node-type-material .field-name-field-radius::after, .node-type-material .field-name-field-width::after, .node-type-material .field-name-field-length::after {
   content: ".";
@@ -1173,11 +1178,11 @@ header#title .field-name-field-item-status .field-item, header#title .field-name
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb4b4', endColorstr='#8fb4b4',GradientType=0 );
   /* IE6-9 */
 }
-/* line 20, ../sass/_mixins.scss */
+/* line 28, ../sass/_mixins.scss */
 .node-type-item-variant .pane-node-field-bol-info .action-links li a:hover, .node-type-item-variant .pane-node-field-bom-info .action-links li a:hover {
   text-decoration: none;
 }
-/* line 60, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .node-type-item-variant .pane-node-field-bol-info .action-links li a:before, .node-type-item-variant .pane-node-field-bom-info .action-links li a:before {
   content: url("../images/gray-plus.png");
   margin-right: 8px;

@@ -1,7 +1,7 @@
 <div class="inventory-cell clearfix">
   <div class="main-figure">
     <span class="amount"><?php print $available; ?> </span>
-    <div class="label">available</div>
+    <div class="label"><?php print t('available'); ?></div>
   </div>
 
   <div class="sub-figures">

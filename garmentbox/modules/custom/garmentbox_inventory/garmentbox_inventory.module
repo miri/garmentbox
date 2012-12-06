@@ -377,11 +377,11 @@ function garmentbox_inventory_get_summary($node) {
         continue;
       }
       // Add a class specifying the color of quantity boxes in that row.
-      $quantity_color = _garmentbox_inventory_quantity_box_color($variant_inventory_data);
+      $subscell_class = _garmentbox_inventory_subcell_class($variant_inventory_data);
 
       $row = array(
         'data' => array(),
-        'class' => array('variant-status-type', 'type', 'hidden', 'variant-nid-' . $nid, $quantity_color),
+        'class' => array('variant-status-type', 'type', 'hidden', 'variant-nid-' . $nid, $subscell_class),
       );
 
 
@@ -389,7 +389,7 @@ function garmentbox_inventory_get_summary($node) {
 
       foreach($size_tree as $term) {
         if (empty($variant_inventory_data['data'][$term->tid])) {
-          $row['data'][] = theme('garmentbox_inventory_sub_cell', array('quantity' => 0, 'quantity_color' => $quantity_color));
+          $row['data'][] = theme('garmentbox_inventory_sub_cell', array('quantity' => 0, 'class' => $subscell_class));
           continue;
         }
 
@@ -422,7 +422,7 @@ function garmentbox_inventory_get_summary($node) {
  * @return
  *   String; Class to add.
  */
-function _garmentbox_inventory_quantity_box_color($variables) {
+function _garmentbox_inventory_subcell_class($variables) {
   // Make relevant variables more accessible.
   $total = $variables['in_total'];
   $warehouse = $variables['in_warehouse'];
@@ -469,7 +469,7 @@ function garmentbox_inventory_theme($existing, $type, $theme, $path) {
       'variables' => array(
         'ordered' => NULL,
         'quantity' => NULL,
-        'quantity_color' => NULL,
+        'class' => NULL,
       ),
       'template' => 'templates/inventory-summary-sub-cell',
     ),

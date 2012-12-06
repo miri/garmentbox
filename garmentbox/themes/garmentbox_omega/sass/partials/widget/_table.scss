@@ -311,7 +311,7 @@ table {
             float: left; //LTR
             padding-top: 1px;
             font-size: 12px;
-            @include round-left-corners(3px);
+            @include border-left-radius(3px);
           }
 
           &.label {
