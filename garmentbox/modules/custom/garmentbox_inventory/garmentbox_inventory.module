@@ -259,7 +259,7 @@ function garmentbox_inventory_get_summary($node) {
     $defective = $wrapper->field_defective->value();
     // Determine if we need to add or subtract the quantity from the total
     // calcualtion.
-    $in_warehouse = $wrapper->field_inventory_type->field_in_warehouse->value() && !$defective;
+    $in_warehouse = $wrapper->field_inventory_type->field_in_warehouse->value();
 
     $nid = $wrapper->field_item_variant->getIdentifier();
 
