@@ -17,6 +17,9 @@ projects[auto_nodetitle][version] = "1.0"
 projects[beautytips][subdir] = "contrib"
 projects[beautytips][version] = "2.x-dev"
 
+projects[cas][subdir] = "contrib"
+projects[cas][version] = "1.x-dev"
+
 projects[commerce][subdir] = "contrib"
 projects[commerce][version] = "1.3"
 
@@ -155,6 +158,11 @@ projects[views_bulk_operations][version] = "3.1"
 libraries[jquery.cycle][type] = "libraries"
 libraries[jquery.cycle][download][type] = "git"
 libraries[jquery.cycle][download][url] = "https://github.com/malsup/cycle.git"
+
+libraries[cas][type] = "libraries"
+libraries[cas][download][type] = "get"
+libraries[cas][download][url] = "http://downloads.jasig.org/cas-clients/php/current.tgz"
+libraries[cas][directory_name] = "CAS"
 
 ; Themes
 projects[omega][subdir] = "contrib"
