@@ -50,6 +50,7 @@ dependencies[] = message
 dependencies[] = module_filter
 dependencies[] = multiupload_filefield_widget
 dependencies[] = multiupload_imagefield_widget
+dependencies[] = oauthconnector
 dependencies[] = og
 dependencies[] = og_access
 dependencies[] = og_context

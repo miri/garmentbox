@@ -23,6 +23,9 @@ projects[commerce][version] = "1.3"
 projects[commerce_migrate][subdir] = "contrib"
 projects[commerce_migrate][version] = "1.x-dev"
 
+projects[connector][subdir] = "contrib"
+projects[connector][version] = "1.0-beta1"
+
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.2"
 projects[ctools][patch][] = "http://drupal.org/files/1707810-ctools-fields-mock-field-7.patch"
@@ -72,6 +75,9 @@ projects[format_number][version] = "1.x-dev"
 projects[gravatar][subdir] = "contrib"
 projects[gravatar][version] = "1.1"
 
+projects[http_client][subdir] = "contrib"
+projects[http_client][version] = "2.4"
+
 projects[image_delta_formatter][subdir] = "contrib"
 projects[image_delta_formatter][version] = "1.x-dev"
 
@@ -115,10 +121,10 @@ projects[multiupload_imagefield_widget][subdir] = "contrib"
 projects[multiupload_imagefield_widget][version] = 1.0
 
 projects[oauth][subdir] = "contrib"
-projects[oauth][version] = "3.0"
-projects[oauth][patch][] = "http://drupal.org/files/980340-d7.patch"
-projects[oauth][patch][] = "http://drupal.org/files/1535764-fix-signatures.patch"
-projects[oauth][patch][] = "http://drupal.org/files/oauth-1431642-consumer-deletion.patch"
+projects[oauth][version] = "3.0-beta4"
+
+projects[oauthconnector][subdir] = "contrib"
+projects[oauthconnector][version] = "1.0-beta1"
 
 projects[og][subdir] = "contrib"
 projects[og][version] = "2.x-dev"
@@ -128,7 +134,6 @@ projects[og_purl][version] = "1.x-dev"
 
 projects[og_vocab][subdir] = "contrib"
 projects[og_vocab][version] = "1.x-dev"
-projects[og_vocab][patch][] = "http://drupal.org/files/1869190-og-vocab-multiple-3.patch"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.3"
