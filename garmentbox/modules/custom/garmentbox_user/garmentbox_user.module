@@ -17,6 +17,7 @@ function garmentbox_user_init() {
   if (user_is_logged_in()) {
     return;
   }
+
   // Build a fake form state for _oauthconnector_button(), mimiking a click on
   // "Connect with GB market".
   $form_state = array();
@@ -25,4 +26,13 @@ function garmentbox_user_init() {
   $form_state['values']['action'] = 'default';
 
   _oauthconnector_button(array(), $form_state);
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function garmentbox_user_menu_alter(&$items) {
+  // TODO: The access argument for oauth/authorized is "access content". Does it
+  // make sense?
+  $items['oauth/authorized']['access arguments'] = array('connect with oauthconnector_gb_market');
 }
