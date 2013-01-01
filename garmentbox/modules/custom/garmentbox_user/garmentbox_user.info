@@ -1,0 +1,6 @@
+name = Garmentbox User
+description = Garmentbox User
+core = 7.x
+package = Features
+php = 5.2.4
+dependencies[] = strongarm

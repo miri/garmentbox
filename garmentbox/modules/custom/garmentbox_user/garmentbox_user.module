@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Code for the Garmentbox User feature.
+ */
+
+/**
+ * Implements hook_init().
+ *
+ * Instead of showing the "Connect with.. " button, always redirect to GBMarket
+ * for logging in.
+ *
+ * @see connector_redirect_callback()
+ */
+function garmentbox_user_init() {
+  if (user_is_logged_in()) {
+    return;
+  }
+  // Build a fake form state for _oauthconnector_button(), mimiking a click on
+  // "Connect with GB market".
+  $form_state = array();
+  $providers = oauthconnector_provider_load_all();
+  $form_state['clicked_button']['connector']['#value']['oauthconnector provider'] = $providers['gb_market'];
+  $form_state['values']['action'] = 'default';
+
+  _oauthconnector_button(array(), $form_state);
+}
