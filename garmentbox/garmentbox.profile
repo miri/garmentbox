@@ -20,11 +20,41 @@ function garmentbox_form_install_configure_form_alter(&$form, $form_state) {
 function garmentbox_install_tasks() {
   $tasks = array();
 
-  $tasks['garmentbox_setup_og_permissions'] = array(
+  $tasks['garmentbox_set_variables'] = array(
+    'display_name' => st('Set Variables'),
+    'display' => FALSE,
+  );
+
+  $tasks['garmentbox_set_og_permissions'] = array(
     'display_name' => st('Setup Blocks'),
     'display' => FALSE,
   );
   return $tasks;
+}
+
+/**
+ * Task callback; Set variables.
+ */
+function garmentbox_set_variables() {
+  $variables = array(
+    // Mime-mail.
+    'mimemail_format' => 'full_html',
+    'mimemail_sitestyle' => FALSE,
+    'mimemail_name' => 'GarmentBox',
+    'mimemail_mail' => 'info@garmentbox.com',
+    // jQuery versions.
+    'jquery_update_jquery_version' => '1.10',
+    'jquery_update_jquery_admin_version' => '1.5',
+    // Enable restful files upload.
+    'restful_file_upload' => 1,
+    // Enable core statistics.
+    // Private files dir.
+    'file_private_path' => 'sites/default/files/private',
+  );
+
+  foreach ($variables as $key => $value) {
+    variable_set($key, $value);
+  }
 }
 
 /**
@@ -33,7 +63,7 @@ function garmentbox_install_tasks() {
  * We do this here, late enough to make sure all group-content were
  * created.
  */
-function garmentbox_setup_og_permissions() {
+function garmentbox_set_og_permissions() {
   // @todo: Re-enble.
   return;
 
