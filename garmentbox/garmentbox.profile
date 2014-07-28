@@ -20,51 +20,11 @@ function garmentbox_form_install_configure_form_alter(&$form, $form_state) {
 function garmentbox_install_tasks() {
   $tasks = array();
 
-  $tasks['garmentbox_setup_blocks'] = array(
-    'display_name' => st('Setup Blocks'),
-    'display' => FALSE,
-  );
-
   $tasks['garmentbox_setup_og_permissions'] = array(
     'display_name' => st('Setup Blocks'),
     'display' => FALSE,
   );
   return $tasks;
-}
-
-/**
- * Task callback; Setup blocks.
- */
-function garmentbox_setup_blocks() {
-  $default_theme = variable_get('theme_default', 'garmentbox_omega');
-
-  $blocks = array(
-    array(
-      'module' => 'system',
-      'delta' => 'user-menu',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'header',
-      'pages' => '',
-      'title' => '<none>',
-      'cache' => DRUPAL_NO_CACHE,
-    ),
-  );
-
-  drupal_static_reset();
-  _block_rehash($default_theme);
-  foreach ($blocks as $record) {
-    $module = array_shift($record);
-    $delta = array_shift($record);
-    $theme = array_shift($record);
-    db_update('block')
-      ->fields($record)
-      ->condition('module', $module)
-      ->condition('delta', $delta)
-      ->condition('theme', $theme)
-      ->execute();
-  }
 }
 
 /**

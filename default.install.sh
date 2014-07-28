@@ -23,7 +23,10 @@ bash scripts/build
 cd www
 
 
-drush si -y garmentbox --locale=en --account-name=$ADMIN_USERNAME --account-pass=$ADMIN_PASSWORD --account-mail=$ADMIN_EMAIL --db-url=mysql://$MYSQL_USERNAME:$MYSQL_PASSWORD@$MYSQL_HOST/$MYSQL_DB_NAME --uri=$BASE_DOMAIN_URL
+drush si -y garmentbox --account-name=$ADMIN_USERNAME --account-pass=$ADMIN_PASSWORD --account-mail=$ADMIN_EMAIL --db-url=mysql://$MYSQL_USERNAME:$MYSQL_PASSWORD@$MYSQL_HOST/$MYSQL_DB_NAME --uri=$BASE_DOMAIN_URL
+
+# Development modules
+drush en devel diff views_ui field_ui migrate_ui mimemail -y
 
 # These commands migrates dummy content and is used for development and testing. Comment out both lines if you wish to have a clean OpenScholar installation.
 drush mi --all --user=1
