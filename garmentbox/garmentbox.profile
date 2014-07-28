@@ -34,25 +34,18 @@ function garmentbox_install_tasks() {
  * created.
  */
 function garmentbox_setup_og_permissions() {
+  // @todo: Re-enble.
+  return;
+
   $og_roles = og_roles('node', 'company');
   $rid = array_search(OG_AUTHENTICATED_ROLE, $og_roles);
 
   $permissions = array();
   $types = array(
-    'customer',
-    'department',
-    'event',
-    'inventory_line',
     'item',
     'item_variant',
     'material',
-    'order',
-    'pattern_task',
-    'factory',
-    'production_order',
     'season',
-    'task',
-    'vendor',
   );
   foreach ($types as $type) {
     $permissions["create $type content"] = TRUE;
