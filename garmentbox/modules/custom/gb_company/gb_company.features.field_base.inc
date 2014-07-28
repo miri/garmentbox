@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * garmentbox_company.features.field_base.inc
+ * gb_company.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function garmentbox_company_field_default_field_bases() {
+function gb_company_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'body'

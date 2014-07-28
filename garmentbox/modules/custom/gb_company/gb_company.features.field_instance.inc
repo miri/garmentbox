@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * garmentbox_company.features.field_instance.inc
+ * gb_company.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function garmentbox_company_field_default_field_instances() {
+function gb_company_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-company-body'

@@ -26,6 +26,7 @@ dependencies[] = date_migrate
 dependencies[] = entity
 dependencies[] = entity_token
 dependencies[] = entityreference
+dependencies[] = entity_validator
 dependencies[] = features
 dependencies[] = flag
 dependencies[] = libraries

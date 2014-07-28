@@ -1,0 +1,7 @@
+name = Garmentbox RESTFul
+core = 7.x
+package = Garmentbox
+dependencies[] = restful
+dependencies[] = entity_validator
+
+dependencies[] = garmentbox_company
