@@ -28,6 +28,7 @@ dependencies[] = entity_token
 dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = flag
+dependencies[] = jquery_update
 dependencies[] = libraries
 dependencies[] = message
 dependencies[] = migrate
