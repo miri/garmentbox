@@ -4,4 +4,4 @@ package = Garmentbox
 dependencies[] = restful
 dependencies[] = entity_validator
 
-dependencies[] = garmentbox_company
+dependencies[] = gb_company
