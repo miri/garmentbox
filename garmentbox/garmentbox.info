@@ -44,7 +44,4 @@ dependencies[] = views
 dependencies[] = views_bulk_operations
 
 ; Features
-; dependencies[] = garmentbox_general
-; dependencies[] = garmentbox_item
-; dependencies[] = garmentbox_line_sheet
-; dependencies[] = garmentbox_migrate
+dependencies[] = garmentbox_company

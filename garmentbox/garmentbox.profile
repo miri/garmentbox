@@ -47,9 +47,9 @@ function garmentbox_set_variables() {
     'jquery_update_jquery_admin_version' => '1.5',
     // Enable restful files upload.
     'restful_file_upload' => 1,
-    // Enable core statistics.
-    // Private files dir.
+    // Private files directory.
     'file_private_path' => 'sites/default/files/private',
+    'file_default_scheme' => 'private',
   );
 
   foreach ($variables as $key => $value) {
