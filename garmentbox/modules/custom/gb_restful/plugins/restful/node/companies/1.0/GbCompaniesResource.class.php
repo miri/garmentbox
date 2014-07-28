@@ -14,9 +14,11 @@ class GbCompaniesResource extends \RestfulEntityBaseNode {
   public function getPublicFields() {
     $public_fields = parent::getPublicFields();
 
+    unset($public_fields['self']);
+
     $public_fields['logo'] = array(
       'property' => 'field_company_logo',
-      'process' => 'logoProcess',
+      'process_callback' => array($this, 'logoProcess'),
     );
 
     return $public_fields;
@@ -32,6 +34,8 @@ class GbCompaniesResource extends \RestfulEntityBaseNode {
    *   Array keyed by the image style and the url as the value.
    */
   protected function logoProcess($value) {
-    return $value['uri'];
+    return array(
+      'original' => file_create_url($value['uri']),
+    );
   }
 }
