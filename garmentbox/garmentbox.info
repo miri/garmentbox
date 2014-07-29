@@ -47,4 +47,5 @@ dependencies[] = views_bulk_operations
 
 ; Features
 dependencies[] = gb_company
+dependencies[] = gb_item
 dependencies[] = gb_restful

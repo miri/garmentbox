@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Garmentbox Item feature.
+ */
+
+include_once 'garmentbox_item.features.inc';

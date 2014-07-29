@@ -37,6 +37,8 @@ function garmentbox_install_tasks() {
  */
 function garmentbox_set_variables() {
   $variables = array(
+    // Features default export path.
+    'features_default_export_path' => 'profiles/garmentbox/modules/custom',
     // Mime-mail.
     'mimemail_format' => 'full_html',
     'mimemail_sitestyle' => FALSE,
