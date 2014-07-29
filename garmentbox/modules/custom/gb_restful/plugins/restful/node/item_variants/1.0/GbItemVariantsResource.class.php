@@ -34,19 +34,8 @@ class GbItemVariantsResource extends \RestfulEntityBaseNode {
 
 
   /**
-   * Return image URLs based on image styles.
-   *
-   * @param array $file_array
-   *   The image array.
-   *
-   * @return array
-   *   Array keyed by the image style and the url as the value.
+   * Overrides \RestfulEntityBaseNode::getQueryForList();
    */
-  protected function getImageStyles(array $values) {
-
-  }
-
-
   public function getQueryForList() {
     $query =  parent::getQueryForList();
 

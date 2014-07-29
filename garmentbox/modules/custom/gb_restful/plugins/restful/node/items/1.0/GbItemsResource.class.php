@@ -32,6 +32,20 @@ class GbItemsResource extends \RestfulEntityBaseNode {
   }
 
   /**
+   * Overrides \RestfulEntityBaseNode::getQueryForList();
+   */
+  public function getQueryForList() {
+    $query =  parent::getQueryForList();
+
+    $request = $this->getRequest();
+    if (!empty($request['company'])) {
+      $query->fieldCondition(OG_AUDIENCE_FIELD, 'target_id', intval($request['company']));
+    }
+
+    return $query;
+  }
+
+  /**
    * Returns 5 last updated item variants.
    *
    * @param \EntityMetadataWrapper $wrapper
