@@ -5,8 +5,8 @@ $plugin = array(
   'resource' => 'item_variants',
   'name' => 'item_variants__1_0',
   'entity_type' => 'node',
-  'bundle' => 'item_variants',
+  'bundle' => 'item_variant',
   'description' => t('Export the "Item variants" content type.'),
-  'class' => 'GbItemVariantssResource',
+  'class' => 'GbItemVariantsResource',
   'authentication_types' => TRUE,
 );

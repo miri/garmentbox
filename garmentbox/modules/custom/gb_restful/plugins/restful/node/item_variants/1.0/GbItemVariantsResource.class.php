@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains GbItemVariantssResource.
+ * Contains GbItemVariantsResource.
  */
 
-class GbItemVariantssResource extends \RestfulEntityBaseNode {
+class GbItemVariantsResource extends \RestfulEntityBaseNode {
 
 
   /**
@@ -21,14 +21,27 @@ class GbItemVariantssResource extends \RestfulEntityBaseNode {
     );
 
     $public_fields['updated'] = array(
-      'property' => 'updated',
+      'property' => 'changed',
     );
 
     $public_fields['images'] = array(
       'property' => 'field_item_variant_images',
+      'process_callback' => 'gb_restful_get_image_styles',
     );
 
     return $public_fields;
+  }
+
+
+  public function getQueryForList() {
+    $query =  parent::getQueryForList();
+
+    $request = $this->getRequest();
+    if (!empty($request['item'])) {
+      $query->fieldCondition('field_item', 'target_id', intval($request['item']));
+    }
+
+    return $query;
   }
 
   /**
@@ -56,26 +69,5 @@ class GbItemVariantssResource extends \RestfulEntityBaseNode {
       $return[$image_style] = image_style_url($image_style, $uri);
     }
     return $return;
-  }
-
-  /**
-   * Returns 5 last updated item variants.
-   *
-   * @param \EntityMetadataWrapper $wrapper
-   *   The wrapped entity.
-   *
-   * @return array
-   *   Array with the 5 recent item variants.
-   */
-  protected function getRecentVariants(\EntityMetadataWrapper $wrapper) {
-    $version = $this->getVersion();
-    $handler = restful_get_restful_handler('item_variants', $version['major'], $version['minor']);
-
-    $item_id = $wrapper->getIdentifier();
-    $request = array('sort' => '-updated');
-
-    return $handler->get($item_id, $request);
-
-
   }
 }

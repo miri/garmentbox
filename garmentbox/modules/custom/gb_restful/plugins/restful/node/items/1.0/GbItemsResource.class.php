@@ -20,42 +20,15 @@ class GbItemsResource extends \RestfulEntityBaseNode {
       'property' => 'created',
     );
 
+    $public_fields['updated'] = array(
+      'property' => 'changed',
+    );
+
     $public_fields['recents_variants'] = array(
       'callback' => array($this, 'getRecentVariants'),
     );
 
-    $public_fields['updated'] = array(
-      'property' => 'updated',
-    );
-
     return $public_fields;
-  }
-
-  /**
-   * Return image URLs based on image styles.
-   *
-   * @param $value
-   *   The image array.
-   *
-   * @return array
-   *   Array keyed by the image style and the url as the value.
-   */
-  protected function logoProcess($value) {
-    $uri = $value['uri'];
-    $return = array(
-      'original' => file_create_url($uri),
-    );
-
-    $image_styles = array(
-      'thumbnail',
-      'medium',
-      'large',
-    );
-
-    foreach ($image_styles as $image_style) {
-      $return[$image_style] = image_style_url($image_style, $uri);
-    }
-    return $return;
   }
 
   /**
@@ -72,10 +45,8 @@ class GbItemsResource extends \RestfulEntityBaseNode {
     $handler = restful_get_restful_handler('item_variants', $version['major'], $version['minor']);
 
     $item_id = $wrapper->getIdentifier();
-    $request = array('sort' => '-updated');
+    $request = array('sort' => '-updated', 'item' => $item_id);
 
-    return $handler->get($item_id, $request);
-
-
+    return $handler->get('', $request);
   }
 }
