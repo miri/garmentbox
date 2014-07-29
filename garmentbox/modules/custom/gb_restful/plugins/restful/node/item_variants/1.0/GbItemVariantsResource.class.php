@@ -26,10 +26,24 @@ class GbItemVariantsResource extends \RestfulEntityBaseNode {
 
     $public_fields['images'] = array(
       'property' => 'field_item_variant_images',
-      'process_callback' => 'gb_restful_get_image_styles',
+      'process_callback' => 'gb_restful_get_images_styles',
     );
 
     return $public_fields;
+  }
+
+
+  /**
+   * Return image URLs based on image styles.
+   *
+   * @param array $file_array
+   *   The image array.
+   *
+   * @return array
+   *   Array keyed by the image style and the url as the value.
+   */
+  protected function getImageStyles(array $values) {
+
   }
 
 

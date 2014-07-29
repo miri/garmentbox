@@ -13,6 +13,26 @@ function gb_restful_ctools_plugin_directory($module, $plugin) {
   }
 }
 
+/**
+ *  Return image URLs based on image styles of multiple images.
+ *
+ * @param array $values
+ *   Array with file arrays.
+ *
+ * @return array
+ *   Array of arrays keyed by the image style and the url as the value.
+ *
+ * @see gb_restful_get_image_styles()
+ */
+function gb_restful_get_images_styles(array $values) {
+  $return = array();
+  foreach ($values as $file_array) {
+    $return[] = gb_restful_get_image_styles($file_array);
+  }
+
+  return $return;
+}
+
 
 /**
  * Return image URLs based on image styles.
