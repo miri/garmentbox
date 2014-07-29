@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * garmentbox_item.features.inc
+ * gb_item.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function garmentbox_item_ctools_plugin_api($module = NULL, $api = NULL) {
+function gb_item_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -16,7 +16,7 @@ function garmentbox_item_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function garmentbox_item_node_info() {
+function gb_item_node_info() {
   $items = array(
     'item' => array(
       'name' => t('Item'),

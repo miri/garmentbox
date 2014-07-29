@@ -6,7 +6,7 @@ $plugin = array(
   'name' => 'companies__1_0',
   'entity_type' => 'node',
   'bundle' => 'company',
-  'description' => t('Export the "Company" content type .'),
+  'description' => t('Export the "Company" content type.'),
   'class' => 'GbCompaniesResource',
   'authentication_types' => TRUE,
 );

@@ -4,4 +4,4 @@
  * Code for the Garmentbox Item feature.
  */
 
-include_once 'garmentbox_item.features.inc';
+include_once 'gb_item.features.inc';
