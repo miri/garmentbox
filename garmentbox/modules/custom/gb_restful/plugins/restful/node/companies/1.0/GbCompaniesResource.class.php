@@ -34,8 +34,20 @@ class GbCompaniesResource extends \RestfulEntityBaseNode {
    *   Array keyed by the image style and the url as the value.
    */
   protected function logoProcess($value) {
-    return array(
-      'original' => file_create_url($value['uri']),
+    $uri = $value['uri'];
+    $return = array(
+      'original' => file_create_url($uri),
     );
+
+    $image_styles = array(
+      'thumbnail',
+      'medium',
+      'large',
+    );
+
+    foreach ($image_styles as $image_style) {
+      $return[$image_style] = image_style_url($image_style, $uri);
+    }
+    return $return;
   }
 }
