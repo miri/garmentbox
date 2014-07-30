@@ -54,6 +54,45 @@ function gb_item_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-item-field_materials'
+  $field_instances['node-item-field_materials'] = array(
+    'bundle' => 'item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_materials',
+    'label' => 'Materials',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-item-og_group_ref'
   $field_instances['node-item-og_group_ref'] = array(
     'bundle' => 'item',
@@ -251,6 +290,44 @@ function gb_item_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-item_variant-field_materials'
+  $field_instances['node-item_variant-field_materials'] = array(
+    'bundle' => 'item_variant',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_materials',
+    'label' => 'Materials',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-item_variant-og_group_ref'
   $field_instances['node-item_variant-og_group_ref'] = array(
     'bundle' => 'item_variant',
@@ -316,6 +393,7 @@ function gb_item_field_default_field_instances() {
   t('Groups audience');
   t('Images');
   t('Item');
+  t('Materials');
 
   return $field_instances;
 }
