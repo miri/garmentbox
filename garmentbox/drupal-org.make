@@ -41,7 +41,7 @@ projects[entity_validator][subdir] = "contrib"
 projects[entity_validator][version] = "1.x"
 
 projects[features][subdir] = "contrib"
-projects[features][version] = "2.0"
+projects[features][version] = "2.1"
 
 projects[flag][subdir] = "contrib"
 projects[flag][version] = "2.2"
