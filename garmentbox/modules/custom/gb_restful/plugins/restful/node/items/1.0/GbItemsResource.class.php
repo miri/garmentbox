@@ -28,6 +28,13 @@ class GbItemsResource extends \RestfulEntityBaseNode {
       'callback' => array($this, 'getRecentVariants'),
     );
 
+    $public_fields['materials'] = array(
+      'property' => 'field_materials',
+      'resource' => array(
+        'material' => 'materials',
+      ),
+    );
+
     return $public_fields;
   }
 

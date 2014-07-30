@@ -29,6 +29,13 @@ class GbItemVariantsResource extends \RestfulEntityBaseNode {
       'process_callback' => 'gb_restful_get_images_styles',
     );
 
+    $public_fields['materials'] = array(
+      'property' => 'field_materials',
+      'resource' => array(
+        'material' => 'materials',
+      ),
+    );
+
     return $public_fields;
   }
 
@@ -45,32 +52,5 @@ class GbItemVariantsResource extends \RestfulEntityBaseNode {
     }
 
     return $query;
-  }
-
-  /**
-   * Return image URLs based on image styles.
-   *
-   * @param $value
-   *   The image array.
-   *
-   * @return array
-   *   Array keyed by the image style and the url as the value.
-   */
-  protected function logoProcess($value) {
-    $uri = $value['uri'];
-    $return = array(
-      'original' => file_create_url($uri),
-    );
-
-    $image_styles = array(
-      'thumbnail',
-      'medium',
-      'large',
-    );
-
-    foreach ($image_styles as $image_style) {
-      $return[$image_style] = image_style_url($image_style, $uri);
-    }
-    return $return;
   }
 }
