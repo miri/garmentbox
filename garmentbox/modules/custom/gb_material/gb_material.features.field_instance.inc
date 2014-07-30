@@ -54,6 +54,56 @@ function gb_material_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-material-field_material_image'
+  $field_instances['node-material-field_material_image'] = array(
+    'bundle' => 'material',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_material_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-material-field_price'
   $field_instances['node-material-field_price'] = array(
     'bundle' => 'material',
@@ -163,6 +213,7 @@ function gb_material_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Groups audience');
+  t('Image');
   t('Price');
 
   return $field_instances;
