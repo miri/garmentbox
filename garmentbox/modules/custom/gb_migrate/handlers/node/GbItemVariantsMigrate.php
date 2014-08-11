@@ -21,7 +21,6 @@ class GbItemVariantsMigrate extends GbMigration {
 
   public $dependencies = array(
     'GbItemsMigrate',
-    'GbItemVariantsMigrate',
     'GbMaterialsMigrate',
   );
 
