@@ -16,7 +16,6 @@ class GbSeasonsMigrate extends GbMigration {
   );
 
   public $dependencies = array(
-    'GbCompaniesMigrate',
     'GbSeasonStatusTermsMigrate',
   );
 
