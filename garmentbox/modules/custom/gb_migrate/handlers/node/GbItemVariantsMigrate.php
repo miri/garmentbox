@@ -53,16 +53,26 @@ class GbItemVariantsMigrate extends GbMigration {
 
   }
 
+  /**
+   * Overrides \GbMigration::complete().
+   *
+   * Flag certain item variants as line-sheet items.
+   *
+   * @todo: Re-add once line sheet is added.
+   */
   public function complete($entity, $row) {
-    // Flag certain item variants as line-sheet items.
-    $item_variant_titles = array(
+    return;
+
+    $titles = array(
       'Lines v-neck shirt',
       'Black v-neck shirt',
     );
 
-    if (in_array($entity->title, $item_variant_titles)) {
-      $account = user_load(1);
-      flag('flag', 'line_sheet', $entity->nid, $account);
+    if (!in_array($entity->title, $titles)) {
+      return;
     }
+
+    $account = user_load(1);
+    flag('flag', 'line_sheet', $entity->nid, $account);
   }
 }
