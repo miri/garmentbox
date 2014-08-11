@@ -19,6 +19,7 @@ abstract class GbMigration extends Migration {
 
     $this->csvColumns = !empty($this->csvColumns) ? $this->csvColumns : array();
     $csv_cols[] = array('id', 'Unique ID');
+
     if ($this->entityType == 'node') {
       $this->addFieldMapping('title', 'title');
       $class_name = 'MigrateDestinationNode';
@@ -27,11 +28,11 @@ abstract class GbMigration extends Migration {
         $csv_cols[] = array('og_company', 'Company');
 
         // Add mapping to company.
-        $this->dependencies[] = 'garmentboxCompanies';
+        $this->dependencies[] = 'GbCompaniesMigrate';
 
         $this
           ->addFieldMapping('og_company', 'og_company')
-          ->sourceMigration('garmentboxCompanies');
+          ->sourceMigration('GbCompaniesMigrate');
       }
       $csv_cols[] = array('title', 'Title');
     }

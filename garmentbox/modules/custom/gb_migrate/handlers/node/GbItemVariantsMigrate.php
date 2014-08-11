@@ -30,7 +30,6 @@ class GbItemVariantsMigrate extends GbMigration {
       ->addFieldMapping('field_item', 'field_item')
       ->sourceMigration('GbItemsMigrate');
 
-
     $this
       ->addFieldMapping('field_images', 'field_images')
       ->separator('|');
@@ -38,6 +37,7 @@ class GbItemVariantsMigrate extends GbMigration {
     $this
       ->addFieldMapping('field_images:file_replace')
       ->defaultValue(FILE_EXISTS_REPLACE);
+
     $this
       ->addFieldMapping('field_images:source_dir')
       ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
