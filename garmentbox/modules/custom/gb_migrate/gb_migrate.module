@@ -7,19 +7,21 @@ function gb_migrate_migrate_api() {
   $mirgations = array(
     // Users.
     'GbUsersMigrate',
+
     // Terms.
-    'GbSeasonStatusTermsMigrate',
     'GbItemStatusTermsMigrate',
     'GbMaterialTypeTermsMigrate',
     'GbMeasurementUnitTermsMigrate',
+    'GbSeasonStatusTermsMigrate',
+
     // Nodes.
     'GbCompaniesMigrate',
-    'GbSeasonsMigrate',
-    'GbMaterialsMigrate',
     'GbItemsMigrate',
     'GbItemVariantsMigrate',
+    'GbMaterialsMigrate',
+    'GbSeasonsMigrate',
   );
-  
+
   $api['api'] = 2;
   foreach ($mirgations as $mirgation) {
     $api['migrations'][$mirgation] = array('class_name' => 'GbUsersMigrate');
