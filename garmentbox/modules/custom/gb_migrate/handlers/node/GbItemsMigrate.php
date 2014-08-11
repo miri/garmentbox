@@ -7,7 +7,6 @@
 
 class GbItemsMigrate extends GbMigration {
 
-
   public $entityType = 'node';
   public $bundle = 'item';
 

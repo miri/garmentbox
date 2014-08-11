@@ -12,12 +12,16 @@ class GbMaterialsMigrate extends GbMigration {
 
   public $csvColumns = array(
     array('field_material_images', 'Images'),
+    array(OG_AUDIENCE_FIELD, 'Company'),
+  );
+
+  public $dependencies = array(
+    'GbCompaniesMigrate',
   );
 
   public function __construct() {
     parent::__construct();
 
-    $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('field_material_images', 'field_material_images');
 
     $this
@@ -26,5 +30,7 @@ class GbMaterialsMigrate extends GbMigration {
     $this
       ->addFieldMapping('field_material_images:source_dir')
       ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
+
+    $this->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD);
   }
 }
