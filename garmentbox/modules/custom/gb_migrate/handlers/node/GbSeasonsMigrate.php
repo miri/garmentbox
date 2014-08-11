@@ -11,20 +11,22 @@ class GbSeasonsMigrate extends GbMigration {
   public $bundle = 'season';
 
   public $csvColumns = array(
-    array('body', 'Body'),
+    array(OG_AUDIENCE_FIELD, 'Company'),
     array('field_season_status', 'Status'),
   );
 
   public $dependencies = array(
+    'GbCompaniesMigrate',
     'GbSeasonStatusTermsMigrate',
   );
 
   public function __construct() {
     parent::__construct();
-    $this->addFieldMapping('body', 'body');
+
+    $this->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD);
 
     $this
       ->addFieldMapping('field_season_status', 'field_season_status')
-      ->sourceMigration('garmentboxSeasonStatusTerms');
+      ->sourceMigration('GbSeasonStatusTermsMigrate');
   }
 }

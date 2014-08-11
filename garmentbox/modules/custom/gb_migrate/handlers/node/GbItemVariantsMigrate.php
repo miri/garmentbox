@@ -20,7 +20,6 @@ class GbItemVariantsMigrate extends GbMigration {
 
   public $dependencies = array(
     'GbItemsMigrate',
-    'GbItemStatusTermsMigrate',
   );
 
   public function __construct() {
@@ -29,7 +28,7 @@ class GbItemVariantsMigrate extends GbMigration {
 
     $this
       ->addFieldMapping('field_item', 'field_item')
-      ->sourceMigration('garmentboxItems');
+      ->sourceMigration('GbItemsMigrate');
 
 
     $this
@@ -45,7 +44,7 @@ class GbItemVariantsMigrate extends GbMigration {
 
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')
-      ->sourceMigration('garmentboxItemStatusTerms');
+      ->sourceMigration('GbItemStatusTermsMigrate');
 
     $this->addFieldMapping('field_retail_price', 'field_retail_price');
 

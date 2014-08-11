@@ -34,6 +34,6 @@ class GbMaterialsMigrate extends GbMigration {
       ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
     $this
       ->addFieldMapping('field_material_type', 'field_material_type')
-      ->sourceMigration('garmentboxMaterialTypeTerms');
+      ->sourceMigration('GbMaterialTypeTermsMigrate');
   }
 }

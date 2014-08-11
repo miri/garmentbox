@@ -30,7 +30,7 @@ class GbUsersMigrate extends Migration {
 
     $this
       ->addFieldMapping('og_user_company', 'og_user_company')
-      ->sourceMigration('garmentboxCompanies');
+      ->sourceMigration('GbCompaniesMigrate');
 
     $this->addFieldMapping('name', 'name');
     $this->addFieldMapping('pass', 'pass');

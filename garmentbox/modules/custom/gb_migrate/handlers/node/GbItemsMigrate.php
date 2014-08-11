@@ -29,11 +29,11 @@ class GbItemsMigrate extends GbMigration {
 
     $this
       ->addFieldMapping('field_season', 'field_season')
-      ->sourceMigration('garmentboxSeasons');
+      ->sourceMigration('GbSeasonsMigrate');
 
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')
-      ->sourceMigration('garmentboxItemStatusTerms');
+      ->sourceMigration('GbItemStatusTermsMigrate');
 
     $this->addFieldMapping('field_image', 'field_image');
     $this

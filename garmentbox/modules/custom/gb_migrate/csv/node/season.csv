@@ -1,4 +1,4 @@
-Unique ID,Company,Title,Status
-season1,company1,"Autumn-Winter 2013 Women",seasonStatus1
-season2,company1,"Spring-Summer 2012 Men",seasonStatus2
-season3,company1,"Autumn-Winter 2012 Women",seasonStatus3
+Unique ID,Title,Company,Status
+season1,"Autumn-Winter 2013 Women",company1,seasonStatus1
+season2,"Spring-Summer 2012 Men",company1,seasonStatus2
+season3,"Autumn-Winter 2012 Women",company1,seasonStatus3
