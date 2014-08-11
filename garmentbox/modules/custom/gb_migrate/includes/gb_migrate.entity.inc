@@ -12,7 +12,7 @@ abstract class GbMigration extends Migration {
 
     // Make sure we can use it for node and term only.
     if (!in_array($this->entityType, array('node', 'taxonomy_term'))) {
-      throw new Exception('garmentboxMigration supports only nodes and terms.');
+      throw new Exception('\GbMigration supports only nodes and terms.');
     }
 
     $this->description = t('Import @type - @bundle from CSV file.', array('@type' => $this->entityType, '@bundle' => $this->bundle));

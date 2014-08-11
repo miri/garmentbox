@@ -21,7 +21,7 @@ class GbUsersMigrate extends Migration {
   public $entityType = 'user';
 
   public $dependencies = array(
-    'garmentboxCompanies',
+    'GbCompaniesMigrate',
   );
 
   public function __construct() {

@@ -17,7 +17,7 @@ class GbMaterialsMigrate extends GbMigration {
   );
 
   public $dependencies = array(
-    'garmentboxMaterialTypeTerms',
+    'GbMaterialTypeTermsMigrate',
   );
 
   public function __construct() {

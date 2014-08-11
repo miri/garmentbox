@@ -16,7 +16,7 @@ class GbSeasonsMigrate extends GbMigration {
   );
 
   public $dependencies = array(
-    'garmentboxSeasonStatusTerms',
+    'GbSeasonStatusTermsMigrate',
   );
 
   public function __construct() {
