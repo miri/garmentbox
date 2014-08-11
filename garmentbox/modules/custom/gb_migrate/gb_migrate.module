@@ -5,8 +5,12 @@
  */
 function gb_migrate_migrate_api() {
   $mirgations = array(
-    // Users.
-    'GbUsersMigrate',
+    // Nodes.
+    'GbCompaniesMigrate',
+    'GbItemsMigrate',
+    'GbItemVariantsMigrate',
+    'GbMaterialsMigrate',
+    'GbSeasonsMigrate',
 
     // Terms.
     'GbItemStatusTermsMigrate',
@@ -14,12 +18,8 @@ function gb_migrate_migrate_api() {
     'GbMeasurementUnitTermsMigrate',
     'GbSeasonStatusTermsMigrate',
 
-    // Nodes.
-    'GbCompaniesMigrate',
-    'GbItemsMigrate',
-    'GbItemVariantsMigrate',
-    'GbMaterialsMigrate',
-    'GbSeasonsMigrate',
+    // Users.
+    'GbUsersMigrate',
   );
 
   $api['api'] = 2;
