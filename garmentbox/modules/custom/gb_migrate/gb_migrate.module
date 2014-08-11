@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_migrate_api().
+ */
+function gb_migrate_migrate_api() {
+  $mirgations = array(
+    // Users.
+    'GbUsersMigrate',
+    // Terms.
+    'GbSeasonStatusTermsMigrate',
+    'GbItemStatusTermsMigrate',
+    'GbMaterialTypeTermsMigrate',
+    'GbMeasurementUnitTermsMigrate',
+    // Nodes.
+    'GbCompaniesMigrate',
+    'GbSeasonsMigrate',
+    'GbMaterialsMigrate',
+    'GbItemsMigrate',
+    'GbItemVariantsMigrate',
+  );
+  
+  $api['api'] = 2;
+  foreach ($mirgations as $mirgation) {
+    $api['migrations'][$mirgation] = array('class_name' => 'GbUsersMigrate');
+  }
+
+  return $api;
+}
