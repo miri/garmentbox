@@ -8,5 +8,5 @@
 class GbMaterialTypeTermsMigrate extends GbMigration {
 
   public $entityType = 'taxonomy_term';
-  public $bundle = 'material_types';
+  public $bundle = 'material_type';
 }

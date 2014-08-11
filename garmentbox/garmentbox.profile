@@ -26,9 +26,15 @@ function garmentbox_install_tasks() {
   );
 
   $tasks['garmentbox_set_og_permissions'] = array(
-    'display_name' => st('Setup Blocks'),
+    'display_name' => st('Set Blocks'),
     'display' => FALSE,
   );
+
+  $tasks['garmentbox_set_vocabularies'] = array(
+    'display_name' => st('Set Vocabularies'),
+    'display' => FALSE,
+  );
+
   return $tasks;
 }
 
@@ -86,3 +92,33 @@ function garmentbox_set_og_permissions() {
   }
   og_role_change_permissions($rid, $permissions);
 }
+
+/**
+ * Task callback; Create site wide vocabularies.
+ */
+function garmentbox_set_vocabularies() {
+  $info = array(
+    'season_status' => array(
+      'name' => 'Season status',
+      'description' => 'Status of a season.',
+    ),
+    'item_status' => array(
+      'name' => 'Item status',
+      'description' => 'Status of an item.',
+    ),
+    'material_type' => array(
+      'name' => 'Material type',
+      'description' => 'The type of a material.',
+    ),
+  );
+
+  foreach ($info as $machine_name => $row) {
+    $vocabulary = (object) array(
+      'name' => $row['name'],
+      'description' => $row['description'],
+      'machine_name' => $machine_name,
+    );
+    taxonomy_vocabulary_save($vocabulary);
+  }
+}
+
