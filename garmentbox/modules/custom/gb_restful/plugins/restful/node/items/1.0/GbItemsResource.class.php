@@ -24,7 +24,7 @@ class GbItemsResource extends \RestfulEntityBaseNode {
       'property' => 'changed',
     );
 
-    $public_fields['recents_variants'] = array(
+    $public_fields['recent_variants'] = array(
       'callback' => array($this, 'getRecentVariants'),
     );
 
@@ -35,7 +35,7 @@ class GbItemsResource extends \RestfulEntityBaseNode {
    * Overrides \RestfulEntityBaseNode::getQueryForList();
    */
   public function getQueryForList() {
-    $query =  parent::getQueryForList();
+    $query = parent::getQueryForList();
 
     $request = $this->getRequest();
     if (!empty($request['company'])) {

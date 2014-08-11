@@ -11,9 +11,6 @@ projects[admin_views][version] = "1.3"
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.4"
 
-projects[currency][subdir] = "contrib"
-projects[currency][version] = "2.4"
-
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.7"
 
