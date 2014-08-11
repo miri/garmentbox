@@ -106,10 +106,6 @@ function garmentbox_set_vocabularies() {
       'name' => 'Item status',
       'description' => 'Status of an item.',
     ),
-    'material_type' => array(
-      'name' => 'Material type',
-      'description' => 'The type of a material.',
-    ),
   );
 
   foreach ($info as $machine_name => $row) {

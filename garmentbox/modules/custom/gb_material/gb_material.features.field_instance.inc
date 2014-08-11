@@ -10,65 +10,21 @@
 function gb_material_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-material-body'
-  $field_instances['node-material-body'] = array(
+  // Exported field_instance: 'node-material-field_material_images'
+  $field_instances['node-material-field_material_images'] = array(
     'bundle' => 'material',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-material-field_material_type'
-  $field_instances['node-material-field_material_type'] = array(
-    'bundle' => 'material',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
+        'module' => 'image',
         'settings' => array(
-          'link' => FALSE,
+          'image_link' => '',
+          'image_style' => '',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
+        'type' => 'image',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -78,23 +34,29 @@ function gb_material_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_material_type',
-    'label' => 'Type',
+    'field_name' => 'field_material_images',
+    'label' => 'Images',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 3,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 4,
     ),
   );
 
@@ -205,10 +167,9 @@ function gb_material_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Groups audience');
+  t('Images');
   t('Price');
-  t('Type');
 
   return $field_instances;
 }
