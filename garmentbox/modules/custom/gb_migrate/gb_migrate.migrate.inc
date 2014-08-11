@@ -1,17 +1,177 @@
 <?php
 
 ///////////////////////////////
+// Users
+
+/**
+ * Migrate Season status terms.
+ */
+class GarmentboxUsers extends Migration {
+  /**
+   * Map the field and properties to the CSV header.
+   */
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('og_user_company', 'Company'),
+    array('name', 'Username'),
+    array('pass', 'Password'),
+    array('mail', 'Email'),
+  );
+
+  public $entityType = 'user';
+
+  public $dependencies = array(
+    'garmentboxCompanies',
+  );
+
+  public function __construct() {
+    parent::__construct();
+    $this->description = t('Import users from a CSV file.');
+
+    $this->addFieldMapping('og_user_company', 'og_user_company')
+      ->sourceMigration('garmentboxCompanies');
+
+    $this->addFieldMapping('name', 'name');
+    $this->addFieldMapping('pass', 'pass');
+    $this->addFieldMapping('mail', 'mail');
+    $this->addFieldMapping('roles')
+         ->defaultValue(DRUPAL_AUTHENTICATED_RID);
+    $this->addFieldMapping('status')
+         ->defaultValue(TRUE);
+
+    // Create a map object for tracking the relationships between source rows
+    $key = array(
+      'id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    );
+    $destination_handler = new MigrateDestinationUser();
+    $this->map = new MigrateSQLMap($this->machineName, $key, $destination_handler->getKeySchema());
+
+    // Create a MigrateSource object.
+    $this->source = new MigrateSourceCSV(drupal_get_path('module', 'gb_migrate') . '/csv/' . $this->entityType . '/user.csv', $this->csvColumns, array('header_rows' => 1));
+    $this->destination = new MigrateDestinationUser();
+
+    // Clear flags cache.
+    flag_get_flags(NULL, NULL, NULL, TRUE);
+  }
+}
+
+///////////////////////////////
 // Terms
 
+/**
+ * Migrate Season status terms.
+ */
+class garmentboxSeasonStatusTerms extends garmentboxMigration {
+
+}
+
+/**
+ * Migrate Item status terms.
+ */
+class garmentboxItemStatusTerms extends garmentboxMigration {
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'item_status';
+}
+
+/**
+ * Migrate Task status terms.
+ */
+class garmentboxTaskStatusTerms extends garmentboxMigration {
+  public $csvColumns = array(
+    array('field_status_closed', 'Closed'),
+  );
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'task_status';
+
+  public function __construct() {
+    parent::__construct();
+    $this->addFieldMapping('field_status_closed', 'field_status_closed');
+  }
+}
+
+/**
+ * Migrate Inventory type terms.
+ */
+class garmentboxInventoryTypeTerms extends garmentboxMigration {
+  public $csvColumns = array(
+    array('field_include_in_total', 'Include in total'),
+    array('field_in_warehouse', 'In warehouse'),
+    array('field_closed_stock', 'Closed stock'),
+  );
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'inventory_type';
+
+  public function __construct() {
+    parent::__construct();
+    $this->addFieldMapping('field_include_in_total', 'field_include_in_total');
+    $this->addFieldMapping('field_in_warehouse', 'field_in_warehouse');
+    $this->addFieldMapping('field_closed_stock', 'field_closed_stock');
+  }
+}
 
 /**
  * Migrate material type terms.
  */
 class garmentboxMaterialTypeTerms extends garmentboxMigration {
 
+  public $csvColumns = array(
+    array('name', 'Name'),
+    array('field_measurement_types', 'Measurement types'),
+  );
 
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'material_types';
+
+  public function __construct() {
+    parent::__construct();
+    $this
+      ->addFieldMapping('field_measurement_types', 'field_measurement_types')
+      ->separator('|');
+  }
 }
 
+/**
+ * Migrate measurement unit terms.
+ */
+class garmentboxMeasurementUnitTerms extends garmentboxMigration {
+
+  public $csvColumns = array(
+    array('field_unit_type', 'Type'),
+    array('field_conversion_ratio', 'Conversion'),
+  );
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'measurement_units';
+
+  public function __construct() {
+    parent::__construct();
+    $this->addFieldMapping('field_unit_type', 'field_unit_type');
+    $this->addFieldMapping('field_conversion_ratio', 'field_conversion_ratio');
+  }
+}
+
+/**
+ * Migrate BOL terms.
+ */
+class garmentboxBolTerms extends garmentboxMigration {
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'bol';
+}
+
+/**
+ * Migrate order status terms.
+ */
+class garmentboxOrderStatusTerms extends garmentboxMigration {
+
+  public $entityType = 'taxonomy_term';
+  public $bundle = 'order_status';
+}
 
 ///////////////////////////////
 // Nodes

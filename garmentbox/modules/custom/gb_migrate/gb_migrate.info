@@ -16,7 +16,6 @@ files[] = handlers/node/GbSeasonsMigrate.php
 
 files[] = handlers/taxonomy_term/GbItemStatusTermsMigrate.php
 files[] = handlers/taxonomy_term/GbMaterialTypeTermsMigrate.php
-files[] = handlers/taxonomy_term/GbMeasurementUnitTermsMigrate.php
 files[] = handlers/taxonomy_term/GbSeasonStatusTermsMigrate.php
 
 files[] = handlers/user/GbUsersMigrate.php
