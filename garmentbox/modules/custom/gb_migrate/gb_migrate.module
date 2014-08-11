@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Populate dummy GarmentBox content.
+ */
+
+/**
  * Implements hook_migrate_api().
  */
 function gb_migrate_migrate_api() {
