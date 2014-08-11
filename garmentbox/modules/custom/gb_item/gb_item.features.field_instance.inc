@@ -54,8 +54,8 @@ function gb_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-item-field_materials'
-  $field_instances['node-item-field_materials'] = array(
+  // Exported field_instance: 'node-item-field_season'
+  $field_instances['node-item-field_season'] = array(
     'bundle' => 'item',
     'default_value' => NULL,
     'deleted' => 0,
@@ -78,9 +78,9 @@ function gb_item_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_materials',
-    'label' => 'Materials',
-    'required' => 0,
+    'field_name' => 'field_season',
+    'label' => 'Season',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -89,7 +89,7 @@ function gb_item_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -240,6 +240,54 @@ function gb_item_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-item_variant-field_item_status'
+  $field_instances['node-item_variant-field_item_status'] = array(
+    'bundle' => 'item_variant',
+    'default_value' => array(
+      0 => array(
+        'target_id' => 12,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_item_status',
+    'label' => 'Status',
+    'required' => 1,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-item_variant-field_item_variant_images'
   $field_instances['node-item_variant-field_item_variant_images'] = array(
     'bundle' => 'item_variant',
@@ -304,7 +352,7 @@ function gb_item_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -316,15 +364,16 @@ function gb_item_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_materials',
     'label' => 'Materials',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -394,6 +443,8 @@ function gb_item_field_default_field_instances() {
   t('Images');
   t('Item');
   t('Materials');
+  t('Season');
+  t('Status');
 
   return $field_instances;
 }

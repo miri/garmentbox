@@ -20,6 +20,7 @@ class GbItemVariantsMigrate extends GbMigration {
 
   public $dependencies = array(
     'GbItemsMigrate',
+    'GbItemVariantsMigrate',
   );
 
   public function __construct() {

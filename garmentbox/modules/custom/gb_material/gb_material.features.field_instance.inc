@@ -54,6 +54,50 @@ function gb_material_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-material-field_material_type'
+  $field_instances['node-material-field_material_type'] = array(
+    'bundle' => 'material',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_material_type',
+    'label' => 'Type',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-material-field_price'
   $field_instances['node-material-field_price'] = array(
     'bundle' => 'material',
@@ -164,6 +208,7 @@ function gb_material_field_default_field_instances() {
   t('Body');
   t('Groups audience');
   t('Price');
+  t('Type');
 
   return $field_instances;
 }
