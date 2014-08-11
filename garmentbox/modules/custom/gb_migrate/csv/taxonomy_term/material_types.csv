@@ -1,6 +1,6 @@
-Unique ID,Name,Measurement types
-materialType1,Band,radius
-materialType2,Button,radius
-materialType3,Fabric,width
-materialType4,Other,width|radius|length
-materialType5,Trim,length
+Unique ID,Name
+materialType1,Band
+materialType2,Button
+materialType3,Fabric
+materialType4,Other
+materialType5,Trim
