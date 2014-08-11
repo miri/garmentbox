@@ -12,6 +12,7 @@ class GbItemVariantsMigrate extends GbMigration {
 
   public $csvColumns = array(
     array('field_item', 'Item'),
+    array('field_materials', 'Materials'),
     array('field_item_variant_images', 'Images'),
     array('field_item_status', 'Status'),
     array('field_retail_price', 'Retail price'),
@@ -21,6 +22,7 @@ class GbItemVariantsMigrate extends GbMigration {
   public $dependencies = array(
     'GbItemsMigrate',
     'GbItemVariantsMigrate',
+    'GbMaterialsMigrate',
   );
 
   public function __construct() {
@@ -30,6 +32,10 @@ class GbItemVariantsMigrate extends GbMigration {
     $this
       ->addFieldMapping('field_item', 'field_item')
       ->sourceMigration('GbItemsMigrate');
+
+    $this
+      ->addFieldMapping('field_materials', 'field_materials')
+      ->sourceMigration('GbMaterialsMigrate');
 
     $this
       ->addFieldMapping('field_item_variant_images', 'field_item_variant_images')
