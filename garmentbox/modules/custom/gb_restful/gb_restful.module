@@ -14,7 +14,7 @@ function gb_restful_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- *  Return image URLs based on image styles of multiple images.
+ * Return image URLs based on image styles of multiple images.
  *
  * @param array $values
  *   Array with file arrays.

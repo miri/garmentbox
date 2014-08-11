@@ -23,17 +23,6 @@ abstract class GbMigration extends Migration {
     if ($this->entityType == 'node') {
       $this->addFieldMapping('title', 'title');
       $class_name = 'MigrateDestinationNode';
-
-      if ($this->bundle != 'company' && og_is_group_content_type('node', $this->bundle)) {
-        $csv_cols[] = array('og_company', 'Company');
-
-        // Add mapping to company.
-        $this->dependencies[] = 'GbCompaniesMigrate';
-
-        $this
-          ->addFieldMapping('og_company', 'og_company')
-          ->sourceMigration('GbCompaniesMigrate');
-      }
       $csv_cols[] = array('title', 'Title');
     }
     elseif ($this->entityType == 'taxonomy_term') {
@@ -60,21 +49,5 @@ abstract class GbMigration extends Migration {
     // Create a MigrateSource object.
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'gb_migrate') . '/csv/' . $this->entityType . '/' . $this->bundle . '.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new $class_name($this->bundle, array('text_format' => 'filtered_html'));
-  }
-
-  function prepareRow($row) {
-    $row->uid = 1;
-
-    // Set a default timezone on all date fields, assuming the imported data
-    // is in the site's timezone instead of the default UTC.
-    if (!empty($this->dateFields)) {
-      foreach ($this->dateFields as $date_field) {
-        $date_data = array(
-          'from' => $row->{$date_field},
-          'timezone' => date_default_timezone_get(),
-        );
-        $row->{$date_field} = drupal_json_encode($date_data);
-      }
-    }
   }
 }
