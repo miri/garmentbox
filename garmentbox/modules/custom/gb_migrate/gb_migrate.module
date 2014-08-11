@@ -4,7 +4,7 @@
  * Implements hook_migrate_api().
  */
 function gb_migrate_migrate_api() {
-  $mirgations = array(
+  $migrations = array(
     // Nodes.
     'GbCompaniesMigrate',
     'GbItemsMigrate',
@@ -15,7 +15,6 @@ function gb_migrate_migrate_api() {
     // Terms.
     'GbItemStatusTermsMigrate',
     'GbMaterialTypeTermsMigrate',
-    'GbMeasurementUnitTermsMigrate',
     'GbSeasonStatusTermsMigrate',
 
     // Users.
@@ -23,8 +22,8 @@ function gb_migrate_migrate_api() {
   );
 
   $api['api'] = 2;
-  foreach ($mirgations as $mirgation) {
-    $api['migrations'][$mirgation] = array('class_name' => 'GbUsersMigrate');
+  foreach ($migrations as $migration) {
+    $api['migrations'][$migration] = array('class_name' => $migration);
   }
 
   return $api;
