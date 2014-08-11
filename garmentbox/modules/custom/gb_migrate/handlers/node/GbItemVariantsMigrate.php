@@ -32,7 +32,10 @@ class GbItemVariantsMigrate extends GbMigration {
       ->sourceMigration('garmentboxItems');
 
 
-    $this->addFieldMapping('field_images', 'field_images');
+    $this
+      ->addFieldMapping('field_images', 'field_images')
+      ->separator('|');
+
     $this
       ->addFieldMapping('field_images:file_replace')
       ->defaultValue(FILE_EXISTS_REPLACE);
@@ -50,11 +53,6 @@ class GbItemVariantsMigrate extends GbMigration {
 
   }
 
-  function prepareRow($row) {
-    parent::prepareRow($row);
-    $row->field_images = explode('; ', $row->field_images);
-  }
-
   public function complete($entity, $row) {
     // Flag certain item variants as line-sheet items.
     $item_variant_titles = array(
@@ -63,7 +61,8 @@ class GbItemVariantsMigrate extends GbMigration {
     );
 
     if (in_array($entity->title, $item_variant_titles)) {
-      flag('flag', 'line_sheet', $entity->nid, user_load(1));
+      $account = user_load(1);
+      flag('flag', 'line_sheet', $entity->nid, $account);
     }
   }
 }
