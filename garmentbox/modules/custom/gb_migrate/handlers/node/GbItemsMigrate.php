@@ -15,7 +15,6 @@ class GbItemsMigrate extends GbMigration {
     array('body', 'Body'),
     array('field_season', 'Season'),
     array('field_item_status', 'Status'),
-    array('field_image', 'Image'),
   );
 
   public $dependencies = array(
@@ -34,14 +33,6 @@ class GbItemsMigrate extends GbMigration {
     $this
       ->addFieldMapping('field_item_status', 'field_item_status')
       ->sourceMigration('GbItemStatusTermsMigrate');
-
-    $this->addFieldMapping('field_image', 'field_image');
-    $this
-      ->addFieldMapping('field_image:file_replace')
-      ->defaultValue(FILE_EXISTS_REPLACE);
-    $this
-      ->addFieldMapping('field_image:source_dir')
-      ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
   }
 
 }

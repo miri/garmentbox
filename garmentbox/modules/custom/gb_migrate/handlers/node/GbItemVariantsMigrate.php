@@ -12,7 +12,7 @@ class GbItemVariantsMigrate extends GbMigration {
 
   public $csvColumns = array(
     array('field_item', 'Item'),
-    array('field_images', 'Images'),
+    array('field_item_variant_images', 'Images'),
     array('field_item_status', 'Status'),
     array('field_retail_price', 'Retail price'),
     array('field_wholesale_price', 'Wholesale price'),
@@ -31,15 +31,15 @@ class GbItemVariantsMigrate extends GbMigration {
       ->sourceMigration('GbItemsMigrate');
 
     $this
-      ->addFieldMapping('field_images', 'field_images')
+      ->addFieldMapping('field_item_variant_images', 'field_item_variant_images')
       ->separator('|');
 
     $this
-      ->addFieldMapping('field_images:file_replace')
+      ->addFieldMapping('field_item_variant_images:file_replace')
       ->defaultValue(FILE_EXISTS_REPLACE);
 
     $this
-      ->addFieldMapping('field_images:source_dir')
+      ->addFieldMapping('field_item_variant_images:source_dir')
       ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
 
     $this
