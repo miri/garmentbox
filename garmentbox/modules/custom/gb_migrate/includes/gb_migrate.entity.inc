@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Populate distribution with some content.
+ * Contains \GbMigration.
  */
 
-abstract class garmentboxMigration extends Migration {
+abstract class GbMigration extends Migration {
 
   public function __construct() {
     parent::__construct();
