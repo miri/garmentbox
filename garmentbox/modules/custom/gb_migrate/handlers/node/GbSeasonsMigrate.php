@@ -22,7 +22,9 @@ class GbSeasonsMigrate extends GbMigration {
   public function __construct() {
     parent::__construct();
 
-    $this->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD);
+    $this
+      ->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD)
+      ->sourceMigration('GbCompaniesMigrate');
 
     $this
       ->addFieldMapping('field_season_status', 'field_season_status')
