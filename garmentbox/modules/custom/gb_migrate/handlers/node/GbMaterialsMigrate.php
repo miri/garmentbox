@@ -31,6 +31,8 @@ class GbMaterialsMigrate extends GbMigration {
       ->addFieldMapping('field_material_images:source_dir')
       ->defaultValue(drupal_get_path('module', 'gb_migrate') . '/images');
 
-    $this->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD);
+    $this
+      ->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD)
+      ->sourceMigration('GbCompaniesMigrate');
   }
 }
