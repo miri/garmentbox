@@ -25,6 +25,7 @@ features[field_instance][] = node-item_variant-field_item
 features[field_instance][] = node-item_variant-field_item_status
 features[field_instance][] = node-item_variant-field_item_variant_images
 features[field_instance][] = node-item_variant-field_materials
+features[field_instance][] = node-item_variant-field_season
 features[field_instance][] = node-item_variant-og_group_ref
 features[node][] = item
 features[node][] = item_variant
