@@ -23,6 +23,7 @@ class GbItemsMigrate extends GbMigration {
 
   public function __construct() {
     parent::__construct();
+
     $this->addFieldMapping('body', 'body');
 
     $this
