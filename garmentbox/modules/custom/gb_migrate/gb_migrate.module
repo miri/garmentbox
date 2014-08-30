@@ -19,7 +19,6 @@ function gb_migrate_migrate_api() {
 
     // Terms.
     'GbItemStatusTermsMigrate',
-    'GbMaterialTypeTermsMigrate',
     'GbSeasonStatusTermsMigrate',
 
     // Users.
