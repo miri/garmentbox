@@ -5,20 +5,20 @@
  * Contains GbCompaniesResource.
  */
 
-class GbCompaniesResource extends \RestfulEntityBaseNode {
+class GbCompaniesResource extends \GbEntityBaseNode {
 
 
   /**
-   * {@inheritdoc}
+   * Overrides \RestfulEntityBaseNode::publicFieldsInfo().
    */
-  public function getPublicFields() {
-    $public_fields = parent::getPublicFields();
-
-    unset($public_fields['self']);
+  public function publicFieldsInfo() {
+    $public_fields = parent::publicFieldsInfo();
 
     $public_fields['logo'] = array(
       'property' => 'field_company_logo',
-      'process_callback' => 'gb_restful_get_image_styles',
+      'process_callback' => array($this, 'imageProcess'),
+      // This will add 3 image variants in the output.
+      'image_styles' => array('thumbnail', 'medium', 'large'),
     );
 
     return $public_fields;

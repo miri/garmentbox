@@ -5,28 +5,20 @@
  * Contains GbItemVariantsResource.
  */
 
-class GbItemVariantsResource extends \RestfulEntityBaseNode {
+class GbItemVariantsResource extends \GbEntityBaseNode {
 
 
   /**
-   * {@inheritdoc}
+   * Overrides \RestfulEntityBaseNode::publicFieldsInfo().
    */
-  public function getPublicFields() {
-    $public_fields = parent::getPublicFields();
-
-    unset($public_fields['self']);
-
-    $public_fields['created'] = array(
-      'property' => 'created',
-    );
-
-    $public_fields['updated'] = array(
-      'property' => 'changed',
-    );
+  public function publicFieldsInfo() {
+    $public_fields = parent::publicFieldsInfo();
 
     $public_fields['images'] = array(
       'property' => 'field_item_variant_images',
-      'process_callback' => 'gb_restful_get_images_styles',
+      'process_callback' => array($this, 'imageProcess'),
+      // This will add 3 image variants in the output.
+      'image_styles' => array('thumbnail', 'medium', 'large'),
     );
 
     return $public_fields;

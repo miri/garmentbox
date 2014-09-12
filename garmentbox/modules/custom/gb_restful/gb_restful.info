@@ -5,3 +5,5 @@ dependencies[] = restful
 dependencies[] = entity_validator
 
 dependencies[] = gb_company
+
+files[] = plugins/restful/node/GbEntityBaseNode.php
