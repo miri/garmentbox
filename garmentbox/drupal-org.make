@@ -71,7 +71,7 @@ projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = 2.0-alpha2
 
 projects[og][subdir] = "contrib"
-projects[og][version] = 2.7
+projects[og][version] = 2.x
 
 projects[og_vocab][subdir] = "contrib"
 projects[og_vocab][version] = "1.2"
