@@ -24,6 +24,21 @@ class GbItemsResource extends \GbEntityBaseNode {
       ),
     );
 
+    $public_fields['item_variants'] = array(
+      'callback' => array($this, 'getItemVariantsFromItem'),
+    );
+
     return $public_fields;
+  }
+
+  protected function getItemVariantsFromItem(\EntityMetadataWrapper $wrapper) {
+    // Get a list of referencing item variants.
+    $handler = restful_get_restful_handler('item_variants');
+    $request = array(
+      'filter' => array(
+        'item' => $wrapper->getIdentifier(),
+      ),
+    );
+    return $handler->get('', $request);
   }
 }

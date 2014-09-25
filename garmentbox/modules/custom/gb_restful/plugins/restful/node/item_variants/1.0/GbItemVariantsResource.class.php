@@ -14,6 +14,16 @@ class GbItemVariantsResource extends \GbEntityBaseNode {
   public function publicFieldsInfo() {
     $public_fields = parent::publicFieldsInfo();
 
+    $public_fields['item'] = array(
+      'property' => 'field_item',
+      'resource' => array(
+        'item' => array(
+          'name' => 'items',
+          'full_view' => FALSE,
+        ),
+      ),
+    );
+
     $public_fields['images'] = array(
       'property' => 'field_item_variant_images',
       'process_callback' => array($this, 'imageProcess'),

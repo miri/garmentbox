@@ -9,4 +9,7 @@ $plugin = array(
   'description' => t('Export the "Item" content type.'),
   'class' => 'GbItemsResource',
   'authentication_types' => TRUE,
+  'cache' => array(
+    'render' => TRUE,
+  ),
 );
