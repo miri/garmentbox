@@ -37,6 +37,9 @@ projects[entityreference][version] = "1.1"
 projects[entity_validator][subdir] = "contrib"
 projects[entity_validator][version] = "1.x"
 
+projects[facetapi][subdir] = "contrib"
+projects[facetapi][version] = "2.2"
+
 projects[features][subdir] = "contrib"
 projects[features][version] = "2.2"
 
