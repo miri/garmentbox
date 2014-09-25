@@ -44,7 +44,7 @@ projects[features][subdir] = "contrib"
 projects[features][version] = "2.2"
 
 projects[flag][subdir] = "contrib"
-projects[flag][version] = "2.2"
+projects[flag][version] = "3.5"
 
 projects[jquery_update][subdir] = "contrib"
 projects[jquery_update][version] = "2.4"

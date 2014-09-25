@@ -42,7 +42,9 @@ dependencies[] = og_vocab
 dependencies[] = restful
 dependencies[] = restful_token_auth
 dependencies[] = search_api
+dependencies[] = search_api_facetapi
 dependencies[] = search_api_solr
+
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = views
