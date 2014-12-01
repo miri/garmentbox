@@ -106,6 +106,48 @@ function gb_material_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-material-field_vendor'
+  $field_instances['node-material-field_vendor'] = array(
+    'bundle' => 'material',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vendor',
+    'label' => 'vendor',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-material-og_group_ref'
   $field_instances['node-material-og_group_ref'] = array(
     'bundle' => 'material',
@@ -170,6 +212,7 @@ function gb_material_field_default_field_instances() {
   t('Groups audience');
   t('Images');
   t('Price');
+  t('vendor');
 
   return $field_instances;
 }
