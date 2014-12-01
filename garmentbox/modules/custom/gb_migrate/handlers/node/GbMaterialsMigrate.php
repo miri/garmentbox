@@ -13,10 +13,12 @@ class GbMaterialsMigrate extends GbMigration {
   public $csvColumns = array(
     array('field_material_images', 'Images'),
     array(OG_AUDIENCE_FIELD, 'Company'),
+    array('field_vendor', 'Vendor'),
   );
 
   public $dependencies = array(
     'GbCompaniesMigrate',
+    'GbVendorsMigrate',
   );
 
   public function __construct() {
@@ -34,5 +36,9 @@ class GbMaterialsMigrate extends GbMigration {
     $this
       ->addFieldMapping(OG_AUDIENCE_FIELD, OG_AUDIENCE_FIELD)
       ->sourceMigration('GbCompaniesMigrate');
+
+    $this
+        ->addFieldMapping('field_vendor', 'field_vendor')
+        ->sourceMigration('GbVendorsMigrate');
   }
 }
