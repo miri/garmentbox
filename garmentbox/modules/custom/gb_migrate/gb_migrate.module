@@ -16,6 +16,7 @@ function gb_migrate_migrate_api() {
     'GbItemVariantsMigrate',
     'GbMaterialsMigrate',
     'GbSeasonsMigrate',
+    'GbVendorsMigrate',
 
     // Terms.
     'GbItemStatusTermsMigrate',

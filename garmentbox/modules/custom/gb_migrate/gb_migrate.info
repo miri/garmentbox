@@ -13,6 +13,7 @@ files[] = handlers/node/GbItemsMigrate.php
 files[] = handlers/node/GbItemVariantsMigrate.php
 files[] = handlers/node/GbMaterialsMigrate.php
 files[] = handlers/node/GbSeasonsMigrate.php
+files[] = handlers/node/GbVendorsMigrate.php
 
 files[] = handlers/taxonomy_term/GbItemStatusTermsMigrate.php
 files[] = handlers/taxonomy_term/GbSeasonStatusTermsMigrate.php
