@@ -1,0 +1,16 @@
+name = GarmentBox vendor message
+core = 7.x
+package = Garmentbox
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[message_type][] = create_new_vendor_node
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][entity] = entity
+features_exclude[dependencies][entityreference] = entityreference
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][gb_material] = gb_material
+features_exclude[dependencies][message] = message
+features_exclude[dependencies][strongarm] = strongarm
+features_exclude[field_instance][message-create_new_vendor_node-field_vendor] = message-create_new_vendor_node-field_vendor
+features_exclude[variable][field_bundle_settings_message__create_new_vendor_node] = field_bundle_settings_message__create_new_vendor_node
+mtime = 1417444716

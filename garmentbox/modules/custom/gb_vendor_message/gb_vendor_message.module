@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Code for the GarmentBox vendor message feature.
+ */
+
+include_once 'gb_vendor_message.features.inc';
+
+/**
+ * Implements hook_node_insert().
+ */
+function gb_vendor_message_node_insert($node) {
+    // Save the message and assign it to the user realm. Since another user,
+    // usually an admin might create the node, but populate the author field
+    // with another user, we make sure the user is populated with the
+    // node's author, instead of the acting user (although in most cases it
+    // would be the same user).
+    switch ($node->type) {
+        case 'vendor':
+            $message = message_create('create_new_vendor_node', array('uid' => $node->uid));
+            // Save reference to the node in the node reference field, and the
+            // "publish" state (i.e. if the node is published or unpublished).
+            $wrapper = entity_metadata_wrapper('message', $message);
+            $wrapper->field_vendor->set($node);
+//            $wrapper->field_published->set($node->status);
+            $wrapper->save();
+            break;
+    }
+
+}
